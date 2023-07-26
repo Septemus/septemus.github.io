@@ -1,7 +1,7 @@
 baseURL = "https://Septemus.github.io/"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "Loveit"
 
 # website title
 title = "Septemus's Blog"
