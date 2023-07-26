@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>西南交通大学计组实验-课程设计 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="西南交通大学计组实验-课程设计" />
+<meta property="og:description" content="1 实验内容 底层用 Verilog HDL 语言实现简单的处理器模块设计。 调用存储器模块设计 64×8 的存储器模块。 顶层用原理图方式将简单的处理器模块和存储器模块连接" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://Septemus.github.io/computer_organization_course_design/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-16T15:22:02+08:00" />
+<meta property="article:modified_time" content="2023-06-16T15:22:02+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
+
+<meta name="twitter:title" content="西南交通大学计组实验-课程设计"/>
+<meta name="twitter:description" content="1 实验内容 底层用 Verilog HDL 语言实现简单的处理器模块设计。 调用存储器模块设计 64×8 的存储器模块。 顶层用原理图方式将简单的处理器模块和存储器模块连接"/>
+<meta name="application-name" content="Septemus">
+<meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Septemus.github.io/computer_organization_course_design/" /><link rel="prev" href="https://Septemus.github.io/computer_organization_exp8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "西南交通大学计组实验-课程设计",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/Septemus.github.io\/computer_organization_course_design\/"
+        },"genre": "posts","wordcount":  1583 ,
+        "url": "https:\/\/Septemus.github.io\/computer_organization_course_design\/","datePublished": "2023-06-16T15:22:02+08:00","dateModified": "2023-06-16T15:22:02+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Septemus"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/" title="About me"> About </a><a class="menu-item" href="/posts/" title="My blogs"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="About me">About</a><a class="menu-item" href="/posts/" title="My blogs">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">西南交通大学计组实验-课程设计</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-16">2023-06-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1583 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/intel-fpga.png"
+        data-srcset="/images/intel-fpga.png, /images/intel-fpga.png 1.5x, /images/intel-fpga.png 2x"
+        data-sizes="auto"
+        alt="/images/intel-fpga.png"
+        title="/images/intel-fpga.png" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-顶层文件">2.1 顶层文件</a>
+      <ul>
+        <li><a href="#211-设计用原理图">2.1.1 设计用原理图</a></li>
+        <li><a href="#212-仿真用verilog代码">2.1.2 仿真用Verilog代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-ram初始化内容mif2mem">2.2 RAM初始化内容（mif2.mem）</a></li>
+    <li><a href="#23-cpu模块">2.3 cpu模块</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<h1 id="1-实验内容">1 实验内容</h1>
+</blockquote>
+<ol>
+<li>底层用 Verilog HDL 语言实现简单的处理器模块设计。</li>
+<li>调用存储器模块设计 64×8 的存储器模块。</li>
+<li>顶层用原理图方式将简单的处理器模块和存储器模块连接形成简单的计算机核心
+部件组成的系统。</li>
+<li>将指令序列存入存储器，然后分析指令执行流程</li>
+</ol>
+<blockquote>
+<h1 id="2-代码原理图">2 代码/原理图</h1>
+</blockquote>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">由于本次使用modelsim-altera仿真，仿真时顶层不能用原理图，必须要转换为Verilog文件。</div>
+        </div>
+    </div>
+<blockquote>
+<h2 id="21-顶层文件">2.1 顶层文件</h2>
+</blockquote>
+<blockquote>
+<h3 id="211-设计用原理图">2.1.1 设计用原理图</h3>
+</blockquote>
+<img src="/images/block9.png" width="80%">
+<blockquote>
+<h3 id="212-仿真用verilog代码">2.1.2 仿真用Verilog代码</h3>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="c1">// Copyright (C) 1991-2013 Altera Corporation
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Your use of Altera Corporation&#39;s design tools, logic functions 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// and other software and tools, and its AMPP partner logic 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// functions, and any output files from any of the foregoing 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// (including device programming or simulation files), and any 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// associated documentation or information are expressly subject 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// to the terms and conditions of the Altera Program License 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Subscription Agreement, Altera MegaCore Function License 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Agreement, or other applicable license agreement, including, 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// without limitation, that your use is for the sole purpose of 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// programming logic devices manufactured by Altera and sold by 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Altera or its authorized distributors.  Please refer to the 
+</span></span></span><span class="line"><span class="cl"><span class="c1">// applicable agreement for further details.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// PROGRAM		&#34;Quartus II 64-Bit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// VERSION		&#34;Version 13.1.0 Build 162 10/23/2013 SJ Full Version&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// CREATED		&#34;Fri Jun 09 00:49:29 2023&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="n">computer</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="n">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Write_read</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">overflow</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_addr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_data_out</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_q</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">PC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">R0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">R1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">R2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">R3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">state</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">input</span> <span class="kt">wire</span>	<span class="n">reset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">input</span> <span class="kt">wire</span>	<span class="n">clk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="n">Write_read</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="n">overflow</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_data_out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">PC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">wire</span>	<span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span>	<span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_addr_ALTERA_SYNTHESIZED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span>	<span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_data_out_ALTERA_SYNTHESIZED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span>	<span class="n">we</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cpu</span>	<span class="n">b2v_inst2</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">reset</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">M_data_in</span><span class="p">(</span><span class="n">M_data_in</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">Write_read</span><span class="p">(</span><span class="n">we</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">overflow</span><span class="p">(</span><span class="n">overflow</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">M_addr</span><span class="p">(</span><span class="n">M_addr_ALTERA_SYNTHESIZED</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">M_data_out</span><span class="p">(</span><span class="n">M_data_out_ALTERA_SYNTHESIZED</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">PC</span><span class="p">(</span><span class="n">PC</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">R0</span><span class="p">(</span><span class="n">R0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">R1</span><span class="p">(</span><span class="n">R1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">R2</span><span class="p">(</span><span class="n">R2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">R3</span><span class="p">(</span><span class="n">R3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">state</span><span class="p">(</span><span class="n">state</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Add</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">And</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0101</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Idle</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Jmp</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Jz</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Load</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Move</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Or</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Read</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1101</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Shl</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Shr</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">st_0</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">st_1</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">st_2</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">st_3</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">st_4</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Stop</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Sub</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Swap</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Write</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b1110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defparam</span>	<span class="n">b2v_inst2</span><span class="p">.</span><span class="n">Xor</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mif2</span>	<span class="n">b2v_inst3</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">clock</span><span class="p">(</span><span class="n">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">wren</span><span class="p">(</span><span class="n">we</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">address</span><span class="p">(</span><span class="n">M_addr_ALTERA_SYNTHESIZED</span><span class="p">[</span><span class="mh">5</span><span class="o">:</span><span class="mh">0</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="n">M_data_out_ALTERA_SYNTHESIZED</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="n">q</span><span class="p">(</span><span class="n">M_data_in</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">assign</span>	<span class="n">Write_read</span> <span class="o">=</span> <span class="n">we</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span>	<span class="n">M_addr</span> <span class="o">=</span> <span class="n">M_addr_ALTERA_SYNTHESIZED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span>	<span class="n">M_data_out</span> <span class="o">=</span> <span class="n">M_data_out_ALTERA_SYNTHESIZED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span>	<span class="n">M_q</span> <span class="o">=</span> <span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="22-ram初始化内容mif2mem">2.2 RAM初始化内容（mif2.mem）</h2>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>addr</th>
+<th>+0</th>
+<th>+1</th>
+<th>+2</th>
+<th>+3</th>
+<th>+4</th>
+<th>+5</th>
+<th>+6</th>
+<th>+7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>00</td>
+<td>15</td>
+<td>24</td>
+<td>D0</td>
+<td>1F</td>
+<td>94</td>
+<td>31</td>
+<td>E0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1E</td>
+<td>41</td>
+<td>A1</td>
+<td>61</td>
+<td>84</td>
+<td>51</td>
+<td>28</td>
+<td>2D</td>
+</tr>
+<tr>
+<td>16</td>
+<td>7B</td>
+<td>D0</td>
+<td>1E</td>
+<td>C0</td>
+<td>19</td>
+<td>D0</td>
+<td>1D</td>
+<td>B0</td>
+</tr>
+<tr>
+<td>24</td>
+<td>13</td>
+<td>F0</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>39</td>
+</tr>
+<tr>
+<td>32</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+</tr>
+<tr>
+<td>40</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h2 id="23-cpu模块">2.3 cpu模块</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">cpu</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_data_in</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Write_read</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_addr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">M_data_out</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">overflow</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="n">R0</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span><span class="p">,</span><span class="n">R3</span><span class="p">,</span><span class="n">PC</span><span class="p">,</span><span class="n">state</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//wire [15:0]IR;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//wire [7:0] A,R0,R1,R2,R3,PC,RX,RY;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//choose_rx_ry crr(clk,IR,R0,R1,R2,R3,RX,RY);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//status_machine sm(M_data_in,clk,reset,Write_read,M_addr,M_data_out);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//assign M_addr=MAR;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//assign M_data_out=MDR;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">parameter</span> <span class="n">Idle</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Load</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Move</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Add</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Sub</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">And</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0101</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Or</span>   <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Xor</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Shr</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Shl</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Swap</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Jmp</span>  <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Jz</span>   <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Read</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1101</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Write</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">Stop</span> <span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">st_0</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">st_1</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">st_2</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">st_3</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span> <span class="n">st_4</span> <span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">input</span> <span class="n">clk</span><span class="p">,</span><span class="n">reset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R0</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">R1</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">R2</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">R3</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">PC</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">reg</span> <span class="n">overflow</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">A</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">RX</span><span class="p">,</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//reg [7:0] MDR;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">reg</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">IR</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//reg[11:0] MAR;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">output</span> <span class="kt">reg</span> <span class="n">Write_read</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">M_addr</span><span class="o">=</span><span class="mh">12&#39;h000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">M_data_out</span><span class="o">=</span><span class="mh">8&#39;h00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">state</span><span class="o">=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">OP</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">step_counter</span><span class="o">=</span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="n">flag1</span><span class="o">=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span> <span class="n">OP</span><span class="o">=</span><span class="n">IR</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">12</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">reset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">reset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="n">R0</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">R1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">R2</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">R3</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">RX</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">RY</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">PC</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">M_addr</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">M_data_out</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">A</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//按照步长划分状态，而每个状态又有子状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">//步长为0时执行取指令操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">step_counter</span><span class="o">==</span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">					<span class="n">IR</span><span class="o">&lt;=</span><span class="p">{</span><span class="n">M_data_in</span><span class="p">,</span><span class="mh">8&#39;h00</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">					<span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="n">PC</span><span class="o">&lt;=</span><span class="n">PC</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="n">step_counter</span><span class="o">&lt;=</span><span class="n">step_counter</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//步长为2时执行取操作数和运算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">step_counter</span><span class="o">==</span><span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//根据寄存器选择RX，RY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nl">st_0:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="n">flag1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">case</span><span class="p">(</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">10</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RX</span><span class="o">&lt;=</span><span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RX</span><span class="o">&lt;=</span><span class="n">R1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RX</span><span class="o">&lt;=</span><span class="n">R2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RX</span><span class="o">&lt;=</span><span class="n">R3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">					<span class="k">case</span><span class="p">(</span><span class="n">IR</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">8</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RY</span><span class="o">&lt;=</span><span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RY</span><span class="o">&lt;=</span><span class="n">R1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RY</span><span class="o">&lt;=</span><span class="n">R2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">RY</span><span class="o">&lt;=</span><span class="n">R3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">endcase</span>	
+</span></span><span class="line"><span class="cl">					<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">A</span><span class="o">&lt;=</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">M_addr</span><span class="o">&lt;=</span><span class="n">PC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="c1">//以下内容参照实验参考书的表3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nl">st_1:</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="n">flag1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">case</span><span class="p">(</span><span class="n">OP</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Load:</span> <span class="n">R0</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">4&#39;h0</span><span class="p">,</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">8</span><span class="p">]};</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Move:</span> <span class="n">RX</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Shr:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">,</span><span class="n">RX</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">1</span><span class="p">]};</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Shl:</span>  <span class="n">RX</span><span class="o">&lt;=</span><span class="p">{</span><span class="n">RX</span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">],</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Add:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="n">RX</span><span class="o">+</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Sub:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="n">RX</span><span class="o">-</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">And:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="n">RX</span><span class="o">&amp;</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Or:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="n">RX</span><span class="o">|</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Xor:</span>	<span class="n">RX</span><span class="o">&lt;=</span><span class="n">RX</span><span class="o">^</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Swap:</span>	<span class="n">RY</span><span class="o">&lt;=</span><span class="n">RX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Stop</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Swap</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Jmp</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Jz</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Write</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Load</span><span class="p">)</span> <span class="n">step_counter</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> <span class="n">step_counter</span><span class="o">&lt;=</span><span class="n">step_counter</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="nl">st_2:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="n">flag1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						
+</span></span><span class="line"><span class="cl">						<span class="k">case</span><span class="p">(</span><span class="n">OP</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Swap:</span><span class="n">RX</span><span class="o">&lt;=</span><span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Jmp:</span>
+</span></span><span class="line"><span class="cl">							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">IR</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Read:</span>
+</span></span><span class="line"><span class="cl">							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">IR</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Write:</span>
+</span></span><span class="line"><span class="cl">							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">IR</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							<span class="nl">Jz:</span>
+</span></span><span class="line"><span class="cl">							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="k">if</span><span class="p">(</span><span class="n">R0</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">								<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">									<span class="n">IR</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">								<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">!=</span><span class="n">Swap</span><span class="p">)</span> <span class="n">PC</span><span class="o">&lt;=</span><span class="n">PC</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">M_data_out</span><span class="o">&lt;=</span><span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Swap</span><span class="p">)</span> <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="n">step_counter</span><span class="o">&lt;=</span><span class="n">step_counter</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Jmp</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Write</span><span class="p">)</span> <span class="n">M_addr</span><span class="o">&lt;=</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Jz</span> <span class="o">&amp;&amp;</span> <span class="n">R0</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span> <span class="n">M_addr</span><span class="o">&lt;=</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> <span class="n">M_addr</span><span class="o">&lt;=</span><span class="n">PC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">				<span class="nl">st_3:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="n">flag1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Jmp</span><span class="p">)</span> <span class="n">PC</span><span class="o">&lt;=</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Jz</span><span class="o">&amp;&amp;</span><span class="n">R0</span><span class="o">==</span><span class="mh">0</span><span class="p">)</span> <span class="n">PC</span><span class="o">&lt;=</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="p">)</span> <span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Write</span><span class="p">)</span> <span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Write</span><span class="p">)</span> <span class="n">M_addr</span><span class="o">&lt;=</span><span class="n">PC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Jmp</span><span class="o">||</span><span class="n">OP</span><span class="o">==</span><span class="n">Jz</span><span class="p">)</span> <span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="n">step_counter</span><span class="o">&lt;=</span><span class="n">step_counter</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="n">state</span><span class="o">&lt;=</span><span class="n">st_4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="nl">st_4:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="n">flag1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="p">)</span> <span class="n">R0</span><span class="o">&lt;=</span><span class="n">M_data_in</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">Write_read</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">state</span><span class="o">&lt;=</span><span class="n">st_0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">OP</span><span class="o">==</span><span class="n">Read</span><span class="p">)</span> <span class="n">step_counter</span><span class="o">&lt;=</span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="n">step_counter</span><span class="o">&lt;=</span><span class="n">step_counter</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">flag1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//将RX,RY的值赋值回通用寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">step_counter</span><span class="o">==</span><span class="mh">3</span><span class="mb">&#39;b010</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span><span class="p">(</span><span class="n">IR</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">10</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R0</span><span class="o">&lt;=</span><span class="n">RX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R1</span><span class="o">&lt;=</span><span class="n">RX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R2</span><span class="o">&lt;=</span><span class="n">RX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R3</span><span class="o">&lt;=</span><span class="n">RX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">					<span class="k">case</span><span class="p">(</span><span class="n">IR</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">8</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R0</span><span class="o">&lt;=</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R1</span><span class="o">&lt;=</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R2</span><span class="o">&lt;=</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R3</span><span class="o">&lt;=</span><span class="n">RY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">					<span class="n">step_counter</span><span class="o">&lt;=</span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="3-仿真波形">3 仿真波形</h1>
+</blockquote>
+<img src="/images/wvf9_1.png" width="80%">
+<img src="/images/wvf9_2.png" width="80%">
+<blockquote>
+<h1 id="4-源码已上传github">4 源码已上传github</h1>
+</blockquote>
+<p>github仓库：
+<span class="h-card person-mention"><a href="https://github.com/Septemus/swjtu_computer_organization_course_design.git" class="u-url url" title="github库"><img class="u-photo photo" src="/images/github.jpg" alt="swjtu_computer_organization_course_design">&#8201;<span class="p-name fn">swjtu_computer_organization_course_design</span></a></span></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-06-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computer_organization_course_design/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://Septemus.github.io/computer_organization_course_design/" data-title="西南交通大学计组实验-课程设计"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://Septemus.github.io/computer_organization_course_design/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://Septemus.github.io/computer_organization_course_design/" data-title="西南交通大学计组实验-课程设计"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://Septemus.github.io/computer_organization_course_design/" data-title="西南交通大学计组实验-课程设计"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://Septemus.github.io/computer_organization_course_design/" data-title="西南交通大学计组实验-课程设计" data-image="/images/intel-fpga.png"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://Septemus.github.io/computer_organization_course_design/" data-title="西南交通大学计组实验-课程设计"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computer_organization_exp8/" class="prev" rel="prev" title="西南交通大学计组实验8-指令分析与执行"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>西南交通大学计组实验8-指令分析与执行</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":5000},"comment":{"gitalk":{"admin":["Septemus"],"clientID":"27884c3fdf05fa87d8b5","clientSecret":"48cca20f9dde1fb315eabd987387efc894db330a","id":"2023-06-16T15:22:02+08:00","owner":"Septemus","repo":"comment_rep","title":"西南交通大学计组实验-课程设计"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

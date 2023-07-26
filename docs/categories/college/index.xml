@@ -1,0 +1,108 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>college - Category - Septemus&#39;s Blog</title>
+        <link>https://Septemus.github.io/categories/college/</link>
+        <description>college - Category - Septemus&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 16 Jun 2023 15:22:02 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/college/" rel="self" type="application/rss+xml" /><item>
+    <title>西南交通大学计组实验-课程设计</title>
+    <link>https://Septemus.github.io/computer_organization_course_design/</link>
+    <pubDate>Fri, 16 Jun 2023 15:22:02 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_course_design/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>1 实验内容 底层用 Verilog HDL 语言实现简单的处理器模块设计。 调用存储器模块设计 64×8 的存储器模块。 顶层用原理图方式将简单的处理器模块和存储器模块连接]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验8-指令分析与执行</title>
+    <link>https://Septemus.github.io/computer_organization_exp8/</link>
+    <pubDate>Mon, 29 May 2023 10:28:20 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp8/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Frequency 使用时必须将clk频率设置成100k Special]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验7-指令存储器与取指令部分的设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp7/</link>
+    <pubDate>Tue, 23 May 2023 10:01:50 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp7/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k Special]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验6-运算器设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp6/</link>
+    <pubDate>Sun, 14 May 2023 18:09:31 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp6/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k Apr22th]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验5-CPU寄存器组设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp5/</link>
+    <pubDate>Thu, 04 May 2023 10:44:58 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp5/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验4-算术逻辑单元（ALU）设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp4/</link>
+    <pubDate>Thu, 27 Apr 2023 11:09:52 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp4/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验3-8位原码一位乘法器设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp3/</link>
+    <pubDate>Tue, 18 Apr 2023 11:02:13 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp3/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Apr22th bugfixed_1 感谢keaidebeibei和陶同学指出问题，仿真需要注释掉防抖]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验2-矩阵键盘设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp2/</link>
+    <pubDate>Wed, 12 Apr 2023 21:40:03 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课 Success 代码和输出已通过助教验收 update Apr20th 更新：实现了滚动显示数字 Frequency 使用时必须将c]]></description>
+</item>
+<item>
+    <title>西南交通大学计组实验1-四位全加器设计</title>
+    <link>https://Septemus.github.io/computer_organization_exp1/</link>
+    <pubDate>Tue, 11 Apr 2023 15:45:34 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_organization_exp1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 1 实验内容 设计四位加法器 2 代码/原理图 2.1]]></description>
+</item>
+<item>
+    <title>数字电子技术理论笔记</title>
+    <link>https://Septemus.github.io/math_electronic/</link>
+    <pubDate>Sat, 14 Jan 2023 10:57:02 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/math_electronic/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/Mathematical_Electronic/intel.jpg" referrerpolicy="no-referrer">
+            </div>Warning 此笔记由我个人整理，因此相比教材可能有出入，如果您发现有错误，欢迎和我联系！ Note 此笔记针对西南交通大学2022-2023学年上半学期开设的数]]></description>
+</item>
+</channel>
+</rss>

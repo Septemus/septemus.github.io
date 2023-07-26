@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>西南交通大学计组实验8-指令分析与执行 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="西南交通大学计组实验8-指令分析与执行" />
+<meta property="og:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Frequency 使用时必须将clk频率设置成100k Special" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://Septemus.github.io/computer_organization_exp8/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-29T10:28:20+08:00" />
+<meta property="article:modified_time" content="2023-05-29T10:28:20+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
+
+<meta name="twitter:title" content="西南交通大学计组实验8-指令分析与执行"/>
+<meta name="twitter:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Frequency 使用时必须将clk频率设置成100k Special"/>
+<meta name="application-name" content="Septemus">
+<meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Septemus.github.io/computer_organization_exp8/" /><link rel="prev" href="https://Septemus.github.io/computer_organization_exp7/" /><link rel="next" href="https://Septemus.github.io/computer_organization_course_design/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "西南交通大学计组实验8-指令分析与执行",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/Septemus.github.io\/computer_organization_exp8\/"
+        },"genre": "posts","wordcount":  3364 ,
+        "url": "https:\/\/Septemus.github.io\/computer_organization_exp8\/","datePublished": "2023-05-29T10:28:20+08:00","dateModified": "2023-05-29T10:28:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Septemus"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/" title="About me"> About </a><a class="menu-item" href="/posts/" title="My blogs"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="About me">About</a><a class="menu-item" href="/posts/" title="My blogs">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">西南交通大学计组实验8-指令分析与执行</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-29">2023-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3364 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/intel-fpga.png"
+        data-srcset="/images/intel-fpga.png, /images/intel-fpga.png 1.5x, /images/intel-fpga.png 2x"
+        data-sizes="auto"
+        alt="/images/intel-fpga.png"
+        title="/images/intel-fpga.png" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-顶层文件">2.1 顶层文件</a></li>
+    <li><a href="#22-pc寄存器">2.2 PC寄存器</a></li>
+    <li><a href="#23-数码管">2.3 数码管</a></li>
+    <li><a href="#24-矩阵键盘">2.4 矩阵键盘</a></li>
+    <li><a href="#25-rom的内容">2.5 ROM的内容</a></li>
+    <li><a href="#26-选择alu的操作数">2.6 选择ALU的操作数</a></li>
+    <li><a href="#27-寄存器组">2.7 寄存器组</a></li>
+    <li><a href="#28-通用寄存器">2.8 通用寄存器</a></li>
+    <li><a href="#29-运算器">2.9 运算器</a></li>
+    <li><a href="#210-运算器的计算功能">2.10 运算器的计算功能</a></li>
+    <li><a href="#211-运算器的中间件">2.11 运算器的中间件</a></li>
+    <li><a href="#212-取指令并向各模块发送信号">2.12 取指令并向各模块发送信号</a></li>
+    <li><a href="#214-页面切换">2.14 页面切换</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。</div>
+        </div>
+    </div>
+<div class="details admonition success">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>Success<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">代码和输出已经过助教验收。</div>
+        </div>
+    </div>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Frequency<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">使用时必须将clk频率设置成100k</div>
+        </div>
+    </div>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Special thanks👍🏿<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">感谢何同学提供的参考代码和实验要求！</div>
+        </div>
+    </div>
+<blockquote>
+<h1 id="0-完结撒花">0 完结撒花🏵️</h1>
+</blockquote>
+<p>🎉恭喜你已完成所有的计组实验，很有幸被你发现我的博客，我在校的时间里会一直维护计组实验的相关内容并进行答疑。也欢迎大家提出更好的改进建议！</p>
+<p>⭐如果你喜欢我的设计的话，可以在github上follow我并对我的仓库点star，这会让它们被更多的校友发现，你的支持是我最大的动力！</p>
+<p>🧠我在学习过程中也会发布其他技术相关的文章，如果你感兴趣欢迎关注！</p>
+<p>👩🏿‍🎓最后祝各位同学学习顺利，前程似锦！</p>
+<blockquote>
+<h1 id="1-实验内容">1 实验内容</h1>
+</blockquote>
+<p>利用quartus提供的IP Core和FPGA内部存储器，完成指令存储器与取指部分设计。</p>
+<blockquote>
+<h1 id="2-代码原理图">2 代码/原理图</h1>
+</blockquote>
+<blockquote>
+<h2 id="21-顶层文件">2.1 顶层文件</h2>
+</blockquote>
+<img src="/images/exp8_block.png" width="80%">
+<blockquote>
+<h2 id="22-pc寄存器">2.2 PC寄存器</h2>
+</blockquote>
+<div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>此处防抖参考了咕咕与瓜的博客：<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><a href="https://blog.csdn.net/yck1716/article/details/124656502" target="_blank" rel="noopener noreffer ">https://blog.csdn.net/yck1716/article/details/124656502</a></div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">pc_function</span><span class="p">(</span><span class="k">input</span> <span class="n">clk</span><span class="p">,</span><span class="k">input</span> <span class="n">pc_clr</span><span class="p">,</span><span class="k">input</span> <span class="n">manual_plus</span><span class="p">,</span><span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">PC</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">parameter</span>   <span class="n">S1</span> <span class="o">=</span> <span class="mh">2</span><span class="mb">&#39;b00</span><span class="p">,</span>		<span class="c1">//松开稳定时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">S2</span> <span class="o">=</span> <span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">,</span>		<span class="c1">//按下毛刺时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">S3</span> <span class="o">=</span> <span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">,</span>		<span class="c1">//按下稳定时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">S4</span> <span class="o">=</span> <span class="mh">2</span><span class="mb">&#39;b11</span><span class="p">;</span>		<span class="c1">//松开毛刺时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="cm">/*===============================================================20ms计数器=============================================================*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="n">en_counter</span><span class="p">;</span>	<span class="c1">//计数使能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">reg</span> <span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">cnt</span><span class="p">;</span>	<span class="c1">//计数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">reg</span> <span class="n">cnt_full</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1">//只有当计数使能为高电平的时候，计数器才会计数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="n">cnt</span> <span class="o">&lt;=</span> <span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">en_counter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="n">cnt</span> <span class="o">&lt;=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">			<span class="n">cnt</span> <span class="o">&lt;=</span> <span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1">//计数满信号（数数到1000000计数满时间到。1000000是1M，当基于clk信号频率进行计数时，cnt_full走过(1/50M)s*1M的时间，即20ms）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">pc_clr</span><span class="p">)</span>	<span class="c1">//当clk接50MHz的信号时，相当于clk在1s内进行了50M次计数，相邻上升沿相间(1/50M)s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cnt_full</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="mh">20</span><span class="mi">&#39;d10000</span><span class="p">)</span>	
+</span></span><span class="line"><span class="cl">		<span class="n">cnt_full</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">cnt_full</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="cm">/*==============================================================判断边沿模块=============================================================*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="n">key_tmp0</span><span class="p">,</span><span class="n">key_tmp1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">key_tmp0</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">key_tmp1</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">		<span class="k">else</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">key_tmp0</span> <span class="o">&lt;=</span> <span class="n">manual_plus</span><span class="p">;</span>		<span class="c1">//manual_plus按键输入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">key_tmp1</span> <span class="o">&lt;=</span> <span class="n">key_tmp0</span><span class="p">;</span>	
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kt">wire</span> <span class="n">pedge</span><span class="p">,</span><span class="n">nedge</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span> <span class="n">nedge</span> <span class="o">=</span> <span class="p">(</span><span class="o">!</span><span class="n">key_tmp0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">key_tmp1</span><span class="p">;</span>        <span class="c1">//下降沿（下一clk时为0，上一clk时为1）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">assign</span> <span class="n">pedge</span> <span class="o">=</span> <span class="n">key_tmp0</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">!</span><span class="n">key_tmp1</span><span class="p">);</span>        <span class="c1">//上升沿（下一clk时为1，上一clk时为0）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="cm">/*=============================================================状态机模块================================================================*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">reg</span> <span class="n">key_flag</span><span class="p">;</span>		<span class="c1">//经消抖后可确认的按下动作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">reg</span> <span class="n">key_state</span><span class="p">;</span>		<span class="c1">//按键状态，高电平为未按下，低电平为按下状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> 
+</span></span><span class="line"><span class="cl"><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span> <span class="k">or</span> <span class="k">negedge</span> <span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">				<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//计数器归零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">key_state</span>  <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>	<span class="c1">//按键未按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">key_flag</span>   <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">					<span class="nl">S1:</span>	<span class="c1">//高电平（松开稳定）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">key_flag</span>   <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//按键未按下，不计
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="n">key_state</span>  <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>	<span class="c1">//按键松开状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//计数器归零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="n">nedge</span><span class="p">)</span>	<span class="c1">//检测到下降沿，进入下一个状态同时打开计数器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">									<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">									<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>	<span class="c1">//计数器使能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">								<span class="n">state</span> <span class="o">&lt;=</span> <span class="n">state</span><span class="p">;</span>	<span class="c1">//保持目前状态    
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">					<span class="nl">S2:</span>	<span class="c1">//下降沿抖动（按下毛刺）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">if</span><span class="p">(</span><span class="n">cnt_full</span><span class="p">)</span>	<span class="c1">//计数满，说明达到稳定状态，关闭计数器，进入下一个状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">								<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//计数器归零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="n">key_flag</span>   <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>	<span class="c1">//按键可确认已按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="n">key_state</span>  <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//按键按下状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pedge</span><span class="p">)</span>	<span class="c1">//检测到上升沿（毛刺），跳回S1状态同时关闭计数器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//计数器归零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">							<span class="n">state</span> <span class="o">&lt;=</span> <span class="n">state</span><span class="p">;</span>	<span class="c1">//保持目前状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							
+</span></span><span class="line"><span class="cl">					<span class="nl">S3:</span>	<span class="c1">//低电平（按下稳定）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">key_flag</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//一个按键周期测到一次就行，现在可清零了（后面代码编写只在意其posedge）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="n">pedge</span><span class="p">)</span>	<span class="c1">//检测到上升沿，进入下一个状态同时打开计数器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">									<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">									<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>	<span class="c1">//计数器使能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>								<span class="k">end</span>
+</span></span><span class="line"><span class="cl">							
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">								<span class="n">state</span> <span class="o">&lt;=</span> <span class="n">state</span><span class="p">;</span>	<span class="c1">//保持目前状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">					<span class="nl">S4:</span>	<span class="c1">//上升沿抖动（松开毛刺）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">if</span><span class="p">(</span><span class="n">cnt_full</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">							<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">								<span class="n">state</span>     <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">								<span class="n">key_state</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">							<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">							<span class="k">if</span><span class="p">(</span><span class="n">nedge</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">								<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">									<span class="n">en_counter</span> <span class="o">&lt;=</span> <span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>	<span class="c1">//计数器归零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>									<span class="n">state</span>      <span class="o">&lt;=</span> <span class="n">S3</span><span class="p">;</span>					 		
+</span></span><span class="line"><span class="cl">								<span class="k">end</span> 
+</span></span><span class="line"><span class="cl">							<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">								<span class="n">state</span> <span class="o">&lt;=</span> <span class="n">state</span><span class="p">;</span>	<span class="c1">//保持目前状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>					
+</span></span><span class="line"><span class="cl">					<span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">						<span class="n">state</span> <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						
+</span></span><span class="line"><span class="cl">					<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">key_flag</span><span class="p">,</span><span class="k">negedge</span> <span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//key_flag：经消抖后可确认的按下动作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">pc_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">PC</span> <span class="o">&lt;=</span> <span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">PC</span><span class="o">&lt;=</span><span class="n">PC</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="23-数码管">2.3 数码管</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">segment_displays</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">seg</span><span class="p">,</span><span class="n">sel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">N</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">seg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">sel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">reg</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">num</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="n">sel</span><span class="o">&lt;=</span><span class="n">sel</span><span class="o">+</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b110</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b101</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">8</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b011</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">12</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b010</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">16</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">23</span><span class="o">:</span><span class="mh">20</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b000</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">27</span><span class="o">:</span><span class="mh">24</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span><span class="n">num</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">28</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="n">num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">4</span><span class="mb">&#39;b0000</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b00111111</span><span class="p">;</span>	<span class="c1">//&#34;0&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0001</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b00000110</span><span class="p">;</span>	<span class="c1">//&#34;1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0010</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01011011</span><span class="p">;</span>	<span class="c1">//&#34;2&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0011</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01001111</span><span class="p">;</span>	<span class="c1">//&#34;3”
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0100</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01100110</span><span class="p">;</span>	<span class="c1">//&#34;4&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0101</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01101101</span><span class="p">;</span>	<span class="c1">//&#34;5&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0110</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01111101</span><span class="p">;</span>	<span class="c1">//&#34;6&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b0111</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b00000111</span><span class="p">;</span>	<span class="c1">//&#34;8&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1000</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01111111</span><span class="p">;</span>	<span class="c1">//&#34;8&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1001</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01101111</span><span class="p">;</span>	<span class="c1">//&#34;9&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1010</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01110111</span><span class="p">;</span>	<span class="c1">//&#34;A&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1011</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01111100</span><span class="p">;</span>	<span class="c1">//&#34;b&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1100</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b00111001</span><span class="p">;</span>	<span class="c1">//&#34;c&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1101</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01011110</span><span class="p">;</span>	<span class="c1">//&#34;d&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1110</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01111001</span><span class="p">;</span>	<span class="c1">//&#34;E&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mh">4</span><span class="mb">&#39;b1111</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b01110001</span><span class="p">;</span>	<span class="c1">//&#34;F&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">default</span><span class="o">:</span><span class="n">seg</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b00000000</span><span class="p">;</span>	<span class="c1">//&#34;dark&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="24-矩阵键盘">2.4 矩阵键盘</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">keymodule</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">KEY_R</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">KEY_C</span> <span class="o">=</span> <span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">out</span><span class="o">=</span> <span class="mh">8</span><span class="p">&#39;</span><span class="n">hxx</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">key_clr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//	output reg[2:0] press_times=3&#39;b000
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">reg</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mh">2</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">reg</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">num</span><span class="o">=</span><span class="mh">5</span><span class="mi">&#39;d16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">reg</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">count_num</span><span class="o">=</span><span class="mh">32</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//根据按钮的列扫描信号和行输入信号判断按钮是否被按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">always</span>  <span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">begin</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//		if(S==3&#39;b000)
+</span></span></span><span class="line"><span class="cl"><span class="c1">//		begin
+</span></span></span><span class="line"><span class="cl"><span class="c1">//			out&lt;=16&#39;h0000;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//		end
+</span></span></span><span class="line"><span class="cl"><span class="c1">//		else
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">key_clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="n">out</span><span class="o">&lt;=</span><span class="mh">16&#39;h0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span>	<span class="n">KEY_C</span> <span class="o">&lt;=</span> <span class="mh">4</span><span class="mb">&#39;b1110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span>	<span class="n">KEY_C</span> <span class="o">&lt;=</span> <span class="mh">4</span><span class="mb">&#39;b1101</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span>	<span class="n">KEY_C</span> <span class="o">&lt;=</span> <span class="mh">4</span><span class="mb">&#39;b1011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span>	<span class="n">KEY_C</span> <span class="o">&lt;=</span> <span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">;</span>         
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span><span class="p">(</span><span class="n">KEY_R</span><span class="o">==</span><span class="mh">4</span><span class="mb">&#39;b1111</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">num</span><span class="o">=</span><span class="mh">5</span><span class="mi">&#39;d16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span> 
+</span></span><span class="line"><span class="cl">				  <span class="k">case</span> <span class="p">({</span><span class="n">KEY_C</span><span class="p">,</span> <span class="n">KEY_R</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">					 
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1011</span><span class="nl">_1110:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b0111</span><span class="nl">_0111:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1011</span><span class="nl">_0111:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1101</span><span class="nl">_0111:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b0111</span><span class="nl">_1011:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1011</span><span class="nl">_1011:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1101</span><span class="nl">_1011:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b0111</span><span class="nl">_1101:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d7</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">					 
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1011</span><span class="nl">_1101:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1101</span><span class="nl">_1101:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1110</span><span class="nl">_0111:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1110</span><span class="nl">_1011:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d11</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">					 
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1110</span><span class="nl">_1101:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1110</span><span class="nl">_1110:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d13</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b0111</span><span class="nl">_1110:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					 <span class="mh">8</span><span class="mb">&#39;b1101</span><span class="nl">_1110:</span> <span class="n">num</span> <span class="o">=</span> <span class="mh">5</span><span class="mi">&#39;d15</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">				  <span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mh">5</span><span class="mb">&#39;b1</span><span class="n">_0000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">count_num</span> <span class="o">==</span> <span class="mh">32</span><span class="mb">&#39;b0</span><span class="p">)</span><span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">count_num</span> <span class="o">=</span> <span class="mh">32</span><span class="mi">&#39;d100001</span><span class="p">;</span><span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="n">count_num</span> <span class="o">=</span> <span class="n">count_num</span> <span class="o">+</span> <span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">count_num</span> <span class="o">&gt;</span> <span class="mh">32</span><span class="mi">&#39;d100000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">count_num</span> <span class="o">=</span> <span class="mh">32</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">						<span class="c1">//移位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="o">&lt;&lt;</span><span class="mh">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="n">out</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>   
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="25-rom的内容">2.5 ROM的内容</h2>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>addr</th>
+<th>+0</th>
+<th>+1</th>
+<th>+2</th>
+<th>+3</th>
+<th>+4</th>
+<th>+5</th>
+<th>+6</th>
+<th>+7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>7600</td>
+<td>8300</td>
+<td>7340</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>24</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>40</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>48</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>56</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>64</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>72</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>80</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>88</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>96</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>104</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>112</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>120</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>128</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>136</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>144</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>152</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>160</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>168</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>176</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>184</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>192</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>208</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>216</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>224</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>232</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>240</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>248</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h2 id="26-选择alu的操作数">2.6 选择ALU的操作数</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">choose_opts</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl"><span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">choose_reg</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">opt1</span><span class="p">,</span><span class="n">opt2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">initial</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="n">opt1</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">opt2</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">choose_reg</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">2</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="n">opt1</span><span class="o">&lt;=</span><span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="n">opt1</span><span class="o">&lt;=</span><span class="n">R1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="n">opt1</span><span class="o">&lt;=</span><span class="n">R2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="n">opt1</span><span class="o">&lt;=</span><span class="n">R3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">choose_reg</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="n">opt2</span><span class="o">&lt;=</span><span class="n">R0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="n">opt2</span><span class="o">&lt;=</span><span class="n">R1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="n">opt2</span><span class="o">&lt;=</span><span class="n">R2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span><span class="n">opt2</span><span class="o">&lt;=</span><span class="n">R3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">assign</span> <span class="n">res</span><span class="o">=</span><span class="p">{</span><span class="n">opt1</span><span class="p">,</span><span class="n">opt2</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="27-寄存器组">2.7 寄存器组</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">exp5</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">RA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">wr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">rd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">M</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">manual_plus</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">key_out</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res_alu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res_dest</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">enact</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">R3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">PC</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">wire</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">DATA_INPUT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">assign</span> <span class="n">DATA_INPUT</span><span class="o">=</span><span class="n">key_out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">pc_function</span> <span class="n">pf</span>  <span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">clr</span><span class="p">,</span><span class="n">manual_plus</span><span class="p">,</span><span class="n">PC</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">reg_function</span> <span class="n">rf</span> <span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">wr</span><span class="p">,</span><span class="n">rd</span><span class="p">,</span><span class="n">RA</span><span class="p">,</span><span class="n">DATA_INPUT</span><span class="p">,</span><span class="n">R0</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span><span class="p">,</span><span class="n">R3</span><span class="p">,</span><span class="n">res_alu</span><span class="p">,</span><span class="n">res_dest</span><span class="p">,</span><span class="n">enact</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="28-通用寄存器">2.8 通用寄存器</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">reg_function</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">wr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">rd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">RA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">DATA_INPUT</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res_alu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res_dest</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">enact</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">always</span><span class="p">@(</span><span class="k">negedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">res_dest</span><span class="o">==</span><span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">&amp;&amp;!</span><span class="n">enact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">R0</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">res_dest</span><span class="o">==</span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">&amp;&amp;!</span><span class="n">enact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">R1</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">res_dest</span><span class="o">==</span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">&amp;&amp;!</span><span class="n">enact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">R2</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">res_dest</span><span class="o">==</span><span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">&amp;&amp;!</span><span class="n">enact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="n">R3</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> 
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">RA</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">					<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">0</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R0</span><span class="o">&lt;=</span><span class="n">DATA_INPUT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">1</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R0</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">0</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R1</span><span class="o">&lt;=</span><span class="n">DATA_INPUT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">1</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R1</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">0</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R2</span><span class="o">&lt;=</span><span class="n">DATA_INPUT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">1</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R2</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">					<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">0</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R3</span><span class="o">&lt;=</span><span class="n">DATA_INPUT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">						<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">wr</span><span class="o">==</span><span class="mh">1</span><span class="o">&amp;&amp;</span><span class="n">rd</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">						<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">							<span class="n">R3</span><span class="o">&lt;=</span><span class="n">res_alu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">						<span class="k">end</span>
+</span></span><span class="line"><span class="cl">					<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">endmodule</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="29-运算器">2.9 运算器</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">exp4</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">S</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">cin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">operators</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="n">exceed</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">ans</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">X</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">Y</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">alu_res</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">midware</span> <span class="n">mw</span><span class="p">(</span><span class="n">operators</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">clk</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">assign</span> <span class="n">alu_res</span><span class="o">=</span><span class="n">ans</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">manipulate</span> <span class="n">man</span><span class="p">(</span><span class="n">clk</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">cin</span><span class="p">,</span><span class="n">ans</span><span class="p">,</span><span class="n">exceed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="210-运算器的计算功能">2.10 运算器的计算功能</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">manipulate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">S</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">X</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">Y</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">cin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">ans</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span> <span class="n">exceed</span>
+</span></span><span class="line"><span class="cl">	<span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">initial</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ans</span><span class="o">&lt;=</span><span class="mh">8&#39;h00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b000</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="mh">16</span><span class="mb">&#39;b0000</span><span class="n">_0000_0000_0000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,</span><span class="n">X</span><span class="o">&amp;</span><span class="n">Y</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b010</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,</span><span class="n">X</span><span class="o">|</span><span class="n">Y</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b011</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,</span><span class="n">X</span><span class="o">^</span><span class="n">Y</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">begin</span> 
+</span></span><span class="line"><span class="cl">					<span class="n">ans</span><span class="o">&lt;=</span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="o">+</span><span class="p">(</span><span class="n">cin</span><span class="o">?</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="o">:</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="k">end</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b101</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">],</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b110</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">1</span><span class="p">]};</span>
+</span></span><span class="line"><span class="cl">				<span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span><span class="n">ans</span><span class="o">&lt;=</span><span class="p">{</span><span class="mh">8</span><span class="mb">&#39;b0000</span><span class="n">_0000</span><span class="p">,((</span><span class="n">X</span><span class="o">&gt;&gt;</span><span class="mh">7</span><span class="p">)</span><span class="o">&amp;</span><span class="mh">1</span><span class="p">)</span><span class="o">?</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">1</span><span class="p">]};</span>
+</span></span><span class="line"><span class="cl">			<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">S</span><span class="o">==</span><span class="mh">3</span><span class="mb">&#39;b100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span><span class="p">(</span> <span class="n">ans</span><span class="p">[</span><span class="mh">8</span><span class="p">]</span><span class="o">^</span><span class="n">ans</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span> <span class="p">)</span> <span class="n">exceed</span><span class="o">&lt;=</span><span class="mh">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">else</span> <span class="n">exceed</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="n">exceed</span><span class="o">&lt;=</span><span class="mh">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="211-运算器的中间件">2.11 运算器的中间件</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">midware</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">key_out</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">X</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">Y</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="n">X</span><span class="o">&lt;=</span><span class="n">key_out</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">8</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Y</span><span class="o">&lt;=</span><span class="n">key_out</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="212-取指令并向各模块发送信号">2.12 取指令并向各模块发送信号</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">execute</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">order</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">manual_plus</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">choose_reg</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">S</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">res_dest</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">12</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">4</span><span class="mb">&#39;b0111</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">S</span><span class="o">&lt;=</span><span class="mh">3</span><span class="mb">&#39;b011</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">choose_reg</span><span class="o">&lt;=</span><span class="n">order</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">8</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res_dest</span><span class="o">&lt;=</span><span class="n">order</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">6</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">4</span><span class="mb">&#39;b1000</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">S</span><span class="o">&lt;=</span><span class="mh">3</span><span class="mb">&#39;b110</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">choose_reg</span><span class="o">&lt;=</span><span class="p">{</span><span class="n">order</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">10</span><span class="p">],</span><span class="mh">2</span><span class="mb">&#39;b00</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res_dest</span><span class="o">&lt;=</span><span class="n">order</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">8</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">			<span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">				<span class="n">S</span><span class="o">&lt;=</span><span class="n">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">choose_reg</span><span class="o">&lt;=</span><span class="n">choose_reg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res_dest</span><span class="o">&lt;=</span><span class="n">res_dest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">end</span>
+</span></span><span class="line"><span class="cl">		<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="214-页面切换">2.14 页面切换</h2>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="n">page_switch</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="n">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">switch_buttons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">R3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">pc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">order</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">input</span> <span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="n">alu_N</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">N</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="k">output</span> <span class="kt">reg</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//reg status[1:0]=2&#39;b00;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">initial</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="n">status</span><span class="o">&lt;=</span><span class="mh">2</span><span class="mb">&#39;b00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl">	<span class="k">always</span><span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">begin</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//N&lt;={R0,R1,R2,R3};
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">casex</span><span class="p">(</span><span class="n">switch_buttons</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">3</span><span class="p">&#39;</span><span class="nl">bxx0:</span> <span class="n">status</span><span class="o">&lt;=</span><span class="mh">2</span><span class="mb">&#39;b00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">3</span><span class="p">&#39;</span><span class="nl">bx01:</span> <span class="n">status</span><span class="o">&lt;=</span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">3</span><span class="mb">&#39;b011</span><span class="o">:</span> <span class="n">status</span><span class="o">&lt;=</span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">default</span><span class="o">:</span> <span class="n">status</span><span class="o">&lt;=</span><span class="n">status</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span><span class="n">N</span><span class="o">&lt;=</span><span class="p">{</span><span class="n">R0</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span><span class="p">,</span><span class="n">R3</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span><span class="n">N</span><span class="o">&lt;=</span><span class="p">{</span><span class="n">order</span><span class="p">,</span><span class="mh">8&#39;h00</span><span class="p">,</span><span class="n">pc</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">			<span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span><span class="n">N</span><span class="o">&lt;=</span><span class="n">alu_N</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">endcase</span>
+</span></span><span class="line"><span class="cl">	<span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="3-引脚分配">3 引脚分配</h1>
+</blockquote>
+<img src="/images/pin8.png" width="80%">
+<blockquote>
+<h1 id="4-仿真波形">4 仿真波形</h1>
+</blockquote>
+<img src="/images/wvf8.png" width="80%">
+<blockquote>
+<h1 id="5-源码已上传github">5 源码已上传github</h1>
+</blockquote>
+<p>github仓库：
+<span class="h-card person-mention"><a href="https://github.com/Septemus/swjtu_computer_organization_exp8_cmd_rdexec.git" class="u-url url" title="github库"><img class="u-photo photo" src="/images/github.jpg" alt="swjtu_computer_organization_exp8_cmd_rdexec">&#8201;<span class="p-name fn">swjtu_computer_organization_exp8_cmd_rdexec</span></a></span></p>
+<blockquote>
+<h1 id="6-上机操作视频">6 上机操作视频</h1>
+</blockquote>
+<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Kh411F7dW&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computer_organization_exp8/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://Septemus.github.io/computer_organization_exp8/" data-title="西南交通大学计组实验8-指令分析与执行"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://Septemus.github.io/computer_organization_exp8/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://Septemus.github.io/computer_organization_exp8/" data-title="西南交通大学计组实验8-指令分析与执行"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://Septemus.github.io/computer_organization_exp8/" data-title="西南交通大学计组实验8-指令分析与执行"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://Septemus.github.io/computer_organization_exp8/" data-title="西南交通大学计组实验8-指令分析与执行" data-image="/images/intel-fpga.png"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://Septemus.github.io/computer_organization_exp8/" data-title="西南交通大学计组实验8-指令分析与执行"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computer_organization_exp7/" class="prev" rel="prev" title="西南交通大学计组实验7-指令存储器与取指令部分的设计"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>西南交通大学计组实验7-指令存储器与取指令部分的设计</a>
+            <a href="/computer_organization_course_design/" class="next" rel="next" title="西南交通大学计组实验-课程设计">西南交通大学计组实验-课程设计<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":5000},"comment":{"gitalk":{"admin":["Septemus"],"clientID":"27884c3fdf05fa87d8b5","clientSecret":"48cca20f9dde1fb315eabd987387efc894db330a","id":"2023-05-29T10:28:20+08:00","owner":"Septemus","repo":"comment_rep","title":"西南交通大学计组实验8-指令分析与执行"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

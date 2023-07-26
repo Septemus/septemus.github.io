@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Projects - Category - Septemus&#39;s Blog</title>
+        <link>https://Septemus.github.io/categories/projects/</link>
+        <description>Projects - Category - Septemus&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 09 Jan 2023 18:33:53 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/projects/" rel="self" type="application/rss+xml" /><item>
+    <title>基于局域网的音视频即时聊天客户端及服务器软件设计与开发</title>
+    <link>https://Septemus.github.io/webrtc_communication/</link>
+    <pubDate>Mon, 09 Jan 2023 18:33:53 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/webrtc_communication/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/Project1/WebRTC_Logo.svg" referrerpolicy="no-referrer">
+            </div>Warning 此项目成员均为学生，还在开发过程中，因此相比企业级项目而言页面简陋技术落后，望看到这篇文章的高手轻喷。并且如果发现BUG或有改进建议，欢迎]]></description>
+</item>
+</channel>
+</rss>
