@@ -22,6 +22,11 @@
 I am particularly interested in Roman history,in which Caesar Augustus is my favorite character.I was born in September,so i named myself as 
 Septemus.I'm just a college student and i use this site to keep my notes,that's all.
 
+
+> ## What I Do
+
+I'm learning front-end web development right now and looking for a internship in China.Good luck with me. 
+
 > ## How Old Is This Blog?
 <script type=text/javascript>
     var now = new Date();
