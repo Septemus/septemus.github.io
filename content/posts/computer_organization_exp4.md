@@ -50,8 +50,6 @@ assign clr=( (S==3'b000)?1:0 );
 segment_displays sd(.clk(clk),.N(N),.seg(codeout),.sel(sel),.clr(clr));
 manipulate man(clk,S,X,Y,cin,ans);
 endmodule
-
-
 ```
 
 > ## 2.2 根据键盘获取输入

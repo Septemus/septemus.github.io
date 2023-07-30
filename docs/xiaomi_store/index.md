@@ -1,12 +1,5 @@
----
-title: "基于web前端的高仿小米商城"
-date: 2023-07-26T10:33:11+08:00
-draft: false
-categories: ["Projects"]
+# 基于web前端的高仿小米商城
 
-featuredImagePreview: "/images/xiaomi.png"
-featuredImage: "/images/xiaomi.png"
----
 
 {{< admonition type=warning title="" open=false >}}
 该项目所有素材来源于网络，仅用于个人学习用途。

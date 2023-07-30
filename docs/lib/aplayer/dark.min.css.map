@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "dark.min.css",
-	"sourceRoot": "C:/Users/muske/Documents/programming/Blog/test_blog/test_site",
+	"sourceRoot": "C:/Users/muske/Documents/programming/Blog/new_septemus_blog/new_septemus_blog",
 	"sources": [
 		"themes/Loveit/assets/lib/aplayer/dark.scss"
 	],
