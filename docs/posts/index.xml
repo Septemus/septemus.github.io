@@ -4,7 +4,17 @@
         <link>https://Septemus.github.io/posts/</link>
         <description>All Posts | Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Wed, 26 Jul 2023 10:33:11 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 31 Jul 2023 22:24:11 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Javascript 学习笔记</title>
+    <link>https://Septemus.github.io/js_note/</link>
+    <pubDate>Mon, 31 Jul 2023 22:24:11 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/js_note/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/javascript.png" referrerpolicy="no-referrer">
+            </div>语法和数据类型 变量的作用域 ECMAScript 6 之前的 JavaScript 没有语句块作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。例如，如下的]]></description>
+</item>
+<item>
     <title>基于web前端的高仿小米商城</title>
     <link>https://Septemus.github.io/xiaomi_store/</link>
     <pubDate>Wed, 26 Jul 2023 10:33:11 &#43;0800</pubDate>
@@ -93,16 +103,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课 Success 代码和输出已通过助教验收 update Apr20th 更新：实现了滚动显示数字 Frequency 使用时必须将c]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验1-四位全加器设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp1/</link>
-    <pubDate>Tue, 11 Apr 2023 15:45:34 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp1/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 1 实验内容 设计四位加法器 2 代码/原理图 2.1]]></description>
 </item>
 </channel>
 </rss>
