@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Javascript 学习笔记 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Javascript 学习笔记" />
-<meta property="og:description" content="语法和数据类型 变量的作用域 ECMAScript 6 之前的 JavaScript 没有语句块作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。例如，如下的" />
+<meta property="og:description" content="语法和数据类型 数字 在 JavaScript 里面，数字均为双精度浮点类型（double-precision 64-bit binary format IEEE 754），即一个介于 ±2^−1023 和 ±2^&#43;1" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://Septemus.github.io/js_note/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-31T22:24:11+08:00" />
-<meta property="article:modified_time" content="2023-07-31T22:24:11+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta property="article:modified_time" content="2023-08-01T08:47:13+08:00" /><meta property="og:site_name" content="Septemus" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Javascript 学习笔记"/>
-<meta name="twitter:description" content="语法和数据类型 变量的作用域 ECMAScript 6 之前的 JavaScript 没有语句块作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。例如，如下的"/>
+<meta name="twitter:description" content="语法和数据类型 数字 在 JavaScript 里面，数字均为双精度浮点类型（double-precision 64-bit binary format IEEE 754），即一个介于 ±2^−1023 和 ±2^&#43;1"/>
 <meta name="application-name" content="Septemus">
 <meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Septemus.github.io\/js_note\/"
-        },"genre": "posts","wordcount":  2275 ,
-        "url": "https:\/\/Septemus.github.io\/js_note\/","datePublished": "2023-07-31T22:24:11+08:00","dateModified": "2023-07-31T22:24:11+08:00","publisher": {
+        },"genre": "posts","wordcount":  8827 ,
+        "url": "https:\/\/Septemus.github.io\/js_note\/","datePublished": "2023-07-31T22:24:11+08:00","dateModified": "2023-08-01T08:47:13+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -103,8 +103,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Javascript 学习笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-31">2023-07-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2275 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-31">2023-07-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;8827 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -119,9 +119,11 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#数字">数字</a></li>
     <li><a href="#变量的作用域">变量的作用域</a></li>
     <li><a href="#变量提升">变量提升</a></li>
     <li><a href="#函数提升">函数提升</a></li>
+    <li><a href="#类没有提升">类没有提升</a></li>
     <li><a href="#常量">常量</a></li>
     <li><a href="#字符串转换为数字">字符串转换为数字</a></li>
     <li><a href="#数组字面值中的多余逗号">数组字面值中的多余逗号</a></li>
@@ -131,13 +133,100 @@
         <li><a href="#对象字面量">对象字面量</a></li>
       </ul>
     </li>
+  </ul>
+
+  <ul>
     <li><a href="#finally块">finally块</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#for-in-和-for-of-的区别">for in 和 for of 的区别</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#函数表达式">函数表达式</a></li>
+    <li><a href="#形参">形参</a></li>
+    <li><a href="#嵌套函数和闭包">嵌套函数和闭包</a></li>
+    <li><a href="#使用arguments对象">使用arguments对象</a></li>
+    <li><a href="#剩余参数">剩余参数</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#相等性">相等性</a></li>
+    <li><a href="#delete">delete</a></li>
+    <li><a href="#instanceof">instanceof</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#string-对象">String 对象</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#exec和match的区别">exec和match的区别</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#属性">属性</a></li>
+    <li><a href="#foreach">forEach</a></li>
+    <li><a href="#多维数组">多维数组</a></li>
+    <li><a href="#类数组对象伪数组">类数组对象（伪数组）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#object-和-map-比较">Object 和 Map 比较</a></li>
+    <li><a href="#array和set比较">Array和Set比较</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#属性-1">属性</a></li>
+    <li><a href="#构造函数">构造函数</a></li>
+    <li><a href="#对象属性索引">对象属性索引</a></li>
+    <li><a href="#get和set">get和set</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#初始化">初始化</a>
+      <ul>
+        <li><a href="#类不能提升">类不能提升</a></li>
+      </ul>
+    </li>
+    <li><a href="#方法">方法</a></li>
+    <li><a href="#private">private</a>
+      <ul>
+        <li><a href="#同类可以互相读写">同类可以互相读写</a></li>
+      </ul>
+    </li>
+    <li><a href="#私有属性不存在去访问会直接报错">私有属性不存在去访问会直接报错</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
 <h1 id="语法和数据类型">语法和数据类型</h1>
 </blockquote>
 <blockquote>
+<h2 id="数字">数字</h2>
+</blockquote>
+<ul>
+<li>
+<p>在 JavaScript 里面，数字均为双精度浮点类型（double-precision 64-bit binary format IEEE 754），即一个介于 ±2^−1023 和 ±2^+1024 之间的数字，或约为 ±10^−308 到 ±10^+308，数字精度为 53 位。整数数值仅在 ±(2^53 - 1) 的范围内可以表示准确。</p>
+</li>
+<li>
+<p>JavaScript 最近添加了 BigInt 的支持，能够用于表示极大的数字。使用 BigInt 的时候有一些注意事项，例如，你不能让 BigInt 和 Number 直接进行运算，你也不能用 Math 对象去操作 BigInt 数字。</p>
+</li>
+<li>
+<p>请注意，十进制可以以 0 开头，后面接其他十进制数字，但是假如下一个接的十进制数字小于 8，那么该数字将会被当做八进制处理。</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="mi">0888</span> <span class="c1">// 888 以十进制解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">0777</span> <span class="c1">// 以八进制解析，为十进制的 511
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <h2 id="变量的作用域">变量的作用域</h2>
 </blockquote>
 <p>ECMAScript 6 之前的 JavaScript 没有语句块作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。例如，如下的代码将在控制台输出 5，因为 x 的作用域是声明了 x 的那个函数（或全局范围），而不是 if 语句块。</p>
@@ -313,6 +402,23 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
+<h2 id="类没有提升">类没有提升</h2>
+</blockquote>
+<p>Class declaration hoisting
+Unlike function declarations, class declarations are not hoisted (or, in some interpretations, hoisted but with the temporal dead zone restriction), which means you cannot use a class before it is declared.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">MyClass</span><span class="p">();</span> <span class="c1">// ReferenceError: Cannot access &#39;MyClass&#39; before initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <h2 id="常量">常量</h2>
 </blockquote>
 <p>常量的作用域规则与 let 块级作用域变量相同。若省略 const 关键字，则该标识符将被视为变量。</p>
@@ -473,6 +579,9 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
+<h1 id="流程控制和错误处理">流程控制和错误处理</h1>
+</blockquote>
+<blockquote>
 <h2 id="finally块">finally块</h2>
 </blockquote>
 <p>finally块包含了在 try 和 catch 块完成后、下面接着 try&hellip;catch 的语句之前执行的语句。finally块无论是否抛出异常都会执行。如果抛出了一个异常，就算没有异常处理，finally块里的语句也会执行。</p>
@@ -597,11 +706,939 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1">// caught inner &#34;bogus&#34;
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><blockquote>
+<h1 id="循环和迭代">循环和迭代</h1>
+</blockquote>
+<blockquote>
+<h2 id="for-in-和-for-of-的区别">for in 和 for of 的区别</h2>
+</blockquote>
+<a href="https://juejin.cn/post/6916058482231754765" target="_blank" rel="noopener noreffer ">https://juejin.cn/post/6916058482231754765</a>
+<blockquote>
+<h1 id="函数">函数</h1>
+</blockquote>
+<blockquote>
+<h2 id="函数表达式">函数表达式</h2>
+</blockquote>
+<p>这样的函数表达式的标识符只在函数体内可见</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">myfunc</span><span class="o">=</span><span class="kd">function</span> <span class="nx">disp</span><span class="p">(){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;hello&#34;</span><span class="p">)};</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">disp</span><span class="p">)</span> <span class="c1">//ReferenceError: disp is not defined
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="形参">形参</h2>
+</blockquote>
+<p>原始参数（比如一个具体的数字）被作为值传递给函数；值被传递给函数，如果被调用函数改变了这个参数的值，这样的改变不会影响到全局或调用函数。</p>
+<p>如果你传递一个对象（即一个非原始值，例如Array或用户自定义的对象）作为参数，而函数改变了这个对象的属性，这样的改变对函数外部是可见的，如下面的例子所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">theObject</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">theObject</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="s2">&#34;Toyota&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">mycar</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">make</span><span class="o">:</span> <span class="s2">&#34;Honda&#34;</span><span class="p">,</span> <span class="nx">model</span><span class="o">:</span> <span class="s2">&#34;Accord&#34;</span><span class="p">,</span> <span class="nx">year</span><span class="o">:</span> <span class="mi">1998</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">x</span> <span class="o">=</span> <span class="nx">mycar</span><span class="p">.</span><span class="nx">make</span><span class="p">;</span> <span class="c1">// x 获取的值为 &#34;Honda&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">myFunc</span><span class="p">(</span><span class="nx">mycar</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">y</span> <span class="o">=</span> <span class="nx">mycar</span><span class="p">.</span><span class="nx">make</span><span class="p">;</span> <span class="c1">// y 获取的值为 &#34;Toyota&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// (make 属性被函数改变了)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="嵌套函数和闭包">嵌套函数和闭包</h2>
+</blockquote>
+<p>你可以在一个函数里面嵌套另外一个函数。嵌套（内部）函数对其容器（外部）函数是私有的。它自身也形成了一个闭包。一个闭包是一个可以自己拥有独立的环境与变量的表达式（通常是函数）。</p>
+<p>既然嵌套函数是一个闭包，就意味着一个嵌套函数可以”继承“容器函数的参数和变量。换句话说，内部函数包含外部函数的作用域。</p>
+<p>可以总结如下：</p>
+<p>内部函数只可以在外部函数中访问。
+内部函数形成了一个闭包：它可以访问外部函数的参数和变量，但是外部函数却不能使用它的参数和变量。
+下面的例子展示了嵌套函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">addSquares</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">square</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">+</span> <span class="nx">square</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span> <span class="o">=</span> <span class="nx">addSquares</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// returns 13
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">b</span> <span class="o">=</span> <span class="nx">addSquares</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// returns 25
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">c</span> <span class="o">=</span> <span class="nx">addSquares</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// returns 41
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于内部函数形成了闭包，因此你可以调用外部函数并为外部函数和内部函数指定参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">outside</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nx">inside</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">inside</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fn_inside</span> <span class="o">=</span> <span class="nx">outside</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// 可以这样想：给一个函数，使它的值加 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">result</span> <span class="o">=</span> <span class="nx">fn_inside</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// returns 8
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">result1</span> <span class="o">=</span> <span class="nx">outside</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// returns 8
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="使用arguments对象">使用arguments对象</h2>
+</blockquote>
+<p>函数的实际参数会被保存在一个类似数组的 arguments 对象中。在函数内，你可以按如下方式找出传入的参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中i是参数的序数编号（译注：数组索引），以 0 开始。所以第一个传来的参数会是arguments[0]。参数的数量由arguments.length表示。</p>
+<p>使用 arguments 对象，你可以处理比声明的更多的参数来调用函数。这在你事先不知道会需要将多少参数传递给函数时十分有用。你可以用arguments.length来获得实际传递给函数的参数的数量，然后用arguments对象来取得每个参数。</p>
+<p>例如，设想有一个用来连接字符串的函数。唯一事先确定的参数是在连接后的字符串中用来分隔各个连接部分的字符（译注：比如例子里的分号“；”）。该函数定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">myConcat</span><span class="p">(</span><span class="nx">separator</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span> <span class="c1">// 把值初始化成一个字符串，这样就可以用来保存字符串了！！
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// iterate through arguments
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="nx">separator</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>你可以给这个函数传递任意数量的参数，它会将各个参数连接成一个字符串“列表”：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// returns &#34;red, orange, blue, &#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">myConcat</span><span class="p">(</span><span class="s2">&#34;, &#34;</span><span class="p">,</span> <span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;blue&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// returns &#34;elephant; giraffe; lion; cheetah; &#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">myConcat</span><span class="p">(</span><span class="s2">&#34;; &#34;</span><span class="p">,</span> <span class="s2">&#34;elephant&#34;</span><span class="p">,</span> <span class="s2">&#34;giraffe&#34;</span><span class="p">,</span> <span class="s2">&#34;lion&#34;</span><span class="p">,</span> <span class="s2">&#34;cheetah&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// returns &#34;sage. basil. oregano. pepper. parsley. &#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">myConcat</span><span class="p">(</span><span class="s2">&#34;. &#34;</span><span class="p">,</span> <span class="s2">&#34;sage&#34;</span><span class="p">,</span> <span class="s2">&#34;basil&#34;</span><span class="p">,</span> <span class="s2">&#34;oregano&#34;</span><span class="p">,</span> <span class="s2">&#34;pepper&#34;</span><span class="p">,</span> <span class="s2">&#34;parsley&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>备注： arguments 变量只是“类数组对象”，并不是一个数组。称其为类数组对象是说它有一个索引编号和length属性。尽管如此，它并不拥有全部的 Array 对象的操作方法。</p>
+<blockquote>
+<h2 id="剩余参数">剩余参数</h2>
+</blockquote>
+<p>剩余参数语法允许将不确定数量的参数表示为数组。在下面的例子中，使用剩余参数收集从第二个到最后参数。然后，我们将这个数组的每一个数与第一个参数相乘。这个例子是使用了一个箭头函数，这将在下一节介绍。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">multiplier</span><span class="p">,</span> <span class="p">...</span><span class="nx">theArgs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">theArgs</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">multiplier</span> <span class="o">*</span> <span class="nx">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [2, 4, 6]
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="表达式和运算符">表达式和运算符</h1>
+</blockquote>
+<blockquote>
+<h2 id="相等性">相等性</h2>
+</blockquote>
+<ul>
+<li>在比较两个操作数时，双等号（==）将执行类型转换，并且会按照 IEEE 754 标准对 NaN、-0 和 +0 进行特殊处理（故 NaN != NaN，且 -0 == +0）；</li>
+<li>三等号（===）做的比较与双等号相同（包括对 NaN、-0 和 +0 的特殊处理）但不进行类型转换；如果类型不同，则返回 false；</li>
+</ul>
+<p>在相等运算中，应注意以下几个问题：</p>
+<ul>
+<li>如果操作数是布尔值，则先转换为数值，其中 false 转为 0，true 转换为 1。</li>
+<li>如果一个操作数是字符串，另一个操作数是数字，则先尝试把字符串转换为数字。</li>
+<li>如果一个操作数是字符串，另一个操作数是对象，则先尝试把对象转换为字符串。</li>
+<li>如果一个操作数是数字，另一个操作数是对象，则先尝试把对象转换为数字。</li>
+<li>如果两个操作数都是对象，则比较引用地址。如果引用地址相同，则相等；否则不等。</li>
+</ul>
+<p>下面是特殊操作数的相等比较。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;1&#34;</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">//返回true。字符串被转换为数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">true</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">//返回true。true被转换为1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">false</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">//返回true。false被转换为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">undefined</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">undefined</span> <span class="o">==</span> <span class="kc">null</span><span class="p">);</span>  <span class="c1">//返回true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">NaN</span> <span class="o">==</span> <span class="s2">&#34;NaN&#34;</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">NaN</span> <span class="o">==</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">NaN</span> <span class="o">==</span> <span class="kc">NaN</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">NaN</span> <span class="o">!=</span> <span class="kc">NaN</span><span class="p">);</span>  <span class="c1">//返回true
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>NaN<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">NaN与任何值都不相等，包括它自己。null 和 undefined 值相等，但是它们是不同类型的数据。在相等比较中，null 和 undefined 不允许被转换为其他类型的值。</div>
+        </div>
+    </div>
+<p>下面是特殊操作数的全等比较。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">0</span> <span class="o">===</span> <span class="s2">&#34;0&#34;</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">0</span> <span class="o">===</span> <span class="kc">false</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于对象，主要比较引用的地址，不比较对象的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">&#34;abcd);  //定义字符串&#34;</span><span class="nx">abcd</span><span class="s2">&#34;对象
+</span></span></span><span class="line"><span class="cl"><span class="s2">var b = new String(&#34;</span><span class="nx">abcd</span><span class="p">);</span>  <span class="c1">//定义字符串&#34;abcd&#34;对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">);</span>  <span class="c1">//返回false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面示例中，两个对象的值相等，但是引用地址不同，所以它们既不想等，也不全等。因此，对于复合型对象来说，相等==和全等===运算的结果是相同的。</p>
+<blockquote>
+<h2 id="delete">delete</h2>
+</blockquote>
+<p>delete操作符，删除一个对象的属性（不能是继承的或者私有的）或者一个数组中某一个键值。语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">delete</span> <span class="nx">objectName</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">delete</span> <span class="nx">objectName</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>objectName是一个对象名，property 是一个已经存在的属性，index是数组中的一个已经存在的键值的索引值。</p>
+<p>你能使用 delete 删除各种各样的隐式声明，但是被var声明的除外。</p>
+<p>如果 delete 操作成功，属性或者元素会变成 undefined。如果 delete可行会返回true，如果不成功返回false。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">43</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">myobj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">myobj</span><span class="p">.</span><span class="nx">h</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// create property h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="nx">x</span><span class="p">;</span> <span class="c1">// returns true (can delete if declared implicitly)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="nx">y</span><span class="p">;</span> <span class="c1">// returns false (cannot delete if declared with var)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span> <span class="c1">// returns false (cannot delete predefined properties)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="nx">myobj</span><span class="p">.</span><span class="nx">h</span><span class="p">;</span> <span class="c1">// returns true (can delete user-defined properties)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="nx">myobj</span><span class="p">;</span> <span class="c1">// returns true (can delete if declared implicitly)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除数组元素
+删除数组中的元素时，数组的长度是不变的，例如删除 a[3], a[4]，a[4] 和 a[3] 仍然存在变成了 undefined。</p>
+<p>delete 删除数组中的一个元素，这个元素就不在数组中了。例如，trees[3]被删除，trees[3] 仍然可寻址并返回 undefined。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">trees</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">&#34;redwood&#34;</span><span class="p">,</span> <span class="s2">&#34;bay&#34;</span><span class="p">,</span> <span class="s2">&#34;cedar&#34;</span><span class="p">,</span> <span class="s2">&#34;oak&#34;</span><span class="p">,</span> <span class="s2">&#34;maple&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">delete</span> <span class="nx">trees</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="k">in</span> <span class="nx">trees</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 不会被执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果想让数组中存在一个元素但是是undefined值，使用undefined关键字而不是delete操作。如下： trees[3] 分配一个 undefined,但是这个数组元素仍然存在：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">trees</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">&#34;redwood&#34;</span><span class="p">,</span> <span class="s2">&#34;bay&#34;</span><span class="p">,</span> <span class="s2">&#34;cedar&#34;</span><span class="p">,</span> <span class="s2">&#34;oak&#34;</span><span class="p">,</span> <span class="s2">&#34;maple&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">trees</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="k">in</span> <span class="nx">trees</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// this gets executed（会被执行）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="instanceof">instanceof</h2>
+</blockquote>
+<p>instanceof
+如果所判别的对象确实是所指定的类型，则返回true。其语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">objectName</span> <span class="k">instanceof</span> <span class="nx">objectType</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>objectName 是需要做判别的对象的名称，而objectType是假定的对象的类型，例如Date或 Array.</p>
+<p>当你需要确认一个对象在运行时的类型时，可使用instanceof. 例如，需要 catch 异常时，你可以针对抛出异常的类型，来做不同的异常处理。</p>
+<p>例如，下面的代码使用 instanceof 去判断 theDay 是否是一个 Date 对象。因为 theDay 是一个 Date 对象，所以 if 中的代码会执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">theDay</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1995</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">theDay</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// statements to execute
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="字符串">字符串</h1>
+</blockquote>
+<blockquote>
+<h2 id="string-对象">String 对象</h2>
+</blockquote>
+<p>除非必要，应该尽量使用 String 字面值，因为 String 对象的某些行为可能并不与直觉一致。举例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">firstString</span> <span class="o">=</span> <span class="s2">&#34;2 + 2&#34;</span><span class="p">;</span> <span class="c1">//创建一个字符串字面量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">secondString</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">&#34;2 + 2&#34;</span><span class="p">);</span> <span class="c1">// 创建一个字符串对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">eval</span><span class="p">(</span><span class="nx">firstString</span><span class="p">);</span> <span class="c1">// 返回数字 4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">eval</span><span class="p">(</span><span class="nx">secondString</span><span class="p">);</span> <span class="c1">// 返回包含 &#34;2 + 2&#34; 的字符串对象
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="正则表达式">正则表达式</h1>
+</blockquote>
+<blockquote>
+<h2 id="exec和match的区别">exec和match的区别</h2>
+</blockquote>
+<p>使用.exec()方法时，与&rsquo;g&rsquo;标志关联的行为是不同的。（“class”和“argument”的作用相反：在.match()的情况下，字符串类（或数据类型）拥有该方法，而正则表达式只是一个参数，而在.exec()的情况下，它是拥有该方法的正则表达式，其中字符串是参数。对比<em>str.match(re)与re.exec(str)</em> ), &lsquo;g&rsquo;标志与.exec()方法一起使用获得迭代进展。而match遇到g标志会直接输出全局范围内匹配的串,而且不会输出括号里面的缓存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">xArray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">((</span><span class="nx">xArray</span> <span class="o">=</span> <span class="nx">re</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">str</span><span class="p">)))</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xArray</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// produces:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// [&#34;fee &#34;, index: 0, input: &#34;fee fi fo fum&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="c1">// [&#34;fi &#34;, index: 4, input: &#34;fee fi fo fum&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="c1">// [&#34;fo &#34;, index: 7, input: &#34;fee fi fo fum&#34;]
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>m 标志用于指定多行输入字符串应该被视为多个行。如果使用 m 标志，^和$匹配的开始或结束输入字符串中的每一行，而不是整个字符串的开始或结束。</p>
+<blockquote>
+<h1 id="数组">数组</h1>
+</blockquote>
+<blockquote>
+<h2 id="属性">属性</h2>
+</blockquote>
+<ul>
+<li>数组长度可以中途改变,变大变小都可以，但是变小后在变大超出容量的部位都会变成undefined</li>
+<li>如果你在代码中给数组下标运算符的是一个非整型,负数数值，那么它将作为一个表示数组的对象的属性创建，而不是数组的元素。（不会被算到length里面）</li>
+<li>数组可以在超过当前长度的区域赋值</li>
+<li>数组可以被赋值成一个全新的数组</li>
+</ul>
+<blockquote>
+<h2 id="foreach">forEach</h2>
+</blockquote>
+<p>传递给 forEach 的函数对数组中的每个元素执行一次，数组元素作为参数传递给该函数。未赋值的值不会在 forEach 循环迭代。</p>
+<p>注意，在数组定义时省略的元素不会在 forEach 遍历时被列出，但是手动赋值为 undefined 的元素是会被列出的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sparseArray</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;first&#34;</span><span class="p">,</span> <span class="s2">&#34;second&#34;</span><span class="p">,</span> <span class="p">,</span> <span class="s2">&#34;fourth&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">sparseArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// first
+</span></span></span><span class="line"><span class="cl"><span class="c1">// second
+</span></span></span><span class="line"><span class="cl"><span class="c1">// fourth
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">sparseArray</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;sparseArray[2] 是 undefined&#34;</span><span class="p">);</span> <span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">nonsparseArray</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;first&#34;</span><span class="p">,</span> <span class="s2">&#34;second&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="s2">&#34;fourth&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">nonsparseArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// first
+</span></span></span><span class="line"><span class="cl"><span class="c1">// second
+</span></span></span><span class="line"><span class="cl"><span class="c1">// undefined
+</span></span></span><span class="line"><span class="cl"><span class="c1">// fourth
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="多维数组">多维数组</h2>
+</blockquote>
+<p>多维数组
+数组是可以嵌套的，这就意味着一个数组可以作为一个元素被包含在另外一个数组里面。利用 JavaScript 数组的这个特性，可以创建多维数组。</p>
+<p>以下代码创建了一个二维数组。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;[&#34;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s2">&#34;,&#34;</span> <span class="o">+</span> <span class="nx">j</span> <span class="o">+</span> <span class="s2">&#34;]&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个例子创建的数组拥有以下行数据：</p>
+<p>Row 0: [0,0] [0,1] [0,2] [0,3]
+Row 1: [1,0] [1,1] [1,2] [1,3]
+Row 2: [2,0] [2,1] [2,2] [2,3]
+Row 3: [3,0] [3,1] [3,2] [3,3]</p>
+<blockquote>
+<h2 id="类数组对象伪数组">类数组对象（伪数组）</h2>
+</blockquote>
+<p>使用类数组对象
+一些 JavaScript 对象，如 document.getElementsByTagName() 返回的 NodeList 或 arguments 等 JavaScript 对象，有与数组相似的行为，但它们并不共享数组的所有方法。arguments 对象提供了 length 属性，但没有实现如 forEach() 等数组方法。</p>
+<p>不能直接在类数组对象上调用数组方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">printArguments</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">arguments</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span> <span class="c1">// TypeError: arguments.forEach is not a function
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但你可以通过 Function.prototype.call() 间接调用它们。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">printArguments</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">forEach</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数组原型方法也可以用于字符串，因为它们以类似于数组的方式提供对其中字符的顺序访问：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">forEach</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&#34;a string&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">chr</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h1 id="map和set">Map和Set</h1>
+</blockquote>
+<blockquote>
+<h2 id="object-和-map-比较">Object 和 Map 比较</h2>
+</blockquote>
+<p>Object和Map的比较
+一般地，objects会被用于将字符串类型映射到数值。Object允许设置键值对、根据键获取值、删除键、检测某个键是否存在。而Map具有更多的优势。</p>
+<ul>
+<li>
+<p>Object 的键均为 String 类型，在 Map 里键可以是任意类型。</p>
+</li>
+<li>
+<p>必须手动计算Object的尺寸，但是可以很容易地获取使用Map的尺寸。</p>
+</li>
+<li>
+<p>Map的遍历遵循元素的插入顺序。</p>
+</li>
+<li>
+<p>Object有原型，所以映射中有一些缺省的键。（可以用 map = Object.create(null) 回避）。
+这三条提示可以帮你决定用Map还是Object：</p>
+</li>
+<li>
+<p>如果键在运行时才能知道，或者所有的键类型相同，所有的值类型相同，那就使用Map。</p>
+</li>
+<li>
+<p>如果需要将原始值存储为键，则使用Map，因为Object将每个键视为字符串，不管它是一个数字值、布尔值还是任何其他原始值。</p>
+</li>
+<li>
+<p>如果需要对个别元素进行操作，使用Object。</p>
+</li>
+</ul>
+<blockquote>
+<h2 id="array和set比较">Array和Set比较</h2>
+</blockquote>
+<p>Array和Set的对比
+一般情况下，在 JavaScript 中使用数组来存储一组元素，而新的集合对象有这些优势：</p>
+<ul>
+<li>数组中用于判断元素是否存在的indexOf 函数效率低下。</li>
+<li>Set对象允许根据值删除元素，而数组中必须使用基于下标的 splice 方法。</li>
+<li>数组的indexOf方法无法找到NaN值。</li>
+<li>Set对象存储不重复的值，所以不需要手动处理包含重复值的情况。</li>
+</ul>
+<blockquote>
+<h1 id="对象">对象</h1>
+</blockquote>
+<blockquote>
+<h2 id="属性-1">属性</h2>
+</blockquote>
+<ul>
+<li>
+<p>对象中未赋值的属性的值为undefined（而不是null）。</p>
+</li>
+<li>
+<p>枚举一个对象的所有属性
+从 ECMAScript 5 开始，有三种原生的方法用于列出或枚举对象的属性：</p>
+<ul>
+<li>for&hellip;in 循环 该方法依次访问一个对象及其原型链中所有可枚举的属性。</li>
+<li>Object.keys(o) 该方法返回对象 o 自身包含（不包括原型中）的所有可枚举属性的名称的数组。</li>
+<li>Object.getOwnPropertyNames(o) 该方法返回对象 o 自身包含（不包括原型中）的所有属性 (无论是否可枚举) 的名称的数组。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="构造函数">构造函数</h2>
+</blockquote>
+<ul>
+<li>构造函数中this指向新创建的对象</li>
+</ul>
+<blockquote>
+<h2 id="对象属性索引">对象属性索引</h2>
+</blockquote>
+<p>在 JavaScript 1.0 中，你可以通过名称或序号访问一个属性。但是在 JavaScript 1.1 及之后版本中，如果你最初使用名称定义了一个属性，则你必须通过名称来访问它；而如果你最初使用序号来定义一个属性，则你必须通过索引来访问它。</p>
+<p>这个限制发生在你通过构造函数创建一个对象和它的属性（就象我们之前通过 Car 对象类型所做的那样）并且显式地定义了单独的属性（如 myCar.color = &ldquo;red&rdquo;）之时。如果你最初使用索引定义了一个对象属性，例如 myCar[5] = &ldquo;25&rdquo;，则你只可能通过 myCar[5] 引用它。</p>
+<p>这条规则的例外是从与 HTML 对应的对象，例如 forms 数组。对于这些数组的元素，你总是既可以通过其序号（依据其在文档中出现的顺序），也可以按照其名称（如果有的话）访问它。举例而言，如果文档中的第二个 <form> 标签有一个 NAME 属性且值为 &ldquo;myForm&rdquo;，访问该 form 的方式可以是 document.forms[1]，document.forms[&ldquo;myForm&rdquo;] 或 document.myForm。</p>
+<blockquote>
+<h2 id="get和set">get和set</h2>
+</blockquote>
+<p>当使用 使用对象初始化器 的方式定义 getter 和 setter 时，只需要在 getter 方法前加 get，在 setter 方法前加 set，当然，getter 方法必须是无参数的，setter 方法只接受一个参数 (设置为新值），例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">a</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">get</span> <span class="nx">b</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">set</span> <span class="nx">c</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 Object.defineProperties 的方法，同样也可以对一个已创建的对象在任何时候为其添加 getter 或 setter 方法。这个方法的第一个参数是你想定义 getter 或 setter 方法的对象，第二个参数是一个对象，这个对象的属性名用作 getter 或 setter 的名字，属性名对应的属性值用作定义 getter 或 setter 方法的函数，下面是一个例子定义了和前面例子一样的 getter 和 setter 方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperties</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">b</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">o</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Runs the setter, which assigns 10 / 2 (5) to the &#39;a&#39; property
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// Runs the getter, which yields a + 1 or 6
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两种定义方式的选择取决于你的编程风格和手头的工作量。当你定义一个原型准备进行初始化时，可以选择第一种方式，这种方式更简洁和自然。但是，当你需要添加 getter 和 setter 方法 —— 因为并没有编写原型或者特定的对象 ——使用第二种方式更好。第二种方式可能更能表现 JavaScript 语法的动态特性——但也会使代码变得难以阅读和理解。</p>
+<blockquote>
+<h1 id="类">类</h1>
+</blockquote>
+<blockquote>
+<h2 id="初始化">初始化</h2>
+</blockquote>
+<p>Similar to functions, class declarations also have their expression counterparts.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="kr">class</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Class body...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Class expressions can have names as well. The expression&rsquo;s name is only visible to the class&rsquo;s body.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="kr">class</span> <span class="nx">MyClassLongerName</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Class body. Here MyClass and MyClassLongerName point to the same class.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">MyClassLongerName</span><span class="p">();</span> <span class="c1">// ReferenceError: MyClassLongerName is not defined
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h3 id="类不能提升">类不能提升</h3>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Color</span><span class="p">)</span><span class="c1">//ReferenceError: Cannot access &#39;Color&#39; before initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">class</span> <span class="nx">Color</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">(...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="nx">values</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="方法">方法</h2>
+</blockquote>
+<p>Without methods, you may be tempted to define the function within the constructor:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Color</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">constructor</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">getRed</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nx">Color</span><span class="p">().</span><span class="nx">getRed</span> <span class="o">===</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">().</span><span class="nx">getRed</span><span class="p">);</span> <span class="c1">// false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Color</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">(...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="o">=</span> <span class="nx">values</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">disp</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nx">Color</span><span class="p">().</span><span class="nx">disp</span><span class="o">===</span><span class="k">new</span> <span class="nx">Color</span><span class="p">().</span><span class="nx">disp</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This also works. However, a problem is that this creates a new function every time a Color instance is created, even when they all do the same thing!</p>
+<p>In contrast, if you use a method, it will be shared between all instances. A function can be shared between all instances, but still have its behavior differ when different instances call it, because the value of this is different.</p>
+<blockquote>
+<h2 id="private">private</h2>
+</blockquote>
+<p>In order to refer to a private field anywhere in the class, you must declare it in the class body (you can&rsquo;t create a private property on the fly</p>
+<div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>属性，方法，get，set都能是私有<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"></div>
+        </div>
+    </div>
+<div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Chrome exception<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Code run in the Chrome console can access private properties outside the class. This is a DevTools-only relaxation of the JavaScript syntax restriction.</div>
+        </div>
+    </div>
+<blockquote>
+<h3 id="同类可以互相读写">同类可以互相读写</h3>
+</blockquote>
+<p>A class method can read the private fields of other instances, as long as they belong to the same class.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">Color</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="nx">values</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">values</span> <span class="o">=</span> <span class="p">[</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">redDifference</span><span class="p">(</span><span class="nx">anotherColor</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// #values doesn&#39;t necessarily need to be accessed from this:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// you can access private fields of other instances belonging
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// to the same class.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">anotherColor</span><span class="p">.</span><span class="err">#</span><span class="nx">values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">anotherColor</span><span class="p">.</span><span class="err">#</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">showV</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">values</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">red</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">crimson</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">red</span><span class="p">.</span><span class="nx">redDifference</span><span class="p">(</span><span class="nx">crimson</span><span class="p">);</span> <span class="c1">// 35
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   console.log()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">crimson</span><span class="p">.</span><span class="nx">showV</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<h2 id="私有属性不存在去访问会直接报错">私有属性不存在去访问会直接报错</h2>
+</blockquote>
+<p>和公有属性不同</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-07-31</span>
+                <span>Updated on 2023-08-01</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

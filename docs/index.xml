@@ -14,7 +14,7 @@
     <guid>https://Septemus.github.io/js_note/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/javascript.png" referrerpolicy="no-referrer">
-            </div>语法和数据类型 变量的作用域 ECMAScript 6 之前的 JavaScript 没有语句块作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。例如，如下的]]></description>
+            </div>语法和数据类型 数字 在 JavaScript 里面，数字均为双精度浮点类型（double-precision 64-bit binary format IEEE 754），即一个介于 ±2^−1023 和 ±2^+1]]></description>
 </item>
 <item>
     <title>基于web前端的高仿小米商城</title>
