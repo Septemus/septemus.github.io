@@ -406,6 +406,31 @@ result = fn_inside(5); // returns 8
 
 result1 = outside(3)(5); // returns 8
 ```
+
+> ### 闭包对词法环境引用的捆绑
+
+JavaScript 中的函数会形成了闭包。 闭包是由函数以及声明该函数的词法环境组合而成的。该环境包含了这个闭包创建时作用域内的任何局部变量。
+
+```javascript
+function makeAdder(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2)); // 7
+console.log(add10(2)); // 12
+```
+
+在这个示例中，我们定义了 makeAdder(x) 函数，它接受一个参数 x ，并返回一个新的函数。返回的函数接受一个参数 y，并返回x+y的值。
+
+从本质上讲，makeAdder 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函数。在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。
+
+add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。
+
 > ## 使用arguments对象
 
 函数的实际参数会被保存在一个类似数组的 arguments 对象中。在函数内，你可以按如下方式找出传入的参数：
@@ -917,9 +942,176 @@ crimson.showV()
 
 ```
 
-> ## 私有属性不存在去访问会直接报错
+> ### 私有属性不存在去访问会直接报错
 
 
 和公有属性不同
 
+
+> ### 派生类对象不可访问基类对象
+
+Derived classes don't have access to the parent class's private fields — this is another key aspect to JavaScript private fields being "hard private". Private fields are scoped to the class body itself and do not grant access to any outside code.
+
+```javascript
+class ColorWithAlpha extends Color {
+  log() {
+    console.log(this.#values); // SyntaxError: Private field '#values' must be declared in an enclosing class
+  }
+}
+```
+
+
+> ## static
+
+they are not accessible from instances.
+```javascript
+console.log(new Color(0, 0, 0).isValid); // undefined
+
+```
+
+> ### static initialization block
+
+There is also a special construct called a static initialization block, which is a block of code that runs when the class is first loaded.
+
+```javascript
+class MyClass {
+  static {
+    MyClass.myStaticProperty = "foo";
+  }
+}
+
+console.log(MyClass.myStaticProperty); // 'foo'
+```
+
+> ### super
+
+You can have code before super(), but you cannot access this before super() — the language prevents you from accessing the uninitialized this.
+
+```javascript
+class ColorWithAlpha extends Color {
+  #alpha;
+  constructor(r, g, b, a) {
+      this.#alpha = a; //ReferenceError: Color is not defined
+    super(r, g, b);
+  }
+  get alpha() {
+    return this.#alpha;
+  }
+  set alpha(value) {
+    if (value < 0 || value > 1) {
+      throw new RangeError("Alpha value must be between 0 and 1");
+    }
+    this.#alpha = value;
+  }
+}
+
+```
+
+> ## Promise
+
+> ### Always return when next function has a argument
+
+Always return results when next function has a argument, otherwise callbacks won't catch the result of a previous promise (with arrow functions, () => x is short for () => { return x; }). If the previous handler started a promise but did not return it, there's no way to track its settlement anymore, and the promise is said to be "floating".
+
+```javascript
+doSomething()
+  .then((url) => {
+    // I forgot to return this
+    fetch(url);
+  })
+  .then((result) => {
+    // result is undefined, because nothing is returned from
+    // the previous handler.
+    // There's no way to know the return value of the fetch()
+    // call anymore, or whether it succeeded at all.
+  });
+```
+
+This may be worse if you have race conditions — if the promise from the last handler is not returned, the next then handler will be called early, and any value it reads may be incomplete.
+
+```javascript
+const listOfIngredients = [];
+
+doSomething()
+  .then((url) => {
+    // I forgot to return this
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        listOfIngredients.push(data);
+      });
+  })
+  .then(() => {
+    console.log(listOfIngredients);
+    // Always [], because the fetch request hasn't completed yet.
+  });
+```
+
+
+> ## DOM
+
+> ### 捕获和冒泡
+
+
+都是冒泡，内部元素的事件会先被触发，然后再触发外部元素，即： <p> 元素的点击事件先触发，然后会触发 <div> 元素的点击事件。
+
+都是捕获，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
+
+既有捕获又有冒泡，就会先触发捕获再触发冒泡。
+
+> ### insertBefore
+
+如果给定的子节点是对文档中现有节点的引用，insertBefore() 会将其从当前位置移动到新位置
+
+> ### HTMLCollection和NodeList
+
+> #### 都不是数组
+
+他们看起来可能是一个数组，但其实不是。
+
+你可以像数组一样，使用索引来获取元素。
+
+但无法使用数组的方法： valueOf(), pop(), push(), 或 join() 。
+
+变成数组的方法：
+
+```javascript
+const fakeArr = document.getElementsByTagName('div');
+
+const realArr = Array.prototype.slice.call(fakeArr);
+```
+
+或
+```javascript
+const fakeArr = document.getElementsByTagName('div');
+
+const realArr = Array.apply(null,fakeArr);
+
+```
+
+
+
+或
+
+```javascript
+const fakeArr = document.getElementsByTagName('div');
+
+const realArr = [...fakeArr]
+```
+
+或
+
+```javascript
+const fakeArr = document.getElementsByTagName('div');
+
+const realArr = Array.from(fakearr)
+```
+
+> #### 区别
+
+HTMLCollection是一个动态集合，NodeList是一个静态集合。
+
+其中动态集合和静态集合的最大区别在于：动态集合指的就是元素集合会随着DOM树元素的增加而增加，减少而减少；静态集合则不会受DOM树元素变化的影响。
+
+HTMLCollection是一个对象的索引，而NodeList是一个对象的克隆；所以当这个对象数据量非常大的时候，显然克隆这个对象所需要花费的时间是很长的。
 
