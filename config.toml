@@ -220,8 +220,6 @@ publishDir = "docs"
   # Social config about the author
   [params.social]
     GitHub = "Septemus"
-    Instagram = "musketeerdt2022"
-    Facebook = "musketeerdt"
     Email = "musketeerdt@gmail.com"
     RSS = false # 
 
