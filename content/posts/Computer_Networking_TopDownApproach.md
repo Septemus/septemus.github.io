@@ -8,24 +8,34 @@ featuredImage: "/images/computer_networking_topdown/CNTDA.png"
 ---
 
 
+{{< admonition type=note title="" open=false >}}
+
+I made this note based on Computer Networking A Top-Down Approach Seventh Edition.
+
+{{< /admonition >}}
 
 
+{{< admonition type=warning title="" open=false >}}
+
+The note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me.
+
+{{< /admonition >}}
 
 
 
 > # Chapter 1 Computer Networks and the Internet
 
 
+
 - End systems are connected together by a network of <mark>communication links</mark> and<mark> packet switches</mark>.
-- When one end system has data to send to another end system, the sending end systemsegments the data and adds header bytes to each segment. The resulting packages of information,
-known as <mark>packets</mark>.
+- When one end system has data to send to another end system, the sending end systemsegments the data and adds header bytes to each segment. The resulting packages of information, known as <mark>packets</mark>.
 -  the two most prominent types in today’s Internet are <mark> routers </mark> and <mark> link-layer switches</mark>
--  <mark> The sequence of communication
+-   The sequence of communication
 links and packet switches traversed by a packet from the sending end system to the receiving end
-system </mark> is known as a route or path through the network.
+system  is known as a <mark>route</mark> or <mark>path</mark> through the network.
 -  ISPs : Internet Service Providers 
 -  <mark> Store-and-forward
-transmission </mark> means that the packet switch must receive the entire packet before it can begin to transmit
+transmission</mark> means that the packet switch must receive the entire packet before it can begin to transmit
 the first bit of the packet onto the outbound link.
 - If an arriving packet needs to be
 transmitted onto a link but finds the link busy with the transmission of another packet, the arriving packet must wait in the <mark> output buffer </mark>. Thus, in addition to the store-and-forward delays, packets suffer <mark> output
@@ -80,109 +90,120 @@ sniffer</mark>.
 
 -  two predominant architectural paradigms:the <mark>client-server architecture</mark> or the <mark>peer-to-peer (P2P) architecture</mark>.
 -  A process sends messages into, and receives messages from, the network through a software interface called a <mark>socket</mark>,also referred to as the Application Programming Interface (API) between the application and the network.
--  we can broadly classify the possible services provided by transport-layer protocol along four dimensions: <mark>reliable data transfer</mark>, <mark>throughput</mark>, <mark>timing</mark>,and <mark>security</mark>.
+-  We can broadly classify the possible services provided by transport-layer protocol along four dimensions: <mark>reliable data transfer</mark>, <mark>throughput</mark>, <mark>timing</mark>,and <mark>security</mark>.
 -  When an application invokes TCP as its transport protocol, the application receives both of these services from TCP：<mark>Connection-oriented service</mark>,<mark>Reliable data transfer service</mark>,<mark> congestion-control mechanism  </mark>.
 -  UDP is connectionless, so there is no handshaking before the two processes start to communicate. 
 -  UDP provides an unreliable data transfer service.
 -  UDP does not include a congestion-control mechanism.
--  HTTP is said to be a stateless protocol: server sends requested files to clients without storing any state
-information about the client.
-- Non-Persistent:each request/response pair be sent over a separate TCP connection.
-- Persistent Connections:all of the requests and their corresponding responses be sent over the same TCP connection.
+
+> ## 2.1 HTTP
+
+-  HTTP is said to be a <mark>stateless</mark> protocol: server sends requested files to clients <mark>without storing any state
+information</mark> about the client.
+- Non-Persistent:each request/response pair be sent over a <mark>separate TCP connection</mark>.
+- Persistent Connections:all of the requests and their corresponding responses be sent over the <mark>same TCP connection</mark>.
 - HTTP uses persistent connections in its default mode.
 -  the steps of transferring a Web page from server to client for the case of non-
 persistent connections: Let’s suppose the page consists of a base HTML file and 10 JPEG images/computer_networking_topdown, and that all 11 of these objects reside on the same server.Further suppose the URL for the base HTML file
 is:http://www.someSchool.edu/someDepartment/home.index
 
 Here is what happens:
-1.  The HTTP client process initiates a TCP connection to the server  www.someSchool.edu on
-port number 80, which is the default port number for HTTP. Associated with the TCP connection,
-there will be a socket at the client and a socket at the server.
-2.  The HTTP client sends an HTTP request message to the server via its socket. The request
-message includes the path name  /someDepartment/home .index. (We will discuss HTTP
-messages in some detail below.)
-3.  The HTTP server process receives the request message via its socket, retrieves the object
-/someDepartment/home.index from its storage (RAM or disk), encapsulates the object in
-an HTTP response message, and sends the response message to the client via its socket.
-4.  The HTTP server process tells TCP to close the TCP connection. (But TCP doesn’t actually
-terminate the connection until it knows for sure that the client has received the response
-message intact.)
-5.  The HTTP client receives the response message. The TCP connection terminates. The
-message indicates that the encapsulated object is an HTML file. The client extracts the file from
-the response message, examines the HTML file, and finds references to the 10 JPEG objects.
-6.  The first four steps are then repeated for each of the referenced JPEG objects.
+1.  The HTTP client process initiates a <mark>TCP connection</mark> to the server  www.someSchool.edu on port number 80, which is the default port number for HTTP. Associated with the TCP connection, there will be a socket at the client and a socket at the server.
+2. The HTTP client sends an <mark>HTTP request message</mark> to the server via its socket. The request message includes the path name  /someDepartment/home .index. (We will discuss HTTP messages in some detail below.)
+3.  The HTTP server process receives the request message via its socket, retrieves the object from path: /someDepartment/home.index from its storage (RAM or disk), encapsulates the object in an <mark>HTTP response message</mark>, and sends the response message to the client via its socket.
+4.  The HTTP server process tells TCP to <mark>close</mark> the TCP connection. (But TCP doesn’t actually terminate the connection until it knows for sure that the client has received the response message intact.)
+5.  The HTTP client receives the response message. The TCP connection terminates. The message indicates that the encapsulated object is an HTML file. The client extracts the file from the response message, examines the HTML file, and finds references to the 10 JPEG objects.
+6. The first four steps are then repeated for each of the referenced JPEG objects.
 
-Note that each TCP connection transports exactly one request message and one response message. Thus, in this example,
-when a user requests the Web page, 11 TCP connections are generated.
 
-- round-trip time (RTT), is the time it takes for a small packet to travel from client to server and then back to the client.
-- The RTT includes packet-propagation delays, packet-queuing delays in intermediate routers and switches, and packet-processing delays.(the packet is small so there is no transmission delay)
-- consider what happens when a user clicks on a hyperlink.this causes the browser to initiate a TCP connection between the browser and the Web server; this involves a <mark>“three-way handshake”</mark>—the client sends a small TCP segment to the server, the server acknowledges and responds with a small TCP segment, and, finally, the client acknowledges back to the server. The first two parts of the three-way handshake take one RTT. After completing the first two parts of the handshake, the client sends the <mark>HTTP request message combined with the third part of the three-way handshake</mark> (the acknowledgment) into the TCP connection. Once the request message arrives at the server, the server sends the HTML file into the TCP connection. This HTTP request/response eats up another RTT. Thus, roughly, the total response time is two RTTs plus the transmission time at the server of the HTML file.
+- round-trip time (RTT), is the time it takes for a <mark>small packet</mark> to travel from client to server and then back to the client.
+- The RTT includes <mark>packet-propagation delays</mark>, <mark>packet-queuing delays</mark> in intermediate routers and switches, and <mark>packet-processing delays</mark>.(the packet is small so there is no transmission delay)
 - Non-persistent connections have some shortcomings. 
   1. a brand-new connection must be
 established and maintained for each requested object. For each of these connections, <mark>TCP buffers must be allocated and TCP variables must be kept in both the client and server</mark>. This can place a significant burden on the Web server, which may be serving requests from hundreds of different clients simultaneously. 
   2. each object suffers a delivery delay of <mark>two RTTs</mark>—one RTT to <mark>establish the TCP connection</mark> and one RTT to <mark> request and receive an object</mark>.
 
-- HTTP/2 [RFC 7540] builds on HTTP 1.1 by allowing multiple requests and replies to be <mark>interleaved</mark> in the same connection, and a mechanism for prioritizing HTTP message requests and replies within this connection
--  There are two types of HTTP messages, <mark>request messages</mark> and <mark>response messages</mark>.
+
 -  The first line of an HTTP request message is called the <mark>request line</mark>,the subsequent lines are called the <mark>header lines</mark>.
-- The request line has three fields: the <mark>method field</mark>, the <mark>URL</mark> field, and the <mark>HTTP
-version</mark> field.
+
+> ### 2.1.1 Request Message
+
+![http_req](/images/computer_networking_topdown/http_req.png)
+
+- The request line has three fields: the <mark>method field</mark>, the <mark>URL</mark> field, and the <mark>HTTP version</mark> field.
+
+
+
+
 - The method field can take on several different values, including <mark>GET</mark>, <mark>POST</mark>,<mark>HEAD</mark>,<mark>PUT</mark>,and <mark>DELETE</mark>
-- The header line  Host: xxx.xxx.xxx
-specifies the host on which the object resides.The information provided by the host header line is required by Web proxy caches.
-- Connection:close/keep-alive header line tells the server to set the connection to whether <mark>persistent</mark> or<mark>non-persistent</mark>. 
-- The  User-agent: header line specifies the user agent, that is, the <mark>browser type</mark> that is making the request to the server.
-- after the header lines there is an <mark>“entity body.”</mark>.The entity body is empty with the  GET method, but is used with the  <mark>POST</mark> method.
-- HTML forms often use the GET method and include the inputted data (in the form fields) in the <mark>requested URL</mark>
+- The header lines:
+    1. Host: xxx.xxx.xxx specifies the host on which the object resides.
+    2. Connection:close/keep-alive header line tells the server to set the connection to whether <mark>persistent</mark> or <mark>non-persistent</mark>.
+    3. The  User-agent: header line specifies the user agent, that is, the <mark>browser type</mark> that is making the request to the server.
+- after the header lines there is an <mark>entity body</mark>.The entity body is <mark>empty with the  GET</mark> method, but is <mark>used with the  POST</mark> method.
+- HTML form elements often use the GET method and include the inputted data (in the form fields) in the <mark>requested URL</mark>
 - The  <mark>HEAD</mark> method is similar to the  GET method. When a server receives a request with the  HEAD method, it responds with an HTTP message but it <mark>leaves out the requested object</mark>.
-- The  PUT method is often used in conjunction with Web publishing tools. It allows a user to upload an object to a specific path (directory) on a specific Web server. The  PUT method is also used by applications that need to upload objects to Web server.
+- The  PUT method allows a user to upload an object to a specific path (directory) on a specific Web server. 
 - The  DELETE method allows a user, or an application, to delete an object on a Web server.
-- HTTP response message has three sections:initial status line,header lines and entity line.
-- The status line has three fields: the protocol version field, a status code, and a corresponding status message.
-- The  Date: header line
-indicates the time and date when the HTTP response was created and sent by the server. Note that this
-is not the time when the object was created or last modified; it is the time <mark>when the server retrieves the
-object from its file system, inserts the object into the response message, and sends the response
-message</mark>.
-- The  Content-Type: header line
-indicates the type of the object in the entity body.
-- The object type is officially indicated by the <mark>Content-Type</mark>: header and not by the file extension.
-- Some common status codes and
+
+> ## 2.1.2 Response Message
+
+
+![http_res](/images/computer_networking_topdown/http_res.png)
+
+- HTTP response message has three sections:
+    1. Initial status line:The status line has three fields: the protocol version field, a status code, and a corresponding status message.
+    2. Header lines:
+        - Date:  indicates the time and date when the HTTP response was created and sent by the server. Note that this is not the time when the object was created or last modified; it is the time <mark>when the server retrieves the object from its file system, inserts the object into the response message, and sends the response message</mark>.
+        - Content-Type: indicates the type of the object in the entity body. 
+    3. Entity line.
+
+{{< admonition type=info title="" open=false >}}
+The object type is officially indicated by the <mark>Content-Type</mark>: header and not by the file extension.
+{{< /admonition >}}
+
+{{< admonition type=info title="" open=false >}}
+Some common status codes and
 associated phrases include:
  1. 200 OK: Request succeeded and the information is returned in the response.
- 2. 301 Moved Permanently: Requested object has been permanently moved; the new URL is
-specified in  Location: header of the response message. The client software will automatically
-retrieve the new URL.
- 3. 400 Bad Request: This is a generic error code indicating that the request could not be
-understood by the server.
-Figure 2.9 General format of an HTTP response message
+ 2. 301 Moved Permanently: Requested object has been permanently moved; the new URL is specified in  Location: header of the response message. The client software will automatically retrieve the new URL.
+ 3. 400 Bad Request: This is a generic error code indicating that the request could not be understood by the server.
  4. 404 Not Found: The requested document does not exist on this server.
  5. 505 HTTP Version Not Supported: The requested HTTP protocol version is not supported by the server.
  6. 304 Not Modified:The web server informs the cache that the requested resource is not modified and go send the cached copy to the client.
+{{< /admonition >}}
+
+
+> ### 2.1.3 Cookies
+
 - cookie technology has four components: 
-  1. a cookie header line in the HTTP
-response message; 
+  1. a cookie header line in the HTTP response message; 
   1. a cookie header line in the HTTP request message; 
   2. a cookie file kept on the
 user’s end system and managed by the user’s browser; 
   1. a back-end database at the Web site.
 
 - How the cookies work:
-  1. request comes into the Web server, the server creates a unique identification number and creates an entry in its back-end database that is indexed by the identification number. The Web server then responds to client’s browser, including in the HTTP response a Set-cookie: header, which contains the identification number.
+  1. request comes into the Web server, the server creates a unique identification number and creates an entry in its back-end database that is indexed by the identification number. The Web server then responds to client’s browser, including in the HTTP response a <mark>Set-cookie</mark>: header, which contains the identification number.
   2. When Client’s browser receives the HTTP response message, it sees the  <mark>Set-cookie</mark>: header. The browser then appends a line to the special cookie file that it manages. This line includes the hostname of the server and the identification number in the  Set-cookie: header.
-  3.  As client continues to browse the site, each time he requests a Web page, his browser consults his cookie file,extracts his identification number for this site, and puts a cookie header line that includes the identification number in the HTTP request. 
+  3.  As client continues to browse the site, each time he requests a Web page, his browser consults his cookie file,extracts his identification number for this site, and puts a <mark>Cookie</mark> header line that includes the identification number in the HTTP request. 
   4. In this manner, the server is able to track client’s activity at the  site. 
 
+> ### 2.1.4 Web Cache(Proxy)
+
 - A Web cache—also called a proxy server—is a network entity that satisfies HTTP requests on the behalf of an origin Web server.
-- a user’s browser can be configured so that all of the user’s HTTP requests are first directed to the Web cache. Once a browser is configured, each browser request for an object is first directed to the Web cache.
+- A user’s browser can be configured so that all of the user’s HTTP requests are first directed to the Web cache.
 - How does web cache work:
   1.  The browser establishes a TCP connection to the Web cache and sends an HTTP request for the object to the Web cache.
-  2.  The Web cache checks to see if it has a copy of the object stored locally. If it does, the Web cache returns the object within an HTTP response message to the client browser.
-  3.  If the Web cache does not have the object, the Web cache opens a TCP connection to the origin server, The Web cache then sends an HTTP request for the object into the cache-to-server TCP connection. After receiving this request, the origin server
-  sends the object within an HTTP response to the Web cache.
-  4.  When the Web cache receives the object, it stores a copy in its local storage and sends a copy, within an HTTP response message, to the client browser (over the existing TCP connection
-  between the client browser and the Web cache).
+  2.  The Web cache checks to see if it has a copy of the object stored locally:
+      1. If it does, the cache performs an up-to-date check by issuing a conditional GET to the web server telling the server to send the object only if the object has been modified since the specified date:
+          - If it does then the object is updated.
+          - If it doesn't the object remains the same
+  
+          The Web cache returns the object within an HTTP response message to the client browser.
+
+      2. If the Web cache does not have the object, the Web cache opens a TCP connection to the web server, The Web cache then sends an HTTP request for the object into the cache-to-server TCP connection. After receiving this request, the origin server sends the object within an HTTP response to the Web cache.
+  3. When the Web cache receives the object, it stores a copy in its local storage and sends a copy, within an HTTP response message, to the client browser (over the existing TCP connection between the client browser and the Web cache).
 
 - The benefits of a web cache:
 
@@ -191,11 +212,13 @@ user’s end system and managed by the user’s browser;
 
 
 - HTTP has a mechanism that allows a cache to <mark>verify that its objects are up to date</mark>. This mechanism is called the <mark>conditional GET</mark>
-- An HTTP request message is a so-called conditional GET message if 
-  1. the request message uses the GET method.
-  2. the request message includes an If-Modified-Since: header line.
+
+
+
+> ## 2.2 SMTP
 
 - A typical message starts its journey in <mark>the sender’s user agent</mark>, travels to <mark>the sender’s mail server</mark>, and travels to <mark>the recipient’s mail server</mark>, where it is deposited in the recipient’s mailbox.
+
 
 - How SMTP works:
 
@@ -206,7 +229,7 @@ user’s end system and managed by the user’s browser;
 4.  After some initial SMTP handshaking, the SMTP client sends Alice’s message into the TCP connection.
 5.  At Bob’s mail server, the server side of SMTP receives the message. Bob’s mail server then
 places the message in Bob’s mailbox.
-6.  Bob invokes his user agent to read the message at his convenience.
+1.  Bob invokes his user agent to read the message at his convenience.
 
 - Five commands in SMTP:
   1. HELO (an abbreviation for HELLO)  
@@ -217,17 +240,24 @@ places the message in Bob’s mailbox.
 
 - SMTP uses <mark>persistent connection</mark>.
 - MTP requires each message, including the body of each message, to be in <mark>7-bit ASCII format</mark>.
-- A mail access protocol is used to transfer mail from the recipient’s mail server to the recipient’s user agent.
+- A mail access protocol is used to transfer mail from <mark>the recipient’s mail server to the recipient’s user agent</mark>.
 - There are currently a number of popular mail access protocols, including Post Office Protocol—Version 3 (POP3), Internet Mail Access Protocol (IMAP), and HTTP.
-- The DNS protocol runs over UDP and uses port 53.
-- How DNS works(approximately):
-  1.  The user machine runs the client side of the DNS application.
-  2.  The browser extracts the hostname,  from the URL and passes the hostname to the client side of the DNS application.
-  3.  The DNS client sends a query containing the hostname to a DNS server.
-  4.  The DNS client eventually receives a reply, which includes the IP address for the hostname.
-  5.  Once the browser receives the IP address from DNS, it can initiate a TCP connection to the HTTP server process located at port 80 at that IP address
 
-- the desired IP address is often cached in a “nearby” DNS server, which helps to reduce DNS network traffic as well as the average DNS delay.
+
+
+> ## 2.3 DNS
+
+- The DNS protocol runs over <mark>UDP</mark> and uses port 53.
+- How DNS works(approximately):
+  1.  The browser extracts the <mark>hostname</mark>,  from the URL and passes the hostname to the client side of the DNS application.
+  2.  The DNS client sends a query containing the hostname to a <mark>DNS server</mark>.
+  3.  The DNS client eventually receives a reply, which includes the IP address for the hostname.
+  4.  Once the browser receives the IP address from DNS, it can initiate a TCP connection to the HTTP server process located at port 80 at that IP address
+
+- The desired IP address is often cached in a “nearby” DNS server, which helps to reduce DNS network traffic as well as the average DNS delay.
+
+
+
 - DNS provides services such as:
   1. Host aliasing
   2. Mail server aliasing
@@ -244,6 +274,8 @@ places the message in Bob’s mailbox.
   3. Finally,the client contacts one of the authoritative servers for amazon.com, which returns the IP address for the hostname www.amazon.com.
 
 - 2 query methods in DNS:<mark>recursive queries</mark> and<mark> iterative queries</mark>
+
+
 - Typically,The query <mark>from the requesting host to the local DNS server</mark> is recursive, and <mark>the remaining queries</mark> are iterative.
 - The DNS servers that together implement the DNS distributed database store <mark>resource records (RRs)</mark>
 - A resource record is a four-tuple that contains the following fields:
@@ -257,7 +289,11 @@ places the message in Bob’s mailbox.
 - If  Type=NS, then  Name is a <mark>domain</mark> (such as  foo.com) and  Value is the <mark>hostname of an authoritative DNS server that knows how to obtain the IP addresses for hosts in the domain</mark>.
 - If  Type=CNAME, then  Value is a <mark>canonical hostname</mark> for the alias hostname  Name.
 - If  Type=MX, then  Value is the <mark>canonical name</mark> of a mail server that has an alias hostname  Name.
-- A video is a sequence of images/computer_networking_topdown, typically being displayed at a constant rate, for example, at 24 or 30 images/computer_networking_topdown per second.
+
+
+> ## 2.4 Video Streaming
+
+- A video is a sequence of images, typically being displayed at a constant rate, for example, at 24 or 30 images.
 - the network must provide an average throughput to the streaming application that is at least <mark>as large as the bit rate of the compressed video</mark>.
 - In HTTP streaming, the video is simply stored at an HTTP server as an ordinary file with a specific URL.
 - How HTTP streaming works:
@@ -267,37 +303,47 @@ places the message in Bob’s mailbox.
   4. Once the number of bytes in this buffer exceeds a predetermined threshold, the client application begins playback—specifically, the streaming video application periodically grabs video frames from the client application buffer, decompresses the frames, and displays them on the user’s screen. 
 
 - Dynamic Adaptive Streaming over HTTP(DASH):The client dynamically requests chunks of video segments of a few seconds in length. When the amount of available bandwidth is high, the client naturally selects chunks from a high-rate version; and when the available bandwidth is low, it naturally selects from a low-rate version.
+
+> ## 2.5 Content Distribution Networks
+
+
 - A CDN manages servers in multiple geographically distributed locations, stores copies of content in its servers, and attempts to direct each user request to a CDN location that will provide the best user experience.
+
+
 - How CDN works:
-  1.  The user visits the Web page.the user’s host sends a DNS query for the host name of that page.
+  1.  The user’s host sends a DNS query for the host name of the requested resource.
   2.  The user’s Local DNS Server (LDNS) relays the DNS query to an authoritative DNS server for the hostname, which observes in the hostname that this belongs to CDN. To “hand over” the DNS query to CDN, instead of returning an IP address, the authoritative DNS server returns to the LDNS a hostname in the CDN’s domain.
   3.  The user’s LDNS then sends a second query, now for the hostname provided in 2, and CDN’s DNS system eventually returns the IP addresses of a <mark>CDN content server</mark> to the LDNS. 
   4.  The LDNS forwards the IP address of the content-serving CDN node to the user’s host.
   5.  Once the client receives the IP address for a CDN content server, it establishes a direct TCP connection with the server at that IP address and issues an HTTP GET request for the content. 
 
-- Port number is the identifier of the socket.
   
 
 > # Chapter 3 Transport layer
 
+- Port number is the identifier of the socket.
 
-- Extending host-to-host delivery to process-to-process delivery is called transport-layer multiplexing and demultiplexing. 
+- Extending host-to-host delivery to process-to-process delivery is called transport-layer multiplexing and demultiplexing.
+
+
 - This job of delivering the data in a transport-layer segment to the correct socket is called demultiplexing.
-- The job of gathering data chunks at the source host from different sockets,encapsulating each data chunk with header information to create segments, and passing the segments to the network layer is called multiplexing. 
+- The job of gathering data chunks at the source host from different sockets,encapsulating each data chunk with header information to create segments, and passing the segments to the network layer is called <mark>multiplexing</mark>. 
 - UDP socket is fully identified by a two-tuple consisting of a <mark>destination IP address</mark> and a <mark>destination port number</mark>. 
 - TCP socket is identified by a four-tuple: (source IP address, source port number,destination IP address,destination port number).
-- Note that with UDP there is <mark>no handshaking</mark> between sending
-and receiving transport-layer entities before sending a segment.
-- <mark>DNS</mark> is an example of an application-layer protocol that typically uses UDP.
-- UDP's advantages over TCP:
-  
+
+> ## 3.1 UDP
+
+
+- Note that with UDP there is <mark>no handshaking</mark> between sending and receiving transport-layer entities before sending a segment.
+
+- UDP's advantages over TCP:  
   1. Finer application-level control over what data is sent, and when.
   2. No connection establishment.
   3. No connection state. 
   4. Small packet header overhead. 
 
 - UDP Segment Structure
-  1. port numbers allow the destination host to pass the application data to the correct process running on the destination end system (that is, to perform the demultiplexing function). 
+  1. port numbers allow the destination host to pass the application data to the <mark>correct process</mark> running on the destination end system (that is, to perform the <mark>demultiplexing</mark> function). 
   2. The length field specifies the number of bytes in the UDP segment (header plus data).  
   3. The checksum is used by the receiving host to check whether errors have been introduced into the segment. 
 
@@ -311,6 +357,10 @@ converting all the 0s to 1s and converting all the 1s to 0s) of the sum of all t
 
 
 - Although UDP provides error checking, <mark>it does not do anything to recover from an error</mark>.
+
+
+> ## 3.2 Reliable Data Transfer
+
 - With a reliable data transfer, no transferred data bits are corrupted (flipped from 0 to 1, or vice versa) or lost, and all are delivered in the order in which they were sent.
 
 
@@ -321,10 +371,6 @@ converting all the 0s to 1s and converting all the 1s to 0s) of the sum of all t
 - RDT 2.0
 
   - Control messages allow the receiver to let the sender know what has been received correctly by sending <mark>ACK</mark>, and what has been received in error by <mark>NAK</mark> and thus requires repeating. In a computer network setting, reliable data transfer protocols based on such retransmission are known as <mark>ARQ (Automatic Repeat reQuest) protocols</mark>.
-  - Fundamentally, three additional protocol capabilities are required in ARQ protocols to handle the presence of bit errors:
-    1. Error detection 
-    2. Receiver feedback 
-    3. Retransmission
   
   - FSM
   ![rdt2](/images/computer_networking_topdown/rdt2.png)
@@ -352,11 +398,13 @@ converting all the 0s to 1s and converting all the 1s to 0s) of the sum of all t
 - RDT 3.0
   
   - Suppose now that in addition to corrupting bits, the underlying channel can lose packets as well.Two additional concerns must now be addressed by the protocol: how to detect packet loss and what to do when packet loss occurs.
-  - Implementing a time-based retransmission mechanism requires a countdown timer that can <mark>interrupt</mark> the sender after a given amount of time has expired.
+  - Implementing a <mark>time-based</mark> retransmission mechanism requires a countdown timer that can <mark>interrupt</mark> the sender after a given amount of time has expired.
   - FSM
   ![sender](/images/computer_networking_topdown/rdt3_sender.png)
   ![receiver](/images/computer_networking_topdown/rdt3_receiver.png)
 
+
+> ### 3.2.1 Pipelined Reliable Data Transfer
 
 - Pipelined Reliable Data Transfer:Rather than operate in a stop-and-wait manner, the sender is allowed to send multiple packets without waiting for acknowledgments.
   ![pipeline](/images/computer_networking_topdown/pipelined_transfer.png)
@@ -368,50 +416,54 @@ converting all the 0s to 1s and converting all the 1s to 0s) of the sum of all t
   3. The range of sequence numbers needed and the buffering requirements will depend on the manner in which a data transfer protocol responds to lost, corrupted, and overly delayed packets. 
     
 
+> #### 3.2.1.1 GBN
+
 - Go-Back-N (GBN): the sender is allowed to transmit multiple packets (when available) without waiting for an acknowledgment, but is constrained to have no more than some maximum allowable number, N, of unacknowledged packets in the pipeline.
 ![GBN](/images/computer_networking_topdown/GBN.png)
 
-1. Sequence numbers in the interval [0, base-1] correspond to packets that have already been transmitted and acknowledged.
-2. The interval  [base, nextseqnum-1] corresponds to packets that have been sent but not yet acknowledged.
-3. Sequence numbers in the interval  [nextseqnum , base+N-1] can be used for packets that can be sent immediately, should data arrive from the upper layer.
-4.  Finally, sequence numbers greater than or equal to  base+N cannot be used until the packet with sequence number base has been acknowledged.
+1. Sequence numbers in the interval [0, base-1] correspond to packets that have already been <mark>transmitted and acknowledged</mark>.
+2. The interval  [base, nextseqnum-1] corresponds to packets that have been <mark>sent but not yet acknowledged</mark>.
+3. Sequence numbers in the interval  [nextseqnum , base+N-1] can be used for packets that <mark>can be sent immediately</mark>, should data arrive from the upper layer.
+4.  Finally, sequence numbers greater than or equal to  base+N <mark>cannot be used</mark> until the packet with sequence number base has been acknowledged.
 
 -  the range of permissible sequence numbers for transmitted but not yet acknowledged packets can be viewed as a window of size N over the range of sequence numbers.
 
 ![GBN_FSM](/images/computer_networking_topdown/GBN_FSM.png)
 
-- As the name suggests, selective-repeat protocols avoid unnecessary retransmissions by having the sender retransmit only those packets that it suspects were received in error (that is, were lost or corrupted) at the receiver.
+
+> #### 3.2.1.2 Selective Repeat
+
+- As the name suggests, selective-repeat protocols avoid unnecessary retransmissions by having the sender <mark>retransmit only those packets that it suspects were received in error</mark> (that is, were lost or corrupted) at the receiver.
 
 
 
 - The SR receiver will acknowledge a correctly received packet whether or not it is in order. Out-of-order packets are <mark>buffered</mark> until all packets with lower sequence numbers are received, at which point a batch of packets can be delivered in order to the upper layer.
   - How Selective Repeat Works 
     - Sender
-      1. Data received from above.When data is received from above, the SR sender checks the next available sequence number for the packet. If the sequencenumber is within the sender's window, the data is packetized and sent; other-wise it is either buffered or returned to the upper layer for later transmission,as in GBN.
-      2. Timeout.Timers are again used to protect against lost packets. However, each packet must now have its own logical timer, since only a single packet will be transmitted on timeout.
-      3. ACK received.If an ACK is received, the SR sender marks that packet as having been <mark>received</mark>, provided it is in the window. If the packet's sequencenumber is <mark>equal to send_base</mark>, the window base is moved forward to the unacknowledged packet with the smallest sequence number. If the window moves and there are <mark>untransmitted packets</mark> with sequence numbers that now fall within the window, these packets are transmitted.
+      1. Data received from above.When data is received from above, the SR sender checks the next available sequence number for the packet. If the sequence number is within the sender's window, the data is packetized and sent; other-wise it is either buffered or returned to the upper layer for later transmission,as in GBN.
+      2. Timeout.Timers are again used to protect against lost packets. However, each packet must now have <mark>its own logical timer</mark>, since only a single packet will be transmitted on timeout.
+      3. ACK received.If an ACK is received, the SR sender marks that packet as having been <mark>received</mark>, provided it is in the window. If the packet's sequencenumber is <mark>equal to send_base</mark>, the window base is moved forward to the <mark>unacknowledged packet with the smallest sequence number</mark>. If the window moves and there are <mark>untransmitted packets</mark> with sequence numbers that now fall within the window, these packets are transmitted.
     - Receiver
       1. Packet with sequence number in [rcv_base, rcvbase+N-1 ] is correctly received.In this case, the received packet falls within the receiver's window and a selective <mark>ACK</mark> packet is returned to the sender. If there are previous packets not received, the packet in the middle is buffered. If this packet has a sequence number <mark>equal to the base of the receive window</mark> , then this packet,and any previously buffered and consecutively numbered packets are delivered to the upper layer. The receive window is then moved forward by the number of packets delivered to the upper layer. 
-      2. Packet with sequence number in [rcv_base-N, rcv_base-1] is correctly received.In this case, an ACK must be generated, even though this is apacket that the receiver has previously acknowledged
+      2. Packet with sequence number in [rcv_base-N, rcv_base-1] is correctly received.In this case, <mark>an ACK must be generated</mark>, even though this is apacket that the receiver has previously acknowledged
       3. Otherwise. Ignore the packet.
 
-- The lack of synchronization:Consider what could happen, for example, with a finite range of four packet sequence numbers, 0, 1, 2, 3, and a window size of three.Suppose packets 0 through 2 are transmitted and correctly received and acknowledged at the receiver.At this point, the receiver’s window is over the fourth, fifth, and sixth packets, which have sequence numbers 3, 0, and 1, respectively. Now consider two scenarios:
-  1. The ACKs for the first three packets are lost and the sender retransmits these packets. The receiver thus next receives a packet with sequence number 0—a copy of the first packet sent.
-  2. In the second scenario, the ACKs for the first three packets are all delivered correctly. The sender thus moves its window forward and sends the fourth, fifth, and sixth packets, with sequence numbers 3, 0, and 1, respectively. The packet with sequence number 3 is lost, but the packet with sequence number 0 arrives—a packet containing new data.
-  3. Since the receiver cannot "see" the actions taken by the sender. All the receiver observes is the sequence of messages it receives from the channel and sends into the channel. As far as it is concerned, the two scenarios are identical.
-
-- window size must be less than or equal to half the size of the sequence number space for SR protocols.
 
 
-- TCP is said to be connection-oriented because before one application process can begin to send data to another, the two processes must first <mark>“handshake”</mark> with each other—that is, they must send some preliminary segments to each other to establish the parameters of the ensuing data transfer.
+- window size must be less than or equal to <mark>half the size of the sequence number space</mark> for SR protocols.
+
+
+> ## 3.3 TCP
+
+- TCP is said to be <mark>connection-oriented</mark> because before one application process can begin to send data to another, the two processes must first <mark>“handshake”</mark> with each other—that is, they must send some preliminary segments to each other to establish the parameters of the ensuing data transfer.
 - The TCP “connection” is not an end-to-end TDM or FDM circuit as in a circuit-switched network. Instead,the “connection” is a <mark>logical</mark> one, with <mark>common state</mark> residing only in the TCPs in the two communicating <mark>end systems</mark>.
 - A TCP connection provides a <mark>full-duplex service</mark>: If there is a TCP connection between Process A on one host and Process B on another host, then application-layer data can flow from Process A to Process B at the same time as application-layer data flows from Process B to Process A.
 - A TCP connection is also always <mark>point-to-point</mark>, that is, between a single sender and a single receiver. So-called “multicasting”—the transfer of data from one sender to many receivers in a single send operation—is not possible with TCP.
-- The maximum amount of data that can be grabbed and placed in a segment is limited by the maximum segment size (MSS).
+- The maximum amount of data that can be grabbed and placed in a segment is limited by the <mark>maximum segment size (MSS)</mark>.
 - The MSS is typically set by first determining <mark>the length of the largest link-layer frame</mark> that can be sent by the local sending host (the so-called maximum transmission unit, MTU), and then setting the MSS to ensure that a <mark>TCP segment</mark>(when encapsulated in an IP datagram) plus <mark>the TCP/IP header length</mark> (typically 40 bytes) will fit into a single link-layer frame. 
 - Note that the MSS is the maximum amount of
 <mark>application-layer data</mark> in the segment, not the maximum size of the TCP segment including headers.
-- a TCP connection consists of <mark>buffers, variables, and a socket connection to a process</mark> in one host, and another set of buffers, variables, and a socket connection to a process in another host.
+- a TCP connection consists of <mark>buffers, variables, and a socket connection to a process</mark> in two hosts of a connection pair.
 - The TCP segment consists of <mark>header fields</mark> and a <mark>data field</mark>.
 - When TCP sends a large file, such as an image as part of a Web page, it typically <mark>breaks the file into chunks of size MSS</mark> (except for the last chunk, which will often be less than the MSS).
   
@@ -432,7 +484,7 @@ converting all the 0s to 1s and converting all the 1s to 0s) of the sum of all t
     5.  the URG bit is used to indicate that there is data in this segment that the sending-side upper-layer entity has marked as “urgent.”The location of the last byte of this urgent data is indicated by the 16-bit urgent data pointer field
 
 - The sequence number for a segment is the <mark>byte-stream number of the first byte in the segment</mark>.
-- The acknowledgment number that a host  puts in its segment is the sequence number of the next byte the host  is expecting from its peer host.
+- The acknowledgment number that a host  puts in its segment is <mark>the sequence number of the next byte</mark> the host  is expecting from its peer host.
 - TCP only acknowledges bytes up to the first missing byte in the stream, TCP is said to provide <mark>cumulative acknowledgments</mark>.
 -  when a host receives out-of-order
 segments in a TCP connection,it keeps the out-of-order bytes and waits for the missing bytes to fill in the gaps.
@@ -453,6 +505,10 @@ typically deviates from  Estimated RTT:DevRTT=(1−β)⋅DevRTT+β⋅|SampleRTT�
 
 - the recommended TCP timer management procedures [RFC 6298] use only a <mark>single</mark> retransmission timer, even if there are multiple transmitted but not yet acknowledged segments
 
+
+> ### 3.3.1 TCP Reliable Data Transfer
+
+
 - Highly Simplified Description
 
 
@@ -472,6 +528,7 @@ loop (forever) {
     event: timer timeout
       retransmit not-yet-acknowledged segment with smallest sequence number
       start timer
+      timer*=2
       break;
     event: ACK received, with ACK field value of y
             if (y > SendBase) {
@@ -489,32 +546,36 @@ loop (forever) {
 
 ```
 
-- Each time TCP retransmits, it sets the next timeout interval to twice the previous value.
 
 - TCP ACK Generation Recommendation 
 
 
 |Event| TCP Receiver Action|
 |-----|--------------------|
-|Arrival of in-order segment with expected sequence number. All data up to expected sequence number already acknowledged.| Delayed ACK. Wait up to 500 msec for arrival ofanother in-order segment. If next in-order segment does not arrive in this interval, send an ACK.|
+|Arrival of in-order segment with expected sequence number. All data up to expected sequence number already acknowledged.| Delayed ACK. <mark>Wait</mark> up to 500 msec for arrival of another in-order segment. If next in-order segment does not arrive in this interval, send an ACK.|
 |Arrival of in-order segment with expected sequence number. One other in-order segment waiting for ACK transmission.| One Immediately send single cumulative ACK,ACKing both in-order segments.|
 |Arrival of out-of-order segment with higher- than-expected sequence number. Gap detected.|Immediately send duplicate ACK, indicating sequence number of next expected byte (which is the lower end of the gap).|
-|Arrival of segment that partially or completely fills in gap in received data.| Immediately send ACK, provided that segment starts at the lower end of gap.|
+|Arrival of segment that partially or completely fills in gap in received data.| Immediately send ACK as long as the segment starts at the lower end of gap.|
 
-- Fast Retransmit:If the TCP sender receives <mark>three duplicate ACKs</mark> for the same data, it takes this as an indication that the segment following the segment that has been ACKed three times has been lost.the TCP sender performs a fast retransmit [RFC 5681], retransmitting the missing segment before that segment’s timer expires.
+- Fast Retransmit:If the TCP sender receives <mark>three duplicate ACKs</mark> for the same data, it takes this as an indication that the segment following the segment that has been ACKed three times has been <mark>lost</mark>.the TCP sender performs a fast retransmit , retransmitting the missing segment before that segment’s timer expires.
   
 
 - TCP’s error-recovery mechanism is probably best categorized as a <mark>hybrid of GBN and SR protocols</mark>.
+
+> ### 3.3.2 TCP Flow Control
+
+
+
 - If the application is relatively slow at reading the data, the sender can very easily <mark>overflow</mark> the connection’s receive buffer by sending too much data too quickly.
 - TCP provides a flow-control service to its applications to eliminate the possibility of the sender overflowing the receiver’s buffer. 
 - How TCP Flow Control Works:
-  1. Suppose that Host A is sending a large file to Host B over a TCP connection. Host B allocates a receive buffer to this connection; denote its size by  RcvBuffer. From time to time, the application process in Host B reads from the buffer. Define the following variables:
-    - LastByteRead: the number of the last byte in the data stream <mark>read</mark> from the buffer by the application process in B
-    - LastByteRcvd: the number of the last byte in the data stream that has <mark>arrived</mark> from the network and has been placed in the receive buffer at B
+  1. Suppose that Host A is sending a large file to Host B over a TCP connection. Host B allocates a receive buffer to this connection; denote its size by  <mark>$RcvBuffer$</mark>. From time to time, the application process in Host B reads from the buffer. Define the following variables:
+    - <mark>$LastByteRead$</mark>: the number of the last byte in the data stream <mark>read</mark> from the buffer by the application process in B
+    - <mark>$LastByteRcvd$</mark>: the number of the last byte in the data stream that has <mark>arrived</mark> from the network and has been placed in the receive buffer at B
   2. Because TCP is not permitted to overflow the allocated buffer, we must have:
       $$ LastByteRcvd−LastByteRead≤RcvBuffer $$
   
-  3. The receive window, denoted  $rwnd$ is set to the amount of spare room in the buffer:
+  3. The receive window, denoted  <mark>$rwnd$</mark> is set to the <mark>amount of spare room</mark> in the buffer:
       $$ rwnd=RcvBuffer−[LastByteRcvd−LastByteRead] $$
 
   4. Host B tells Host A how much spare room it has in the connection buffer by placing its current value of  $rwnd$ in the receive window field of every segment it sends to A. 
@@ -522,21 +583,27 @@ loop (forever) {
   6. Host A makes sure throughout the connection’s life that:
   $$LastByteSent−LastByteAcked≤rwnd$$
 
-- The TCP specification requires Host A to continue to send segments with one data byte when <mark>B’s receive window is zero</mark>. These segments will be acknowledged by the receiver. Eventually the buffer will begin to empty and the acknowledgments will contain <mark>a nonzero  rwnd value</mark>.
+- The TCP specification requires Host A to continue to send segments with one data byte when <mark>B’s receive window is zero</mark>. These segments will be acknowledged by the receiver. Eventually the buffer will begin to empty and the acknowledgments will contain <mark>a nonzero  $rwnd$ value</mark>.
+
+> ### 3.3.3 TCP Three-Way Handshake
+
 - How The Three-way Handshaking Works:
   ![Three_Way_Handshake](/images/computer_networking_topdown/THREE_WAY_HANDSHAKE.png)
-  1. The client-side TCP first sends a special TCP segment to the server-side TCP. This special segment contains <mark>no application-layer data</mark>. But one of the flag bits in the segment’s header , <mark>the SYN bit</mark>, is set to 1.  For this reason, this special segment is referred to as a <mark>SYN segment</mark>. In addition, the client <mark>randomly</mark> chooses an initial sequence number ( client_isn) and puts this number in the sequence number field of the initial TCP SYN segment. This segment is encapsulated within an IP datagram and sent to the server.
-  2. Once the IP datagram containing the TCP SYN segment arrives at the server host (assuming it does arrive!), the server extracts the TCP SYN segment from the datagram, <mark>allocates the TCP buffers and variables</mark> to the connection, and sends a <mark>connection-granted segment</mark> to the client TCP.The connection-granted segment is referred to as a SYNACK segment.This connection-granted segment also contains <mark>no application-layer data</mark>. However, it does contain three important pieces of information in the segment header:
-    - the SYN bit is set to 1.
-    - the acknowledgment field of the TCP segment header is set to $client_isn+1$
-    - the server chooses its own initial sequence number ( server_isn) and puts this value in the sequence number field of the TCP segment header
+  1. The client-side TCP first sends a special TCP segment to the server-side TCP. This special segment contains <mark>no application-layer data</mark>. But one of the flag bits in the segment’s header , <mark>the SYN bit</mark>, is set to 1.  For this reason, this special segment is referred to as a <mark>SYN segment</mark>. In addition, the client <mark>randomly</mark> chooses an <mark>initial sequence number ($client_isn$)</mark> and puts this number in the <mark>sequence number field</mark> of the initial TCP SYN segment. This segment is encapsulated within an IP datagram and sent to the server.
+  2. Once the IP datagram containing the TCP SYN segment arrives at the server host (assuming it does arrive!), the server extracts the TCP SYN segment from the datagram, <mark>allocates the TCP buffers and variables</mark> to the connection, and sends a <mark>connection-granted segment</mark> to the client TCP.The connection-granted segment is referred to as a <mark>SYNACK</mark> segment.This connection-granted segment also contains <mark>no application-layer data</mark>. However, it does contain three important pieces of information in the segment header:
+       - the SYN bit is set to 1.
+       - the acknowledgment field of the TCP segment header is set to <mark>$client_isn+1$</mark>
+       - the server chooses its own <mark>initial sequence number (server_isn)</mark> and puts this value in the <mark>sequence number field</mark> of the TCP segment header
   3. Upon receiving the SYNACK segment, the client also <mark>allocates buffers and variables</mark> to the connection. The client host then sends the server yet another segment; this last segment acknowledges the server’s connection-granted segment (the client does so by putting the value <mark>server_isn+1 in the acknowledgment field</mark> of the TCP segment header). The <mark>SYN bit is set to zero</mark>, since the connection is established. This third stage of the three-way handshake may carry <mark>client-to-server data</mark> in the segment payload.
 
-- TCP Closing
+
+> ### 3.3.4 TCP Closing
+
+
 
 ![TCP_closing](/images/computer_networking_topdown/tcp_close.png)
 
-  1. The client application process issues a close command. This causes the client TCP to send a special TCP segment to the server process. This special segment has a flag bit in the segment’s header, <mark>the FIN bit </mark>, set to 1.
+  1. The client application process issues a <mark>close command</mark>. This causes the client TCP to send a special TCP segment to the server process. This special segment has a flag bit in the segment’s header, <mark>the FIN bit </mark>, set to 1.
   2. When the server receives this segment, it sends the client an acknowledgment segment in return. The server then sends its own shutdown segment, which has <mark>the FIN bit</mark> set to 1.
   3. Finally, the client acknowledges the server’s shutdown segment. At this point, all the resources in the two hosts are now deallocated.
 
@@ -547,8 +614,9 @@ loop (forever) {
 
 ![server_side](/images/computer_networking_topdown/server_states.png)
 
-- RST Segment:suppose a host receives a TCP SYN packet with destination port  which it is not accepting connections on . Then the host will send a special reset segment to the source. This TCP segment has the RST flag bit set to 1.
+- RST Segment:suppose a host receives a TCP SYN packet with destination port  which it is not accepting connections on . Then the host will send a special reset segment to the source. This TCP segment has the <mark>RST flag bit</mark> set to 1.
 
+> ### 3.3.5 TCP Congestion Control
 
 - Costs of Congestion:
   1. <mark>large queuing delays</mark> are experienced as the packet-arrival rate nears the link capacity.
@@ -563,8 +631,8 @@ loop (forever) {
 ![nacg](/images/computer_networking_topdown/networkassist.png)
 
 - The TCP congestion-control mechanism
-operating at the sender keeps track of an additional variable, the congestion window,denoted  $cwnd$.
--  At the beginning of every RTT, the constraint permits the sender to send  <mark>$cwnd$</mark> bytes of data into the connection; at the end of the RTT the sender receives acknowledgments for the data. Thus the sender’s <mark>send rate</mark> is roughly <mark>$cwnd/RTT bytes/sec$</mark>.
+operating at the sender keeps track of an additional variable, the congestion window,denoted  <mark>$cwnd$</mark>.
+-  At the beginning of every RTT, the constraint permits the sender to send  <mark>$cwnd$</mark> bytes of data into the connection; at the end of the RTT the sender receives acknowledgments for the data. Thus the sender’s <mark>send rate</mark> is roughly <mark>$cwnd/RTT \ bytes/sec$</mark>.
 
 - How TCP Sender Determines Sending Rate
   1. A lost segment implies congestion, and hence, the TCP sender’s rate should be decreased when a segment is lost.
@@ -589,7 +657,7 @@ operating at the sender keeps track of an additional variable, the congestion wi
 
 - Congestion Avoidance
   1. TCP adopts a more conservative approach and increases the value of  cwnd by just a single MSS every RTT.
-  2. When a timeout occurs. The value of  cwnd is set to 1 MSS, and the value of  ssthresh is updated to half the value of  cwnd when the loss event occurred.
+  2. When a timeout occurs. The value of  cwnd is set to 1 MSS, and the value of  ssthresh is updated to half the value of  cwnd when the loss event occurred.TCP transitions to Slow Start mode.
   3. Triple duplicate ACK:TCP <mark>halves the value of  cwnd</mark>  and records the value of  <mark>ssthresh</mark> to be half the value of  cwnd (adding in 3 MSS for good measure to account for the triple duplicate ACKs received). The <mark>fast-recovery</mark> state is then entered.
 
 - Fast Recovery

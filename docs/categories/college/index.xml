@@ -12,10 +12,7 @@
     <guid>https://Septemus.github.io/computer_networking_topdownapproach/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/computer_networking_topdown/CNTDA.png" referrerpolicy="no-referrer">
-            </div>Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.
-When one end system has data to send to another end system, the sending end systemsegments the data and adds header bytes to each segment. The resulting packages of information, known as packets.
-the two most prominent types in today’s Internet are routers and link-layer switches
-The sequence of communication links and packet switches traversed by a packet from the sending end system to the receiving end system is known as a route or path through the network.]]></description>
+            </div>NoteI made this note based on Computer Networking A Top-Down Approach Seventh Edition.WarningThe note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me.Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.]]></description>
 </item>
 <item>
     <title>西南交通大学计组实验-课程设计</title>
