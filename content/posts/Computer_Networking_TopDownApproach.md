@@ -676,8 +676,15 @@ operating at the sender keeps track of an additional variable, the congestion wi
 
 > # Chapter 4 Network Layer
 
-- Forwarding refers to the <mark>router-local</mark> action of transferring a packet from an input link interface to the appropriate output link interface. Forwarding takes place at very short timescales (typically a few nanoseconds), and thus is typically implemented in <mark>hardware</mark>.
--  Routing refers to the <mark>network-wide</mark> process that determines the end-to-end paths that packets take from source to destination. Routing takes place on much longer timescales (typically seconds), and as we will see is often implemented in <mark>software</mark>.
+
+
+
+
+
+
+
+- <mark>Forwarding</mark> refers to the <mark>router-local</mark> action of transferring a packet from an input link interface to the appropriate output link interface. Forwarding takes place at very short timescales (typically a few nanoseconds), and thus is typically implemented in <mark>hardware</mark>.
+-  <mark>Routing</mark> refers to the <mark>network-wide</mark> process that determines the end-to-end paths that packets take from source to destination. Routing takes place on much longer timescales (typically seconds), and as we will see is often implemented in <mark>software</mark>.
 -  A router forwards a packet by examining the value of one or more fields in the arriving packet’s header, and then using these header values to index into its <mark>forwarding table</mark>. The value stored in the forwarding table entry for those values indicates the outgoing link interface at that router to which that packet is to be forwarded.
 
 ![forwarding_tab](/images/computer_networking_topdown/forwarding_tab.png)
@@ -687,7 +694,7 @@ operating at the sender keeps track of an additional variable, the congestion wi
 - Best-effort Service:With best-effort service, packets are neither guaranteed to be received in the order in which they were sent, nor is their eventual delivery even guaranteed. There is no guarantee on the end-to-end delay nor is there a minimal bandwidth guarantee. 
 
 
-- Router Architecture
+> ## 4.1 Router Architecture
 
 ![router_arch](/images/computer_networking_topdown/router_architecture.png)
 
@@ -722,7 +729,13 @@ operating at the sender keeps track of an additional variable, the congestion wi
     ![wfq](/images/computer_networking_topdown/weighted_fair_queueing.png)
 
 
-- The key fields in the IPv4 datagram：
+> ## 4.2 The Internet Protocol (IP)
+
+
+> ### 4.2.1 IPv4
+
+> #### 4.2.1.1 IPv4 Datagram Structure
+
 
 ![ipv4_datagram](/images/computer_networking_topdown/ipv4_datagram.png)
 
@@ -733,13 +746,24 @@ operating at the sender keeps track of an additional variable, the congestion wi
   5. Identifier, flags, fragmentation offset
   6. Time-to-live:This field is <mark>decremented by one</mark> each time the datagram is processed by a router. If the TTL field reaches 0, a router must drop that datagram.
   7. Protocol:The value of this field indicates the specific <mark>transport-layer protocol</mark> to which the data portion of this IP datagram should be passed.
-  8. Header Checksum:The header checksum is computed by treating each 2 bytes in the header as a number and summing these numbers using 1s complement arithmetic.why does TCP/IP perform error checking at both the transport and network layers?
-     - Only the <mark>IP header</mark> is checksummed at the IP layer, while the TCP/UDP checksum is computed over the <mark>entire TCP/UDP segment</mark>.
-     - TCP/UDP and IP do not necessarily both have to belong to the same <mark>protocol stack</mark>. TCP can, in principle, run over a different network-layer protocol and IP can carry data that will not be passed to TCP/UDP.
+  8. Header Checksum:The header checksum is computed by treating each 2 bytes in the header as a number and summing these numbers using 1s complement arithmetic.
   9. Source and destination IP addresses
   10. Options
   11. Data (payload):In most circumstances, the data field of the IP datagram contains the transport-layer segment (TCP or UDP) to be delivered to the destination. However, the data field can carry <mark>other types of data</mark>, such as ICMP messages 
   
+{{< admonition type=info title="why does TCP/IP perform error checking at both the transport and network layers?" open=false >}}
+
+
+
+
+ - Only the <mark>IP header</mark> is checksummed at the IP layer, while the TCP/UDP checksum is computed over the <mark>entire TCP/UDP segment</mark>.
+ - TCP/UDP and IP do not necessarily both have to belong to the same <mark>protocol stack</mark>. TCP can, in principle, run over a different network-layer protocol and IP can carry data that will not be passed to TCP/UDP.
+
+{{< /admonition >}}
+
+
+> #### 4.2.1.2 Fragment
+
 - The maximum amount of data that a link-layer frame can carry is called the <mark>maximum transmission unit (MTU)</mark>
 - each of the links along the route between sender and destination can use <mark>different link-layer protocols</mark>, and each of these protocols can have <mark>different MTUs</mark>
 - When Does Fragment Occur:When outgoing link has an MTU that is <mark>smaller than the length of the IP datagram</mark>,the payload in the IP datagram is <mark>fragmented</mark> into two or more smaller IP datagrams,and encapsulated in a separate link-layer frame
@@ -749,6 +773,11 @@ operating at the sender keeps track of an additional variable, the congestion wi
   3. When the destination receives a series of datagrams from the same sending host, it can examine the <mark>identification numbers</mark> of the datagrams to determine which of the datagrams are actually fragments of the same larger datagram.
   4.  In order for the destination host to be absolutely sure it has received the last fragment of he original datagram, the last fragment has a <mark>flag bit set to 0</mark>, whereas all the other fragments have this flag bit set to 1.
   5.   In order for the destination host to determine whether a fragment is missing (and also to be able to reassemble the fragments in their proper order), the <mark>offset field</mark> is used to specify <mark>where the fragment fits</mark> within the original IP datagram.
+
+
+> #### 4.2.1.3 Addressing
+
+
 
 - The <mark>boundary</mark> between the host or router and the physical link is called an <mark>interface</mark>
 
@@ -776,6 +805,10 @@ operating at the sender keeps track of an additional variable, the congestion wi
   1.  Suppose a user sitting in a home network behind host 10.0.0.1 requests a Web page on some Web server (port 80) with IP address 128.119.40.186. The host 10.0.0.1 assigns the (arbitrary) source port number 3345 and sends the datagram into the LAN.
   2.  The NAT router receives the datagram, generates a <mark>new source port number</mark> 5001 for the datagram, <mark>replaces the source IP address with its WAN-side IP address</mark> 138.76.29.7, and <mark>replaces the original source port number 3345 with the new source port number</mark> 5001.NAT in the router also <mark>adds an entry to its NAT translation table</mark>.
   3.  The Web server responds with a datagram whose destination address is the IP address of the NAT router, and whose destination port number is 5001. When this datagram arrives at the NAT router, the router indexes the <mark>NAT translation table</mark> using the destination IP address and destination port number to obtain the appropriate IP address (10.0.0.1) and destination port number (3345) for the browser in the home network. The router then <mark>rewrites the datagram’s destination address and destination port number</mark>, and forwards the datagram into the home network.
+
+
+
+> ### 4.2.2 IPv6 
 
 - IPv6 Important Changes:
   1. Expanded addressing capabilities
