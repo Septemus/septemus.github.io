@@ -845,25 +845,28 @@ operating at the sender keeps track of an additional variable, the congestion wi
 
 - A centralized routing algorithm computes the least-cost path between a source and destination using complete, <mark>global knowledge</mark> about the network.Algorithms with global state information are often referred to as <mark>link-state (LS) algorithms</mark>, since the algorithm must be aware of the cost of each link in the network.
 
-- In a decentralized routing algorithm, the calculation of the least-cost path is carried out in iterative, distributed manner by the routers. <mark>No node has complete information</mark> about the costs of all network links. Instead, each node begins with only the knowledge of the costs of its own directly attached links.The decentralized routing algorithm we’ll study  is called a <mark>distance-vector (DV) algorithm</mark>, because each node maintains a vector of estimates of the costs (distances) to all other nodes in the network
-
-- A second broad way to classify routing algorithms is according to whether they are <mark> or dynamic</mark>. In  routing algorithms, routes change very <mark>slowly over time</mark>. Dynamic routing algorithms change the routing paths as the <mark>network traffic loads or topology change</mark>. A dynamic algorithm can be run either periodically or in direct response to topology or link cost changes.
-- A third way to classify routing algorithms is according to whether they are <mark>load-sensitive or load- insensitive</mark>. In a load-sensitive algorithm, link costs vary dynamically to reflect the current level of congestion in the underlying link.load-insensitive does not explicitly reflect its current (or recent past) level of congestion.
 
 -  In a link-state algorithm, the network topology and all link costs are known.In practice this is accomplished by having each node <mark>broadcast</mark> link-state packets to all other nodes in the network, with each link-state packet containing the <mark>identities and costs of its attached links</mark>. The result of the nodes’ broadcast is that all nodes have an <mark>identical and complete view of the network</mark>. Each node can then run the LS algorithm and compute the same set of least-cost paths as every other node
 
+
 - Popular LS-Algorithm:Dijkstra’s algorithm,Prim’s algorithm
+
+
+- In a decentralized routing algorithm, the calculation of the least-cost path is carried out in iterative, distributed manner by the routers. <mark>No node has complete information</mark> about the costs of all network links. Instead, each node begins with only the knowledge of the costs of its own directly attached links.The decentralized routing algorithm we’ll study  is called a <mark>distance-vector (DV) algorithm</mark>, because each node maintains a vector of estimates of the costs (distances) to all other nodes in the network
+
+> ## 5.1 Distance-Vector Algorithm
+
 
 - How does DV algorithm work:
   1. each node x maintains the following routing information:
-      1. For each neighbor v, the cost c(x, v) from x to directly attached neighbor, v
-      2. Node x’s distance vector, that is,$D_x=[D_x(y):y \ in \ N]$ , containing x’s estimate of its cost to all destinations, y, in N
-      3. The distance vectors of each of its neighbors, that is $D_v=[D_v(y):y \ in \ N]$,  for each neighbor v of x
-  2.  each node sends a copy of its distance vector to each of its neighbors.
+      - For each neighbor v, the cost <mark>$c(x, v)$</mark> from x to directly attached neighbor, v.
+      - Node x’s distance vector, that is,<mark>$D_x=[D_x(y):y \ in \ N]$</mark> , containing x’s estimate of its cost to all destinations, y, in N
+      - The distance vectors of each of its <mark>neighbors</mark>, that is $D_v=[D_v(y):y \ in \ N]$,  for each neighbor v of x
+  2.  Each node sends a copy of its distance vector to each of its <mark>neighbors</mark>.
   3.  When a node x receives a new distance vector from any of its neighbors w, it saves w’s distance vector, and then uses the <mark>Bellman-Ford equation</mark> to update its own distance vector as follows:
-  $$ D_x(y)=minv{c(x,v)+D_v(y)} \qquad for \ each \ node \ y  \ in \ N $$
-  1. If node x’s distance vector has changed as a result of this update step, node x will then send its updated,distance vector to each of its neighbors, which can in turn update their own distance vectors.
-  2. When a node running the DV algorithm detects a change in the link cost from itself to a neighbor , it updates its distance vector  and, if there’s a change in the cost of the least-cost path, <mark>informs its neighbors</mark> of its new distance vector.
+  $$D_x(y)=minv \left\{ c(x,v)+D_v(y) \right\} \qquad for \ each \ node \ y  \ in \ N$$
+  4. If node x’s distance vector has changed as a result of this update step, node x will then send its updated,distance vector to each of its neighbors, which can in turn update their own distance vectors.
+  5. When a node running the DV algorithm detects a change in the link cost from itself to a neighbor , it updates its distance vector  and, if there’s a change in the cost of the least-cost path, <mark>informs its neighbors</mark> of its new distance vector.
 
 ```javascript
  Initialization:
@@ -891,16 +894,7 @@ operating at the sender keeps track of an additional variable, the congestion wi
 ![dv_eg](/images/computer_networking_topdown/dv_eg.png)
 
 
-- When Does count-to-infinity Problem Occurs:
-![c2i](/images/computer_networking_topdown/c2i.png)
-
-1.  Before the link cost changes,Dy(x)=4, Dy(z)=1, Dz(y)=1, Dz(x)=5.At time t0, y detects the link cost change (the cost has changed from 4 to 60). y computes its new minimum-cost path to x to have a cost of $Dy(x)=min(c(y,x)+Dx(x), c(y,z)+Dz(x))=min(60+0,1+5)=6$ . Of course, with our global view of the network, we can see that this new cost via z is wrong. But the only information node y has is that its direct cost to x is 60 and that z has last told y that z could get to x with a cost of 5. So in order to get to x, y would now route through z, fully expecting that z will be able to get to x with a cost of 5. As of t  we have a routing loop—in order to get to x, y routes through z, and z routes through y. A routing loop is like a black hole—a packet destined for x arriving at y or z as of t  will bounce back and forth between these two nodes forever (or until the forwarding tables are changed).
-2.  Since node y has computed a new minimum cost to x, it informs z of its new distance vector at time
-t .
-3.  Sometime after t , z receives y’s new distance vector, which indicates that y’s minimum cost to x is 6.z knows it can get to y with a cost of 1 and hence computes a new least cost to x of Since z’s least cost to x has increased, it then informs y of its new distance vector at t .
-4. In a similar manner, after receiving z’s new distance vector, y determines  and sends z its distance vector. z then determines  and sends y its distance vector, and so on
-
-- Poisoned Reverse:if z <mark>routes through y</mark> to get to destination x, then z will advertise <mark>to y</mark> that its distance to x is <mark>infinity</mark>, that is, z will advertise to y that $D_z(x)=\inf$
+> ## 5.2 Link-State Algorithm
 
 - autonomous ­systems (ASs):Routers within the same AS all run the <mark>same routing algorithm and have information about each other</mark>. The routing algorithm ­running within an autonomous system is called an <mark>intra-autonomous system routing ­protocol</mark>.
 - An autonomous system is identified by its globally unique <mark>autonomous system number (ASN)</mark>
@@ -908,18 +902,20 @@ t .
 - OSPF is a <mark>link-state</mark> protocol that uses flooding of link-state information and a <mark>Dijkstra’s least-cost path algorithm</mark>.
 -  With OSPF, each router constructs a <mark>complete topological map (that is, a graph) of the entire autonomous system</mark>. Each router then locally runs Dijkstra’s shortest-path algorithm to determine a shortest-path tree to all subnets, with itself as the root node. Individual link costs are configured by the network administrator.
 -  With OSPF, a router <mark>broadcasts</mark> routing information to all other routers in the autonomous system, <mark>not just to its neighboring routers</mark>. A router broadcasts link-state information whenever there is a <mark>change in a link’s state</mark> (for example, a change in cost or a change in up/down status). It also broadcasts a link’s state periodically (at least once every 30 minutes), <mark>even if the link’s state has not changed</mark>.
--  OSPF advertisements are contained in OSPF messages that are carried directly by IP, with an upper-layer protocol of 89 for OSPF. Thus, the OSPF protocol must itself implement functionality such as <mark>reliable message transfer</mark> and <mark>link-state broadcast</mark>.
+- OSPF advertisements are contained in <mark>OSPF messages</mark> that are carried directly by IP, with an upper-layer protocol of 89 for OSPF. Thus, the OSPF protocol must itself implement functionality such as <mark>reliable message transfer</mark> and <mark>link-state broadcast</mark>.
 
 - Some of the advances embodied in OSPF include the following:
-  1. Security: Exchanges between OSPF routers (for example, link-state updates) can be authenticated. With authentication, only trusted routers can participate in the OSPF protocol within an AS.Two types of authentication can be configured— simple and MD5
+  1. Security: Exchanges between OSPF routers (for example, link-state updates) can be authenticated. With authentication, only trusted routers can participate in the OSPF protocol within an AS.
   2. Multiple same-cost paths:When multiple paths to a destination have the same cost, OSPF allows multiple paths to be used
   3. Support for hierarchy within a single AS
 
 
+> ## 5.3 Border Gateway Protocol
+
 - In the Internet, all ASs run <mark>the same inter-AS routing protocol</mark>, called the <mark>Border Gateway Protocol</mark>, more commonly known as BGP
 - In BGP, packets are not routed to a specific destination address, but instead to <mark>CIDRized prefixes</mark>, with each prefix representing a <mark>subnet or a collection of subnets</mark>.
 
-- Thus, a router’s forwarding table will have entries of the form (x, I), where x is a <mark>prefix</mark> (such as 138.16.68/22) and I is an <mark>interface number</mark> for one of the router’s interfaces.
+- Thus, a router’s forwarding table will have entries of the form (x, I), where x is a <mark>prefix</mark> and I is an <mark>interface number</mark> for one of the router’s interfaces.
 
 - As an inter-AS routing protocol, BGP provides each router a means to:
   1.  Obtain prefix reachability information from <mark>neighboring ASs</mark>. In particular, BGP allows each subnet to <mark>advertise its existence to the rest of the Internet</mark>.
@@ -958,6 +954,9 @@ t .
 
 - How To Prevent multi-homed access ISP from acting as an intermidiate AS:It advertises  that <mark>it has no paths to any other destinations except itself</mark>
 
+
+> ## 5.4 Software Defined Network
+
 - Four key characteristics of an SDN architecture can be identified:
   1. Flow-based forwarding. Packet forwarding by SDN-controlled switches can be based on any number of <mark>header field values</mark> in the transport-layer, network-layer, or link-layer header.
   2. <mark>Separation</mark> of data plane and control plane
@@ -990,6 +989,8 @@ t .
 ![sdn_state_change](/images/computer_networking_topdown/sdn_shortest_path.png)
 
 
+> ## 5.5 Internet Control Message Protocol 
+
 - The Internet Control Message Protocol (ICMP), specified in [RFC 792], is used by hosts and routers to communicate network-layer information to each other.
 
 - ICMP messages are carried as IP payload.
@@ -998,18 +999,25 @@ t .
 
 ![ICMP_types](/images/computer_networking_topdown/ICMP_types.png)
 
+> ### 5.5.1 Ping
+
 - How Does Ping Program Work:
   1. The well-known ping program sends an ICMP type 8 code 0 message to the specified host. 
   2. The destination host, seeing the echo request, sends back a type 0 code 0 ICMP echo reply.
 
 - Most TCP/IP implementations support the ping server directly in the operating system; that is, the server is not a process.
 
+> ### 5.5.2 Traceroute
+
 - How Does Traceroute Program Work:
   1. Traceroute in the source sends aseries of ordinary IP datagrams to the destination. Each of these datagrams carries a <mark>UDP</mark> segment with an <mark>unlikely UDP port number</mark>. The first of these datagrams has a TTL of 1, the second of 2, the third of 3, and so on. The source also starts timers for each of the datagrams.
-  2. When the nth datagram arrives at the nth router, the nth router observes that the TTL of the datagram has just <mark>expired</mark>. According to the rules of the IP protocol, the router <mark>discards</mark> the datagram and sends an ICMP warning message to the source (type 11 code 0). This warning message includes the name of the router and its IP address.
+  2. When the nth datagram arrives at the nth router, the nth router observes that the TTL of the datagram has just <mark>expired</mark>. According to the rules of the IP protocol, the router <mark>discards</mark> the datagram and sends an <mark>ICMP warning message</mark> to the source (type 11 code 0). This warning message includes the name of the router and its IP address.
   3. When this ICMP message arrives back at the source, the source obtains the round-trip time from the timer and the name and IP address of the nth router from the ICMP message
   4. one of the datagrams will eventually make it all the way to the destination host. Because this datagram contains a UDP segment with an unlikely port number, the destination host sends a <mark>port unreachable ICMP message (type 3 code 3)</mark> back to the source.
   5.  When the source host receives this particular ICMP message, it knows it does not need to send additional probe packets. 
+
+
+> ## 5.6 Network Management
 
 - the key components of network management:
 
@@ -1019,7 +1027,7 @@ t .
 
   1. The managing server is an application, controls the collection, processing, analysis, and/or display of network management information.
   2. A managed device is a piece of network equipment (including its software) that resides on a managed network.
-  3. Each managed object within a managed device associated information that is collected into a Management Information Base (MIB)
+  3. Each managed object within a managed device associated information that is collected into a <mark>Management Information Base (MIB)</mark>
   4. Also resident in each managed device is a network management agent, a process running in the managed device that <mark>communicates with the managing server</mark>
   5. network ­management protocol
 
@@ -1063,44 +1071,69 @@ t .
     1. On the sending side  : The software components of  the link layer implement higher-level link-layer functionality such as assembling link-layer addressing information and activating the controller hardware. 
     2. On the receiving side, link-layer software responds to controller interrupts (e.g., due to the receipt of one or more frames), handling error conditions and passing a datagram up to the network layer. 
 
-
-- At the sending node, data, D, to be protected against bit errors is augmented with <mark>error-detection and -correction bits (EDC)</mark>.Both D and EDC are sent to the receiving node in a <mark>link-level frame</mark>. At the receiving node, a sequence of bits, D′ and EDC′ is received.The receiver’s challenge is to determine whether or not D′ is the same as the original D, given that it has only received D′ and EDC′.
-
-- Generally, more sophisticated error-detection and-correction techniques (that is, those that have a smaller probability of allowing undetected bit errors) incur a <mark>larger overhead</mark>—more computation is needed to compute and transmit a larger number of error-detection and -correction bits.
-- Parity Checks:Suppose that the information to be sent, D , has d bits. In an <mark>even parity scheme</mark>, the sender simply includes one additional bit and chooses its value such that <mark>the total number of 1s in the  bits (the original information plus a parity bit) is even</mark>. For odd parity schemes, the parity bit value is chosen such that <mark>there is an odd number of 1s</mark>.
-
-![parity_check](/images/computer_networking_topdown/parity_check.png)
-
-- The receiver need only count the number of 1s in the received  bits. If an odd number of 1-valued bits are found with an even parity scheme(or vice versa), the receiver knows that at least one bit error has occurred.
-
-- The ability of the receiver to both <mark>detect and correct</mark> errors is known as <mark>forward error correction (FEC)</mark>
-
-- The Internet checksum:
-    1. Bytes of data are treated as <mark>16-bit integers<mark> and summed. The <mark>1s complement</mark> of this sum then forms the Internet checksum that is carried in the segment header.
-    2.  the receiver checks the checksum by taking the  the sum of the received data (including the checksum) and checking whether the result is all 1 bits. If <mark>any of the bits are 0</mark>, an error is indicated.
-
-- Cyclic Redundancy Check (CRC) codes operate as follows:
-    1. Consider the d-bit piece of data, D, that the sending node wants to send to the receiving node. 
-    2. The sender and receiver must first agree on an  bit pattern, known as a <mark>generator</mark>, which we will denote as G.We will require that the leftmost bit of G be a 1.
-    3. For a given piece of data, D, the sender will choose <mark>r additional bits, R</mark>, and append them to D such that the resulting  bit pattern  is exactly <mark>divisible by G</mark> (i.e., has no remainder) using modulo-2 arithmetic.The sender calculate R like this:$R=remainder(D/(2^r\times G))$
-    4. The receiver divides the d+r  received bits by G. If the remainder is <mark>nonzero</mark>, the receiver knows that an error has occurred; otherwise the data is accepted as being correct
-
-
-
 - There are two types of network links: <mark>point-to-point links</mark> and <mark>broadcast links</mark>. 
     1. A point-to-point link consists of a <mark>single sender</mark> at one end of the link and a <mark>single receiver</mark> at the other end of the link.
     2. A broadcast link, can have <mark>multiple sending and receiving nodes</mark> all connected to the <mark>same, single, shared broadcast channel</mark>.
 
+
+> ## 6.1 Error-Detection and Correction
+
+- At the sending node, data, D, to be protected against bit errors is augmented with <mark>error-detection and -correction bits (EDC)</mark>.Both D and EDC are sent to the receiving node in a <mark>link-level frame</mark>. At the receiving node, a sequence of bits, D′ and EDC′ is received.The receiver’s challenge is to determine whether or not D′ is the same as the original D, given that it has only received D′ and EDC′.
+
+- The ability of the receiver to both <mark>detect and correct</mark> errors is known as <mark>forward error correction (FEC)</mark>
+
+
+> ### 6.1.1 Parity Check
+
+- Suppose that the information to be sent, D , has d bits. In an <mark>even parity scheme</mark>, the sender simply includes one additional bit and chooses its value such that <mark>the total number of 1s in the  bits (the original information plus a parity bit) is even</mark>. For odd parity schemes, the parity bit value is chosen such that <mark>there is an odd number of 1s</mark>.
+
+  ![parity_check](/images/computer_networking_topdown/parity_check.png)
+
+- The receiver need only count the <mark>number of 1s</mark> in the received  bits. If an odd number of 1-valued bits are found with an even parity scheme(or vice versa), the receiver knows that at least one bit error has occurred.
+
+
+> ### 6.1.2 Checksum
+
+  1. Bytes of data are treated as <mark>16-bit integers<mark> and summed. The <mark>1s complement</mark> of this sum then forms the Internet checksum that is carried in the segment header.
+  2.  the receiver checks the checksum by taking the  the sum of the received data (including the checksum) and checking whether the result is all 1 bits. If <mark>any of the bits are 0</mark>, an error is indicated.
+
+
+> ### 6.1.3 Cyclic Redundancy Check (CRC)
+
+  1. Consider the d-bit piece of data, D, that the sending node wants to send to the receiving node. 
+  2. The sender and receiver must first agree on an  bit pattern, known as a <mark>generator</mark>, which we will denote as G.We will require that the leftmost bit of G be a 1.
+  3. For a given piece of data, D, the sender will choose <mark>r additional bits, R</mark>, and append them to D such that the resulting  bit pattern  is exactly <mark>divisible by G</mark> (i.e., has no remainder) using modulo-2 arithmetic.The sender calculate R like this:$R=remainder(D/(2^r\times G))$
+  4. The receiver divides the d+r  received bits by G. If the remainder is <mark>nonzero</mark>, the receiver knows that an error has occurred; otherwise the data is accepted as being correct
+
+> ## 6.2 Multiple Access Links
+
+
 - The multiple access problem:Because all nodes are capable of transmitting frames, more than two nodes can transmit frames at the same time. When this happens, all of the nodes receive multiple frames at the same time; that is, the transmitted frames <mark>collide</mark> at all of the receivers,which are useless.
 - In order to ensure that the broadcast channel performs useful work when multiple nodes are active, it is necessary to somehow <mark>coordinate the transmissions of the active nodes</mark>. This coordination job is the responsibility of the <mark>multiple access protocol</mark>.
 
-- Channel Partitioning Protocols:
-    1. TDM divides time into time frames and further divides each time frame into N time slots. Each time slot is then assigned to one of the N nodes. Whenever a node has a packet to send, it transmits the packet’s bits during its assigned time slot in the revolving TDM frame. Typically, slot sizes are chosen so that a single packet can be transmitted during a slot time.
-    2. FDM divides the R bps channel into different frequencies (each with a bandwidth of R/N) and assigns each frequency to one of the N nodes. FDM thus creates N smaller channels of R/N bps out of the single, larger R bps channel
-    3. CDMA assigns a different code to each node. Each node then uses its unique code to encode the data bits it sends.receivers correctly receive a sender’s encoded data bits (assuming thereceiver knows the sender’s code)
+> ### 6.2.1 Channel Partitioning Protocols 
 
-- Random Access Protocols:In a random access protocol, a transmitting node always transmits at the <mark>full rate</mark> of the channel, namely, R bps. When there is a collision, each node involved in the collision <mark>repeatedly retransmits</mark> its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn’t necessarily retransmit the frame right away. Instead it waits a <mark>random delay</mark> before retransmitting the frame.
-- one of the simplest random access protocols, the slotted ALOHA protocol. In our description of slotted ALOHA, we assume the following:
+
+> #### 6.2.1.1 TDM
+
+TDM divides time into time frames and further divides each time frame into N time slots. Each time slot is then assigned to one of the N nodes. Whenever a node has a packet to send, it transmits the packet’s bits during its assigned time slot in the revolving TDM frame. Typically, slot sizes are chosen so that a single packet can be transmitted during a slot time.
+
+> #### 6.2.1.2 FDM
+
+FDM divides the R bps channel into different frequencies (each with a bandwidth of R/N) and assigns each frequency to one of the N nodes. FDM thus creates N smaller channels of R/N bps out of the single, larger R bps channel.
+
+> #### 6.2.1.3 Code Division Multiple Access
+
+CDMA assigns a different code to each node. Each node then uses its unique code to encode the data bits it sends.receivers correctly receive a sender’s encoded data bits (assuming the receiver knows the sender’s code)
+
+
+> ### 6.2.2 Random Access Protocols
+
+In a random access protocol, a transmitting node always transmits at the <mark>full rate</mark> of the channel, namely, R bps. When there is a collision, each node involved in the collision <mark>repeatedly retransmits</mark> its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn’t necessarily retransmit the frame right away. Instead it waits a <mark>random delay</mark> before retransmitting the frame.
+
+> #### 6.2.2.1 Slotted ALOHA Protocol
+
+- In our description of slotted ALOHA, we assume the following:
     1. All frames consist of exactly L bits.
     2. Time is divided into slots of size L/R seconds (that is, a slot equals the time to transmit one frame).
     3. Nodes start to transmit frames only at the beginnings of slots.
@@ -1117,20 +1150,22 @@ t .
     1. a certain fraction of the slots will have collisions and will therefore be “wasted.”
     2. another fraction of the slots will be empty because all active nodes <mark>refrain from transmitting</mark> as a result of the probabilistic transmission policy.
 
-- ALOHA: 
-    1. In pure ALOHA, <mark>when a frame first arrives</mark> , the node immediately transmits the frame in its entirety into the broadcast channel.
-    2. If a transmitted frame experiences a collision with one or more other transmissions, the node will then immediately (after completely transmitting its collided frame) <mark>retransmit the frame with probability p</mark>.
-    3. Otherwise, the node <mark>waits for a frame transmission time</mark>. After this wait, it then <mark>transmits the frame with probability p</mark>, or <mark>waits</mark> (remaining idle) for another frame time <mark>with probability 1 – p</mark>.
+> #### 6.2.2.2 ALOHA Protocol
 
+
+  1. In pure ALOHA, <mark>when a frame first arrives</mark> , the node immediately transmits the frame in its entirety into the broadcast channel.
+  2. If a transmitted frame experiences a collision with one or more other transmissions, the node will then immediately (after completely transmitting its collided frame) <mark>retransmit the frame with probability p</mark>.
+  3. Otherwise, the node <mark>waits for a frame transmission time</mark>. After this wait, it then <mark>transmits the frame with probability p</mark>, or <mark>waits</mark> (remaining idle) for another frame time <mark>with probability 1 – p</mark>.
+
+> #### 6.2.2.3 Carrier Sense Multiple Access (CSMA)
 
 -  Carrier sensing—a node listens to the channel before transmitting. If a frame from another node is currently being transmitted into the channel, a node then <mark>waits until it detects no transmissions for a short amount of time</mark> and then begins transmission
 -  Collision detection—a transmitting node listens to the channel while it is transmitting. If it detects that another node is transmitting an interfering frame, it <mark>stops transmitting and waits a random amount of time</mark> before repeating the sense-and-transmit-when-idle cycle.
 
 - channel propagation delay of a broadcast channel:the time it takes for a signal to propagate from one of the nodes to another.will play a crucial role in determining its performance. The longer this propagation delay, the larger the chance that a carrier-sensing node is not yet able to sense a transmission that has already begun at another node in the network
 
-- Carrier Sense Multiple Access with Collision Dection (CSMA/CD):When a node performs collision detection, it ceases transmission as soon as it detects a collision
 
-![csma/cd](/images/computer_networking_topdown/csma_cd.png)
+  ![csma/cd](/images/computer_networking_topdown/csma_cd.png)
 
 
 - CSMA/CD from the perspective of an <mark>adapter</mark> (in a node) attached to a broadcast channel:
@@ -1144,20 +1179,18 @@ t .
 
 - The binary exponential backoff algorithm:when transmitting a frame that has <mark>already experienced n collisions</mark>, a node chooses the value of K <mark>at random</mark> from $\{ 0,1,2,...2^{n−1} \}$,For <mark>Ethernet</mark>, the actual amount of time a node waits is $K\times the \ amount \ of \ time \ needed \ to \ send \ 512 \ bits \ into \ the \ Ethernet$, the maximum value that n can take is capped at 10
 
-- Taking-Turns Protocols:
-    1. polling protocol. The polling protocol requires one of the nodes to be designated as a master node. The master node polls each of the nodes in a round-robin fashion. In particular, the master node first sends a message to node 1, saying that it (node 1) can transmit up to some maximum number of frames. After node 1 transmits some frames, the master node tells node 2 it (node 2) can transmit up to the maximum number of frames. (The master node can determine when a node has finished sending its frames by observing the lack of a signal on the channel.) The procedure continues in this manner, with <mark>the master node polling each of the nodes in a cyclic manner</mark>.
-    2. token-passing protocol. In this protocol there is <mark>no master node</mark>. A small, special-purpose frame known as a <mark>token</mark> is exchanged among the nodes in some fixed order. For example, node 1 might always send the token to node 2, node 2 might always send the token to node 3, and node N might always send the token to node 1. When a node receives a token, it holds onto the token <mark>only if it has some frames to transmit</mark>; otherwise, it immediately forwards the token to the next node. If a node does have frames to transmit when it receives the token, it sends up to a maximum number of frames and then forwards the token to the next node.
+> ### 6.2.3 Taking-Turns Protocols 
 
 
-- DOCSIS: The Link-Layer Protocol for Cable Internet Access: DOCSIS uses FDM to divide the downstream (CMTS to modem) and upstream (modem to CMTS) network segments into multiple <mark>frequency channels</mark>(all broadcast chanels),each upstream channel is divided into intervals of time (TDM-like).
+  1. polling protocol. The polling protocol requires one of the nodes to be designated as a <mark>master node</mark>. The master node polls each of the nodes in a round-robin fashion. In particular, the master node first sends a message to node 1, saying that it (node 1) can transmit up to some maximum number of frames. After node 1 transmits some frames, the master node tells node 2 it (node 2) can transmit up to the maximum number of frames. (The master node can determine when a node has finished sending its frames by observing the lack of a signal on the channel.) The procedure continues in this manner, with <mark>the master node polling each of the nodes in a cyclic manner</mark>.
+  2. token-passing protocol. In this protocol there is <mark>no master node</mark>. A small, special-purpose frame known as a <mark>token</mark> is exchanged among the nodes in some fixed order. For example, node 1 might always send the token to node 2, node 2 might always send the token to node 3, and node N might always send the token to node 1. When a node receives a token, it holds onto the token <mark>only if it has some frames to transmit</mark>; otherwise, it immediately forwards the token to the next node. If a node does have frames to transmit when it receives the token, it sends up to a maximum number of frames and then <mark>forwards the token to the next node</mark>.
 
-![DOCSIS](/images/computer_networking_topdown/DOCSIS.png)
 
-- How does the CMTS know which cable modems have data to send in the first place? This is accomplished by having cable modems send <mark>mini-slot-request frames</mark> to the CMTS during a special set of interval mini-slots that are dedicated for this purpose,These mini-slot-request frames are transmitted in a <mark>random access manner</mark> and so may collide with each other.When a collision is inferred, a cable modem uses <mark>binary exponential backoff</mark> to defer the retransmission of its mini-slot-request frame to a future time slot. 
+> ## 6.3 Switched Local Area Networks
 
 - In truth, it is not hosts and routers that have link-layer addresses but rather their <mark>adapters</mark> (that is, network interfaces) that have link-layer addresses. 
 
-- <mark>link-layer switches do not have link- layer addresses</mark> associated with their interfaces that connect to hosts and routers
+- <mark>link-layer switches do not have link-layer addresses</mark> associated with their interfaces that connect to hosts and routers
 
 - A link-layer address is variously called a LAN address, a physical address, or a MAC address.
 
@@ -1168,14 +1201,17 @@ t .
 
 - An adapter’s MAC address has a <mark>flat structure</mark> (as opposed to a hierarchical structure) and <mark>doesn’t change</mark> no matter where the adapter goes.
 
-- Sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending adapter inserts a special <mark>MAC broadcast address</mark> into the destination address field of the frame. For LANs that use 6-byte addresses (such as Ethernet and 802.11), the broadcast address is a string of 48 consecutive 1s (that is, FF-FF-FF-FF-FF- FF in hexadecimal notation)
+- Sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending adapter inserts a special <mark>MAC broadcast address</mark> into the destination address field of the frame. For LANs that use 6-byte addresses (such as Ethernet and 802.11), the broadcast address is a string of 48 consecutive 1s (that is, FF-FF-FF-FF-FF-FF in hexadecimal notation)
+
+
+> ### 6.3.1  Address Resolution Protocol (ARP)
 
 - Address Resolution Protocol (ARP):translate between network-layer addresses (for example, Internet IP addresses) and link-layer addresses (that is, MAC addresses)
 
 - ARP resolves IP addresses only for hosts and router interfaces <mark>on the same subnet</mark>.
 
 - Each host and router has an <mark>ARP table</mark> in its memory, which contains mappings of IP addresses to MAC addresses. 
--  The ARP table also contains a <mark>time- to-live (TTL)</mark> value, which indicates when each mapping will be deleted from the table.
+-  The ARP table also contains a <mark>time-to-live (TTL)</mark> value, which indicates when each mapping will be deleted from the table.
 -   A table does not necessarily contain an entry for every host and router on the subnet; some may have never been entered into the table, and others may have expired.
 
 - How does ARP work:
@@ -1192,19 +1228,22 @@ t .
     4. The router now has to determine the correct interface on which the datagram is to be forwarded.  This is done by consulting a <mark>forwarding table</mark> in the router.
     5. This interface then passes the datagram to its adapter, which encapsulates the datagram in a new frame and sends the frame into another Subnet. The destination MAC address is again acquired by ARP .
 
-- Today,Ethernet mainly uses a switch-based star topology.
-- switch is not only “collision-less” but is also a bona-fide store-and-forward packet switch
+
+> ### 6.3.2 Ethernet
+
+- Today,Ethernet mainly uses a <mark>switch-based star topology</mark>.
+- switch is not only “collision-less” but is also a  <mark>store-and-forward</mark> packet switch
 - a switch operates only up through layer 2
 
 - Ethernet Frame Structure
 ![ethernet_frame](/images/computer_networking_topdown/ethernet_frame.png)
 
-1. Data field (46 to 1,500 bytes). This field carries the IP datagram.
-2. Destination address (6 bytes)
-3. Source address (6 bytes).
-4. Type field (2 bytes): The type field permits Ethernet to multiplex and demultiplex network-layer protocols
-5. Cyclic redundancy check (CRC) (4 bytes). the purpose of the CRC field is to allow the receiving adapter, adapter B, to detect bit errors in the frame
-6. Preamble (8 bytes). The Ethernet frame begins with an 8-byte preamble field. Each of the first 7 bytes of the preamble has a value of 10101010;(this allows the receiver to set its clock) the last byte is 10101011. The first 7 bytes of the preamble serve to “wake up” the receiving adapters and to synchronize their clocks to that of the sender’s clock.The last 2 bits of the eighth byte of the preamble (the first two consecutive 1s) alert adapter B that the “important stuff” is about to come
+  1. Data field (46 to 1,500 bytes). This field carries the IP datagram.
+  2. Destination address (6 bytes)
+  3. Source address (6 bytes).
+  4. Type field (2 bytes): The type field permits Ethernet to multiplex and demultiplex network-layer protocols
+  5. Cyclic redundancy check (CRC) (4 bytes). the purpose of the CRC field is to allow the receiving adapter, adapter B, to detect bit errors in the frame
+  6. Preamble (8 bytes). For “waking up” the receiving adapters and to synchronize their clocks to that of the sender’s clock.
 
 
 
@@ -1215,6 +1254,9 @@ t .
     1. The first part of the acronym refers to <mark>the speed of the standard</mark>
     2. "BASE" refers to baseband Ethernet, meaning that the physical media <mark>only carries Ethernet traffic</mark>
     3.  The final part of the acronym refers to <mark>the physical media itself</mark>;
+
+
+> #### 6.3.2.1 Filtering And Forwarding
 
 - Filtering is the switch function that determines <mark>whether a frame should be forwarded to some interface or should just be dropped</mark>
 - Forwarding is the switch function that determines <mark>the interfaces to which a frame should be directed, and then moves the frame to those interfaces</mark>
@@ -1228,7 +1270,7 @@ t .
 
 - The switch indexes its table with <mark>the MAC address</mark>. There are three possible cases:
     1. There is <mark>no entry</mark> in the table for the address. In this case, the switch forwards copies of the frame to the output buffers preceding <mark>all interfaces except for interface it came in</mark>. In other words, if there is no entry for the destination address, the switch <mark>broadcasts</mark> the frame
-    2. There is <mark>an entry</mark> in the table, associating the with <mark>interface it came in</mark>. In this case, the frame is coming from a LAN segment that <mark>contains adapter with the MAC address of the requested MAC address</mark>. There being no need to forward the frame to any of the other interfaces, the switch performs the filtering function by <mark>discarding the frame</mark>.
+    2. There is <mark>an entry</mark> in the table, associating  with <mark>interface it came in</mark>. In this case, the frame is coming from a LAN segment that <mark>contains adapter with the MAC address of the requested MAC address</mark>. There being no need to forward the frame to any of the other interfaces, the switch performs the filtering function by <mark>discarding the frame</mark>.
     3. There is <mark>an entry</mark> in the table, associating the requested MAC address with <mark>interface different from the one it came in</mark>. In this case, the frame needs to be forwarded to the LAN segment <mark>attached to interface mentioned</mark>. The switch performs its forwarding function by putting the frame in an output buffer that precedes the interface.
  
 - How the switches implement Self-Learning ability:
@@ -1245,22 +1287,25 @@ t .
     2. Heterogeneous links:the different links in the LAN can operate at <mark>different speeds</mark> and can run over <mark>different media</mark>.
     3. Management:switch also <mark>eases network management</mark>.
 
-- Switches Versus Routers
-  1. Switches:
-    - Pros:
-        - Switches are <mark>plug-and-play</mark>
-        - Switches can also have relatively <mark>high filtering and forwarding rates</mark>.
-    - Cons:
-        - To prevent the cycling of broadcast frames, the active topology of a switched network is <mark>restricted to a spanning tree</mark>
-        - A large switched network would require <mark>large ARP tables</mark> in the hosts and routers and would generate substantial <mark>ARP traffic</mark> and processing.
-        - Switches are susceptible to <mark>broadcast storms</mark>—if one host goes haywire and transmits an endless stream of Ethernet broadcast frames, the switches will forward all of these frames, causing the entire network to collapse. 
-  2. Routers:
-    - Pros:
-        - Because network addressing is often hierarchical , packets <mark>do not normally cycle through routers</mark> even when the network has redundant paths.
-        - Another feature of routers is that they provide <mark>firewall protection</mark> against layer-2 broadcast storms.
-    - Cons:
-        - They are not plug-and-play—they and the hosts that connect to them need their <mark>IP addresses to be configured</mark> 
-        - Routers often have a <mark>larger per-packet processing time</mark> than switches, because they have to process up through the layer-3 fields.
+> #### 6.3.2.2 Switches Versus Routers
+1. Switches:
+  - Pros:
+      - Switches are <mark>plug-and-play</mark>
+      - Switches can also have relatively <mark>high filtering and forwarding rates</mark>.
+  - Cons:
+      - To prevent the cycling of broadcast frames, the active topology of a switched network is <mark>restricted to a spanning tree</mark>
+      - A large switched network would require <mark>large ARP tables</mark> in the hosts and routers and would generate substantial <mark>ARP traffic</mark> and processing.
+      - Switches are susceptible to <mark>broadcast storms</mark>—if one host goes haywire and transmits an endless stream of Ethernet broadcast frames, the switches will forward all of these frames, causing the entire network to collapse. 
+2. Routers:
+  - Pros:
+      - Because network addressing is often hierarchical , packets <mark>do not normally cycle through routers</mark> even when the network has redundant paths.
+      - Another feature of routers is that they provide <mark>firewall protection</mark> against layer-2 broadcast storms.
+  - Cons:
+      - They are not plug-and-play—they and the hosts that connect to them need their <mark>IP addresses to be configured</mark> 
+      - Routers often have a <mark>larger per-packet processing time</mark> than switches, because they have to process up through the layer-3 fields.
+
+
+> ### 6.3.3 Virtual Local Area Network(VLAN)
 
 - VLAN:a switch that supports VLANs allows <mark>multiple virtual local area networks</mark> to be defined over a <mark>single physical local area network infrastructure</mark>. Hosts within a VLAN communicate with each other as if they (and no other hosts) were connected to the switch.
 ![VLAN](/images/computer_networking_topdown/VLAN.png)
@@ -1277,7 +1322,7 @@ t .
 
 - Hosts associated with a base station are often referred to as operating in <mark>­infrastructure mode</mark>,since all traditional network services (e.g., address assignment and routing) are provided by the network to which a host is connected via the base station.
 -  In <mark>ad hoc networks</mark>, wireless hosts have no such infrastructure with which to connect. In the absence of such infrastructure, <mark>the hosts themselves</mark> must provide for services such as routing, address assignment, DNS-like name translation, and more.
--  When a mobile host moves beyond the range of one base station and into the range of another, it will change its <mark>point of attachment</mark> into the larger network,a process referred to as <mark>handoff</mark>
+-  When a mobile host moves beyond the range of one base station and into the range of another, it will change its <mark>point of attachment</mark> into the larger network,a process referred to as <mark>handoff</mark>.
 
 - At the highest level we can classify wireless networks according to two criteria: 
     1. Whether a packet in the wireless network crosses exactly <mark>one wireless hop or multiple wireless hops</mark> 
@@ -1295,26 +1340,39 @@ t .
 - The SNR(Signal Noise Ratio), measured in dB, is <mark>twenty times the ratio of the base-10 logarithm of the amplitude of the received signal to the amplitude of the noise</mark>.
 
 - Several physical-layer characteristics that are important in understanding higher-layer wireless communication protocols:
-    1. For a given modulation scheme, the higher the SNR, the lower the BER.
+    1. For a given modulation scheme, the higher the SNR, the lower the bit error rate (BER).
     2. For a given SNR, a modulation technique with a higher bit transmission rate (whether in error or not) will have a higher BER.
     3. <mark>Dynamic selection of the physical-layer modulation</mark> technique can be used to adapt the modulation technique to channel conditions.
 
+
+
+> ## 7.1 Code division multiple access (CDMA)
+
 - <mark>Code division multiple access (CDMA)</mark> belongs to the family of <mark>channel partitioning protocols</mark>.
+
+
 - In a CDMA protocol, each bit being sent is encoded by <mark>multiplying the bit by a signal</mark> (the code) that changes at a much faster rate (known as the chipping rate) than the original sequence of data bits
 - How CDMA Works:
     - Let $d_i$  be the value of the data bit for the $i$th bit slot.
     - We represent a data bit with a 0 value as <mark>-1</mark> . 
     - Each bit slot is further subdivided into <mark>M mini-slots</mark>;
-    - The CDMA code used by the sender consists of a sequence of M values,$c_m$,m=1,2,3,...M,each taking a +1 or -1 value.
+    - The CDMA code used by the sender consists of a sequence of M values, $c_m,m=1,2,3,...M$ ,each taking a +1 or -1 value.
     - Focus on the ith data bit, $d_i$ .For the mth mini-slot of the bit- transmission time of $d_i$ , the output of the CDMA encoder,$Z_{i,m}$, is the value of <mark>$d_i$  multiplied by the mth bit in the assigned CDMA code, $c_m$;</mark>
     $$ Z_{i,m} = d_i\times c_m $$
-    1. With no interfering senders, the receiver would receive the encoded bits, $Z$ , and <mark>recover the original data bit</mark>, d , by computing:
-    $$ d_i= \frac{\sum^{M}_{m=1} Z_{i,m}\cdot c_m }{M} $$
+    1. With no interfering senders, the receiver would receive the encoded bits, $Z$ , and <mark>recover the original data bit</mark>, $d$ , by computing:
+
+    <!-- d_{i}=\frac{ \sum^{M}_{m=1} Z_{i,m} \cdot c_{m} }{M}  -->
+    $$ d_{i}=\frac{\sum_{m=1}^{M} Z_{i,m} \cdot c_{m} }{M} $$
+    
+    
+    
     2. In the presence of <mark>multiple senders</mark>, sender s computes its encoded transmissions,$Z_{i,m}$, in exactly the same manner.The value received at a receiver during the $m$th mini-slot of the ith bit slot, however, is now the <mark>sum of the transmitted bits from all N senders during that mini-slot</mark>:
     $$ Z_{i,m}^{*} =\sum_{j=1}^{N} Z_{i,m}^{j} =  \sum_{j=1}^{N} d_{i}^{j}\cdot c_{m}^{j} $$
     3. If the senders’ codes are chosen carefully(each two combination is <mark>orthogonal</mark>), each receiver can recover the data sent by a given sender out of the aggregate signal simply by using the sender’s code <mark>in exactly the same manner</mark> as in Equation :
     $$ d_{i}^{j} = \frac{\sum_{m=1}^{M} Z_{i,m}^{*} \cdot c_{m}^{j} }{M} $$
     
+
+> ## 7.2 WiFi: 802.11 Wireless LANs
 
 - When a network administrator installs an AP, the administrator assigns a one- or two-word <mark>Service Set Identifier (SSID)</mark> to the access point.
 - Within this 85 MHz band, 802.11 defines <mark>11 partially overlapping channels</mark>. Any two channels are non-overlapping if and only if they are separated by four or more channels. In particular, <mark>the set of channels 1, 6, and 11 is the only set of three non-overlapping channels</mark>.
@@ -1333,22 +1391,27 @@ t .
         1.  the wireless device sends an <mark>association request frame</mark>
         2.  the AP responds with an <mark>association response frame</mark>
     3. Authenticate
-        1. The host provides AP with some information.The AP typically communicates with an <mark>authentication server</mark> to verify these information, relaying information between the wireless device and the authentication server using a protocol such as <mark>RADIUS</mark>  or <mark>DIAMETER</mark>.
+        - The host provides AP with some information.The AP typically communicates with an <mark>authentication server</mark> to verify these information, relaying information between the wireless device and the authentication server using a protocol such as <mark>RADIUS</mark>  or <mark>DIAMETER</mark>.
     4. Assign IP
         The host is assigned an IP address following <mark>DHCP protocol</mark>
 
-- How 802.11 CSMA/CA Protocol Works:
-    1. If initially the station senses the channel <mark>idle</mark>, it transmits its frame after a short period of time known as the <mark>Distributed Inter-frame Space (DIFS)</mark>; 
-    2. Otherwise, the station chooses a random backoff value using <mark>binary exponential backoff</mark>  and counts down this value after <mark>DIFS</mark> when the channel is sensed <mark>idle</mark>. While the channel is sensed busy, the counter value remains <mark>frozen</mark>.
-    3. When the counter reaches zero (note that this can only occur while the channel is sensed <mark>idle</mark>), the station transmits the <mark>entire frame</mark> and then waits for an acknowledgment.
-    4. If an <mark>acknowledgment</mark> is received, the transmitting station knows that its frame has been correctly received at the destination station. If the station has another frame to send, it begins the CSMA/CA protocol at step 2. If the acknowledgment isn’t received, the transmitting station reenters the backoff phase in step 2, with the random value chosen from a <mark>larger interval</mark>.
+
+> ### 7.2.1 802.11 CSMA/CA Protocol 
+
+ 1. If initially the station senses the channel <mark>idle</mark>, it transmits its frame after a short period of time known as the <mark>Distributed Inter-frame Space (DIFS)</mark>; 
+ 2. Otherwise, the station chooses a random backoff value using <mark>binary exponential backoff</mark>  and counts down this value after <mark>DIFS</mark> when the channel is sensed <mark>idle</mark>. While the channel is sensed busy, the counter value remains <mark>frozen</mark>.
+ 3. When the counter reaches zero (note that this can only occur while the channel is sensed <mark>idle</mark>), the station transmits the <mark>entire frame</mark> and then waits for an acknowledgment.
+ 4. If an <mark>acknowledgment</mark> is received, the transmitting station knows that its frame has been correctly received at the destination station. If the station has another frame to send, it begins the CSMA/CA protocol at step 2. If the acknowledgment isn’t received, the transmitting station reenters the backoff phase in step 2, with the random value chosen from a <mark>larger interval</mark>.
 
     
 - Because 802.11wireless LANs do not use collision detection, once a station begins to transmit a frame, it transmits the frame <mark>in its entirety regardless of collision</mark>.
 
 - When the destination station receives a frame that <mark>passes the CRC</mark>, it waits a short period of time known as the <mark>Short Inter-frame Spacing (SIFS)</mark> and then sends back an acknowledgment frame.
 
-- Why Does CDMA/CA Take Different Approach With CDMA/CA:In 802.11, if the two stations sense the channel busy, they both immediately enter <mark>random backoff</mark>, hopefully choosing <mark>different backoff values</mark>. If these values are indeed different, once the channel becomes idle, one of the two stations will begin transmitting before the other, and  the <mark>“losing station”</mark> will hear the <mark>“winning station’s”</mark> signal, <mark>freeze</mark> its counter, and refrain from transmitting until the winning station has completed its transmission
+- Why Does CSMA/CA Take Different Approach With CSMA/CD:
+    1. The ability to detect collisions requires the ability to send (the station’s own ­signal) and receive (to determine whether another station is also transmitting) at the same time. Because the strength of the received signal is typically <mark>very small</mark> compared to the strength of the transmitted signal at the 802.11 adapter, it is costly to build hardware that can detect a collision. 
+    2. More importantly, even if the adapter could transmit and listen at the same time (and presumably abort transmission when it senses a busy channel), the adapter would still <mark>not be able to detect all collisions</mark>, due to the hidden terminal problem and fading.
+- In 802.11, if the two stations sense the channel busy, they both immediately enter <mark>random backoff</mark>, hopefully choosing <mark>different backoff values</mark>. If these values are indeed different, once the channel becomes idle, one of the two stations will begin transmitting before the other, and  the <mark>“losing station”</mark> will hear the <mark>“winning station’s”</mark> signal, <mark>freeze</mark> its counter, and refrain from transmitting until the winning station has completed its transmission
 
 - Dealing With <mark>Hidden Terminals</mark>: <mark>RTS</mark> and <mark>CTS</mark>: the IEEE 802.11 protocol allows a station to use a short <mark>Request to Send (RTS)</mark> control frame and a short <mark>Clear to Send (CTS)</mark> control frame to reserve access to the channel:
     1. When a sender wants to send a DATA frame, it can first send an RTS frame to the AP, indicating the <mark>total time required to transmit the DATA frame and the acknowledgment (ACK) frame</mark>. 
@@ -1357,32 +1420,49 @@ t .
         - Instructs the other stations <mark>not to send</mark> for    the <mark>reserved duration</mark>.
 
 
-![RTS_CTS](/images/computer_networking_topdown/RTS_CTS_.png)
+  ![RTS_CTS](/images/computer_networking_topdown/RTS_CTS_.png)
 
-- Although the RTS/CTS exchange can help reduce collisions, it also introduces delay and consumes channel resources. For this reason, the RTS/CTS exchange is only used (if at all) to reserve the channel for the transmission of a <mark>long DATA frame</mark>. In practice, each wireless station can set an RTS threshold such that the RTS/CTS sequence is used only when the frame is longer than the threshold.
+- Although the RTS/CTS exchange can help reduce collisions, it also introduces delay and consumes channel resources. For this reason, the RTS/CTS exchange is only used (if at all) to reserve the channel for the transmission of a <mark>long DATA frame</mark>. In practice, each wireless station can set an <mark>RTS threshold</mark> such that the RTS/CTS sequence is used only when the frame is longer than the threshold.
 
 
-- 802.11 frame has four address fields,each of which can hold a 6-byte MAC address, three address fields are needed for moving the network-layer datagram from a wireless station through an AP to a router interface. The fourth address field is used when APs ­forward frames to each other in ad hoc mode.  Since we are only considering infrastructure networks here, let’s focus our attention on the first three address fields. The 802.11 standard defines these fields as follows:
+- 802.11 frame has four address fields,each of which can hold a 6-byte MAC address, three address fields are needed for moving the network-layer datagram from <mark>a wireless station through an AP to a router interface</mark>. The fourth address field is used when APs ­forward frames to each other in ad hoc mode.  Since we are only considering infrastructure networks here, let’s focus our attention on the first three address fields. The 802.11 standard defines these fields as follows:
     1. Address 1 is the MAC address of the wireless station that is <mark>to receive the frame</mark>.
     2. Address 2 is the MAC address of the station that <mark>transmits the frame</mark>
     3. Address 3  contains the MAC address of <mark>gateway router</mark> of the subnet.
 
+
+{{< admonition type=info title="" open=false >}}
+
+The third address is to inform AP the router iinterface when the datagram reaches the AP.
+
+{{< /admonition >}}
+
+
 - Because acknowledgments can get lost, the sending station may send <mark>multiple copies of a given frame</mark>. The sequence number field in the 802.11 frame thus serves exactly the same purpose here at the link layer as it did in the transport layer.
 
-- The duration value is included in the frame’s duration field to request for reserve the channel for a period of time.
+- The duration value is included in the frame’s duration field to request for <mark>reserve the channel for a period of time</mark>.
 
 - 802.11 Rate Adaptation:some 802.11 implementations have a rate adaptation capability that adaptively selects the underlying <mark>physical-layer modulation technique</mark> to use based on <mark>current or recent channel characteristics</mark>. 
 
-- Power Management:A node is able to explicitly alternate between <mark>sleep and wake states</mark>.A node indicates to the access point that it will be going to sleep by setting the <mark>power-management bit</mark> in the header of an 802.11 frame to 1. A <mark>timer</mark> in the node is then set to <mark>wake up</mark> the node just before the AP is scheduled to send its beacon frame (recall that an AP typically sends a beacon frame every 100 msec). 
+
+
+> ## 7.3 Cellular Network 
+
 
 - In Cellular Network,The term cellular refers to the fact that the region covered by a cellular network is <mark>partitioned into a number of geographic coverage areas</mark>, known as <mark>cells</mark>.
+
+
 - Each cell contains a <mark>base transceiver station (BTS)</mark> that transmits signals to and receives signals from the mobile stations in its cell. 
 
+> ### 7.3.1 2G
 
 - The GSM standard for 2G cellular systems uses <mark>combined FDM/TDM (radio)</mark> for the air interface.In combined FDM/TDM systems, the channel is partitioned into a number of frequency sub-bands; within each sub-band, time is partitioned into frames and slots. Thus, for a combined FDM/TDM system, if the channel is partitioned into F sub-bands and time is partitioned into T slots, then the channel will be able to support $F\cdot T$ simultaneous calls.
 - the <mark>mobile switching center (MSC)</mark> plays the central role in user authorization and accounting, call establishment and teardown, and handoff. 
 - The role of the <mark>base station controller (BSC)</mark> is to allocate <mark>BTS radio channels</mark> to mobile subscribers, perform paging (finding the cell in which a mobile user is resident), and perform handoff of mobile users.
 ![cellular_2g](/images/computer_networking_topdown/cellular_2g.png)
+
+
+> ### 7.3.2 3G
 
 - There are two types of nodes in the 3G core network: <mark>Serving GPRS Support Nodes (SGSNs)</mark> and <mark>Gateway GPRS Support Nodes (GGSNs)</mark>:
     1. An SGSN is responsible for delivering datagrams to/from the mobile nodes in the radio access network where the SGSN is attached. The SGSN interacts with the cellular voice network’s <mark>MSC</mark> for that area, providing user authorization and handoff, maintaining location (cell) information about active mobile nodes, and performing datagram forwarding between mobile nodes in the radio access network and a GGSN. 
@@ -1390,10 +1470,12 @@ t .
 
 - The <mark>Radio Network Controller (RNC)</mark> typically controls several cell base transceiver stations.The RNC connects to both the circuit-switched cellular voice network via an <mark>MSC</mark>, and to the packet-switched Internet via an <mark>SGSN</mark>.
 
-- A significant change in 3G UMTS over 2G networks is that rather than using GSM’s FDMA/TDMA scheme, UMTS uses a CDMA technique known as Direct Sequence Wideband CDMA (DS-WCDMA) within TDMA slots:TDMA slots, in turn, are available on multiple frequencies
+- A significant change in 3G UMTS over 2G networks is that rather than using GSM’s FDMA/TDMA scheme, UMTS uses a CDMA technique known as <mark>Direct Sequence Wideband CDMA (DS-WCDMA) within TDMA slots</mark>:TDMA slots, in turn, are available on multiple frequencies
 
-![3g_network](/images/computer_networking_topdown/3g_network.png)
+  ![3g_network](/images/computer_networking_topdown/3g_network.png)
 
+
+> ### 7.3.3 4G
 
 - Changes in 4G over 3G network:
     1. <mark>All-IP</mark> network architecture:the 4G architecture carries both  voice and data in <mark>IP datagrams</mark>.With 4G, the last vestiges of cellular networks’ roots in the telephony have disappeared.
@@ -1407,25 +1489,30 @@ t .
     4. The Mobility Management Entity (MME) performs connection and mobility management on behalf of the UEs resident in the cell it controls. It receives UE subscription information from the HHS.
     5. The Home Subscriber Server (HSS) contains UE information including roaming access capabilities, quality of service profiles, and authentication information. 
 
-![4g_network](/images/computer_networking_topdown/4g_network.png)
+  ![4g_network](/images/computer_networking_topdown/4g_network.png)
 
 - LTE Radio Access Network:LTE uses a combination of frequency division multiplexing and time division multiplexing on the downstream channel, known as orthogonal frequency division multiplexing (OFDM):In LTE, each active mobile node is allocated one or more 0.5 ms time slots in one or more of the channel frequencies.
 
-![lte](/images/computer_networking_topdown/lte.png)
+  ![lte](/images/computer_networking_topdown/lte.png)
+
+> ## 7.4 Mobility
 
 - The permanent home of a mobile node (such as a laptop or smartphone) is known as the <mark>home network</mark>
--  The entity within the home network that performs the mobility management functions  on behalf of the mobile node is known as the <mark>home agent</mark>
+-  The entity within the <mark>home network</mark> that performs the mobility management functions  on behalf of the mobile node is known as the <mark>home agent</mark>
 -  The network in which the mobile node is currently residing is known as the <mark>foreign (or visited) network</mark>
--   the entity within the foreign network that helps the mobile node with the mobility management functions discussed below is known as a <mark>foreign agent</mark>.
+-   the entity within the <mark>foreign network</mark> that helps the mobile node with the mobility management functions discussed below is known as a <mark>foreign agent</mark>.
 -   A <mark>correspondent</mark> is the entity wishing to communicate with the mobile node
 
-- How Indirect Routing Works:
-    1. the correspondent simply addresses the datagram to the mobile node’s <mark>permanent address</mark> and sends the datagram into the network
-    2.  Such datagrams are first routed, as usual, to the mobile node’s <mark>home network</mark>.
-    3. The datagram is  forwarded to the <mark>foreign agent</mark>, using the mobile node’s COA
-    4. The datagram is forwarded from the foreign agent to the <mark>mobile node</mark>
+> ### 7.4.1 Indirect Routing 
+
+1. the correspondent simply addresses the datagram to the mobile node’s <mark>permanent address</mark> and sends the datagram into the network
+2.  Such datagrams are first routed, as usual, to the mobile node’s <mark>home network</mark>.
+3. The datagram is  forwarded to the <mark>foreign agent</mark>, using the mobile node’s <mark>Care-Of-Address(COA)</mark>
+4. The datagram is forwarded from the foreign agent to the <mark>mobile node</mark>
    
 ![indirect_routing](/images/computer_networking_topdown/indirect_routing.png)
+
+> ### 7.4.2 Direct Routing
 
 - We’ll identify the foreign agent in that foreign network where the mobile node was <mark>first found</mark> as the <mark>anchor ­foreign agent</mark>.
 - How Direct Routing Works:
