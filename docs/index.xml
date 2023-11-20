@@ -4,9 +4,19 @@
         <link>https://Septemus.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sat, 21 Oct 2023 15:45:34 &#43;0800</lastBuildDate>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sat, 28 Oct 2023 06:57:45 -0700</lastBuildDate>
             <atom:link href="https://Septemus.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Fixed:Vue-router 跳转到指定页面后强行返回主页解决</title>
+    <link>https://Septemus.github.io/vue_router_debug1/</link>
+    <pubDate>Sat, 28 Oct 2023 06:57:45 -0700</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/vue_router_debug1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/vue.png" referrerpolicy="no-referrer">
+            </div>Fixed 这个bug已经被解决 问题简述 (One-line summary) vue-router编程式导航跳转到一个页面后强制返回主页 问题复现 (Steps-to-reproduce) 一开始用 &lt;router-link&gt; 方式实现没有问题 后来改成编程]]></description>
+</item>
+<item>
     <title>Computer Networking Top Down Approach</title>
     <link>https://Septemus.github.io/computer_networking_topdownapproach/</link>
     <pubDate>Sat, 21 Oct 2023 15:45:34 &#43;0800</pubDate>
@@ -95,16 +105,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课 Success 代码和输出已通过助教验收 update Apr20th 更新：实现了滚动显示数字 Frequency 使用时必须将c]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验1-四位全加器设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp1/</link>
-    <pubDate>Tue, 11 Apr 2023 15:45:34 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp1/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 1 实验内容 设计四位加法器 2 代码/原理图 2.1]]></description>
 </item>
 </channel>
 </rss>
