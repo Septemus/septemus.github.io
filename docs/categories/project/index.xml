@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>project - Category - Septemus&#39;s Blog</title>
+        <link>https://Septemus.github.io/categories/project/</link>
+        <description>project - Category - Septemus&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/project/" rel="self" type="application/rss+xml" /><item>
+    <title>基于vue&#43;nodejs&#43;bootstrap的购物商城（参考小米商城）</title>
+    <link>https://Septemus.github.io/vue_xiaomi_store/</link>
+    <pubDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/vue_xiaomi_store/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/xiaomi.png" referrerpolicy="no-referrer">
+            </div>基于Vue+NodeJs的小米商城 前言 这是我使用Vue和NodeJs进行实战的一个项目，我选择了小米商城进行仿制，我从2023年8月份开始制]]></description>
+</item>
+</channel>
+</rss>
