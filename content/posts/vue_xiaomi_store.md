@@ -7,9 +7,9 @@ featuredImagePreview: "/images/xiaomi.png"
 featuredImage: "/images/xiaomi.png"
 ---
 
-# 基于Vue+NodeJs的小米商城
+> # 基于Vue+NodeJs的小米商城
 
-## 前言
+> ## 前言
 
 这是我使用Vue和NodeJs进行实战的一个项目，我选择了小米商城进行仿制，我从2023年8月份开始制作，断断续续做了很久现在做的差不多了，分享出来希望带给大家启发！目前项目还有不少bug和待完善功能，欢迎大家批评指正。
 
@@ -27,7 +27,7 @@ featuredImage: "/images/xiaomi.png"
 > 如果您喜欢这个项目请点击右上角⭐支持一下， 谢谢！
 
 
-## 项目简介
+> ## 项目简介
 
 前端基于
 - Vue2
@@ -50,7 +50,7 @@ featuredImage: "/images/xiaomi.png"
 
 前端页面根据功能主要分为主页，商品详情，购物车，个人中心。
 
-## 运行项目
+> ## 运行项目
 
 ```
 1. Clone project
@@ -72,7 +72,7 @@ npm run build
 ```
 
 
-## 页面截图
+> ## 页面截图
 
 ![](/images/museum/screenshot1.png)
 
