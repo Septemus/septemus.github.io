@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://Septemus.github.io/computer_networking_topdownapproach/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-21T15:45:34+08:00" />
-<meta property="article:modified_time" content="2023-10-21T08:23:48-07:00" /><meta property="og:site_name" content="Septemus" />
+<meta property="article:modified_time" content="2023-10-23T23:59:47+08:00" /><meta property="og:site_name" content="Septemus" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
 
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Septemus.github.io\/computer_networking_topdownapproach\/"
-        },"genre": "posts","wordcount":  23120 ,
-        "url": "https:\/\/Septemus.github.io\/computer_networking_topdownapproach\/","datePublished": "2023-10-21T15:45:34+08:00","dateModified": "2023-10-21T08:23:48-07:00","publisher": {
+        },"genre": "posts","wordcount":  22614 ,
+        "url": "https:\/\/Septemus.github.io\/computer_networking_topdownapproach\/","datePublished": "2023-10-21T15:45:34+08:00","dateModified": "2023-10-23T23:59:47+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -103,8 +103,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Computer Networking Top Down Approach</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-21">2023-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;23120 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;109 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-21">2023-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;22614 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;107 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -171,6 +171,132 @@
           </ul>
         </li>
         <li><a href="#422-ipv6">4.2.2 IPv6</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#51-distance-vector-algorithm">5.1 Distance-Vector Algorithm</a></li>
+    <li><a href="#52-link-state-algorithm">5.2 Link-State Algorithm</a></li>
+    <li><a href="#53-border-gateway-protocol">5.3 Border Gateway Protocol</a></li>
+    <li><a href="#54-software-defined-network">5.4 Software Defined Network</a></li>
+    <li><a href="#55-internet-control-message-protocol">5.5 Internet Control Message Protocol</a>
+      <ul>
+        <li><a href="#551-ping">5.5.1 Ping</a></li>
+        <li><a href="#552-traceroute">5.5.2 Traceroute</a></li>
+      </ul>
+    </li>
+    <li><a href="#56-network-management">5.6 Network Management</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#61-error-detection-and-correction">6.1 Error-Detection and Correction</a>
+      <ul>
+        <li><a href="#611-parity-check">6.1.1 Parity Check</a></li>
+        <li><a href="#612-checksum">6.1.2 Checksum</a></li>
+        <li><a href="#613-cyclic-redundancy-check-crc">6.1.3 Cyclic Redundancy Check (CRC)</a></li>
+      </ul>
+    </li>
+    <li><a href="#62-multiple-access-links">6.2 Multiple Access Links</a>
+      <ul>
+        <li><a href="#621-channel-partitioning-protocols">6.2.1 Channel Partitioning Protocols</a>
+          <ul>
+            <li><a href="#6211-tdm">6.2.1.1 TDM</a></li>
+            <li><a href="#6212-fdm">6.2.1.2 FDM</a></li>
+            <li><a href="#6213-code-division-multiple-access">6.2.1.3 Code Division Multiple Access</a></li>
+          </ul>
+        </li>
+        <li><a href="#622-random-access-protocols">6.2.2 Random Access Protocols</a>
+          <ul>
+            <li><a href="#6221-slotted-aloha-protocol">6.2.2.1 Slotted ALOHA Protocol</a></li>
+            <li><a href="#6222-aloha-protocol">6.2.2.2 ALOHA Protocol</a></li>
+            <li><a href="#6223-carrier-sense-multiple-access-csma">6.2.2.3 Carrier Sense Multiple Access (CSMA)</a></li>
+          </ul>
+        </li>
+        <li><a href="#623-taking-turns-protocols">6.2.3 Taking-Turns Protocols</a></li>
+      </ul>
+    </li>
+    <li><a href="#63-switched-local-area-networks">6.3 Switched Local Area Networks</a>
+      <ul>
+        <li><a href="#631--address-resolution-protocol-arp">6.3.1  Address Resolution Protocol (ARP)</a></li>
+        <li><a href="#632-ethernet">6.3.2 Ethernet</a>
+          <ul>
+            <li><a href="#6321-filtering-and-forwarding">6.3.2.1 Filtering And Forwarding</a></li>
+            <li><a href="#6322-switches-versus-routers">6.3.2.2 Switches Versus Routers</a></li>
+          </ul>
+        </li>
+        <li><a href="#633-virtual-local-area-networkvlan">6.3.3 Virtual Local Area Network(VLAN)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#71-code-division-multiple-access-cdma">7.1 Code division multiple access (CDMA)</a></li>
+    <li><a href="#72-wifi-80211-wireless-lans">7.2 WiFi: 802.11 Wireless LANs</a>
+      <ul>
+        <li><a href="#721-80211-csmaca-protocol">7.2.1 802.11 CSMA/CA Protocol</a></li>
+      </ul>
+    </li>
+    <li><a href="#73-cellular-network">7.3 Cellular Network</a>
+      <ul>
+        <li><a href="#731-2g">7.3.1 2G</a></li>
+        <li><a href="#732-3g">7.3.2 3G</a></li>
+        <li><a href="#733-4g">7.3.3 4G</a></li>
+      </ul>
+    </li>
+    <li><a href="#74-mobility">7.4 Mobility</a>
+      <ul>
+        <li><a href="#741-indirect-routing">7.4.1 Indirect Routing</a></li>
+        <li><a href="#742-direct-routing">7.4.2 Direct Routing</a></li>
+        <li><a href="#743-mobile-ip">7.4.3 Mobile-IP</a></li>
+        <li><a href="#744-mobility-in-cellular-networks">7.4.4 Mobility in Cellular Networks</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#81-encryption">8.1 Encryption</a>
+      <ul>
+        <li><a href="#811-symmetric-key-encryption">8.1.1 Symmetric Key Encryption</a></li>
+        <li><a href="#812-public-key-encryption">8.1.2 Public Key Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#82-integrity">8.2 Integrity</a>
+      <ul>
+        <li><a href="#821-message-authentication-code-mac">8.2.1 Message Authentication Code (MAC)</a></li>
+        <li><a href="#822-digital-signatures">8.2.2 Digital Signatures</a></li>
+        <li><a href="#823-certification">8.2.3 Certification</a></li>
+        <li><a href="#824-end-point-authentication">8.2.4 End-Point Authentication</a></li>
+      </ul>
+    </li>
+    <li><a href="#83-pretty-good-privacy-pgp">8.3 Pretty Good Privacy (PGP)</a></li>
+    <li><a href="#84-ssl">8.4 SSL</a>
+      <ul>
+        <li><a href="#841-handshake">8.4.1 Handshake</a></li>
+        <li><a href="#842-data-transfer">8.4.2 Data Transfer</a>
+          <ul>
+            <li><a href="#8421-ssl-record">8.4.2.1 SSL Record</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#85-ip-securityipsec-protocol">8.5 IP security(IPsec) protocol</a></li>
+    <li><a href="#86-wired-equivalent-privacy-wep">8.6 Wired Equivalent Privacy (WEP)</a>
+      <ul>
+        <li><a href="#861-wep-authentication">8.6.1 WEP Authentication</a></li>
+        <li><a href="#862-wep-data-encryption">8.6.2 WEP Data Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#87-operational-security">8.7 Operational Security</a>
+      <ul>
+        <li><a href="#871-firewalls">8.7.1 Firewalls</a>
+          <ul>
+            <li><a href="#8711-traditional-packet-filters">8.7.1.1 Traditional Packet Filters</a></li>
+            <li><a href="#8712-stateful-filters">8.7.1.2 Stateful filters</a></li>
+            <li><a href="#8713-application-gateway">8.7.1.3 Application Gateway</a></li>
+          </ul>
+        </li>
+        <li><a href="#872-deep-packet-inspection">8.7.2 Deep packet inspection</a></li>
       </ul>
     </li>
   </ul>
@@ -1731,33 +1857,31 @@ operating at the sender keeps track of an additional variable, the congestion wi
 <p>A centralized routing algorithm computes the least-cost path between a source and destination using complete, <mark>global knowledge</mark> about the network.Algorithms with global state information are often referred to as <mark>link-state (LS) algorithms</mark>, since the algorithm must be aware of the cost of each link in the network.</p>
 </li>
 <li>
-<p>In a decentralized routing algorithm, the calculation of the least-cost path is carried out in iterative, distributed manner by the routers. <mark>No node has complete information</mark> about the costs of all network links. Instead, each node begins with only the knowledge of the costs of its own directly attached links.The decentralized routing algorithm we’ll study  is called a <mark>distance-vector (DV) algorithm</mark>, because each node maintains a vector of estimates of the costs (distances) to all other nodes in the network</p>
-</li>
-<li>
-<p>A second broad way to classify routing algorithms is according to whether they are <mark> or dynamic</mark>. In  routing algorithms, routes change very <mark>slowly over time</mark>. Dynamic routing algorithms change the routing paths as the <mark>network traffic loads or topology change</mark>. A dynamic algorithm can be run either periodically or in direct response to topology or link cost changes.</p>
-</li>
-<li>
-<p>A third way to classify routing algorithms is according to whether they are <mark>load-sensitive or load- insensitive</mark>. In a load-sensitive algorithm, link costs vary dynamically to reflect the current level of congestion in the underlying link.load-insensitive does not explicitly reflect its current (or recent past) level of congestion.</p>
-</li>
-<li>
 <p>In a link-state algorithm, the network topology and all link costs are known.In practice this is accomplished by having each node <mark>broadcast</mark> link-state packets to all other nodes in the network, with each link-state packet containing the <mark>identities and costs of its attached links</mark>. The result of the nodes’ broadcast is that all nodes have an <mark>identical and complete view of the network</mark>. Each node can then run the LS algorithm and compute the same set of least-cost paths as every other node</p>
 </li>
 <li>
 <p>Popular LS-Algorithm:Dijkstra’s algorithm,Prim’s algorithm</p>
 </li>
 <li>
-<p>How does DV algorithm work:</p>
+<p>In a decentralized routing algorithm, the calculation of the least-cost path is carried out in iterative, distributed manner by the routers. <mark>No node has complete information</mark> about the costs of all network links. Instead, each node begins with only the knowledge of the costs of its own directly attached links.The decentralized routing algorithm we’ll study  is called a <mark>distance-vector (DV) algorithm</mark>, because each node maintains a vector of estimates of the costs (distances) to all other nodes in the network</p>
+</li>
+</ul>
+<blockquote>
+<h2 id="51-distance-vector-algorithm">5.1 Distance-Vector Algorithm</h2>
+</blockquote>
+<ul>
+<li>How does DV algorithm work:
 <ol>
 <li>each node x maintains the following routing information:
-<ol>
-<li>For each neighbor v, the cost c(x, v) from x to directly attached neighbor, v</li>
-<li>Node x’s distance vector, that is,$D_x=[D_x(y):y \ in \ N]$ , containing x’s estimate of its cost to all destinations, y, in N</li>
-<li>The distance vectors of each of its neighbors, that is $D_v=[D_v(y):y \ in \ N]$,  for each neighbor v of x</li>
-</ol>
+<ul>
+<li>For each neighbor v, the cost <mark>$c(x, v)$</mark> from x to directly attached neighbor, v.</li>
+<li>Node x’s distance vector, that is,<mark>$D_x=[D_x(y):y \ in \ N]$</mark> , containing x’s estimate of its cost to all destinations, y, in N</li>
+<li>The distance vectors of each of its <mark>neighbors</mark>, that is $D_v=[D_v(y):y \ in \ N]$,  for each neighbor v of x</li>
+</ul>
 </li>
-<li>each node sends a copy of its distance vector to each of its neighbors.</li>
+<li>Each node sends a copy of its distance vector to each of its <mark>neighbors</mark>.</li>
 <li>When a node x receives a new distance vector from any of its neighbors w, it saves w’s distance vector, and then uses the <mark>Bellman-Ford equation</mark> to update its own distance vector as follows:
-$$ D_x(y)=minv{c(x,v)+D_v(y)} \qquad for \ each \ node \ y  \ in \ N $$</li>
+$$D_x(y)=minv \left{ c(x,v)+D_v(y) \right} \qquad for \ each \ node \ y  \ in \ N$$</li>
 <li>If node x’s distance vector has changed as a result of this update step, node x will then send its updated,distance vector to each of its neighbors, which can in turn update their own distance vectors.</li>
 <li>When a node running the DV algorithm detects a change in the link cost from itself to a neighbor , it updates its distance vector  and, if there’s a change in the cost of the least-cost path, <mark>informs its neighbors</mark> of its new distance vector.</li>
 </ol>
@@ -1817,28 +1941,10 @@ $$ D_x(y)=minv{c(x,v)+D_v(y)} \qquad for \ each \ node \ y  \ in \ N $$</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/dv_eg.png"
         title="dv_eg" /></p>
+<blockquote>
+<h2 id="52-link-state-algorithm">5.2 Link-State Algorithm</h2>
+</blockquote>
 <ul>
-<li>When Does count-to-infinity Problem Occurs:
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/computer_networking_topdown/c2i.png"
-        data-srcset="/images/computer_networking_topdown/c2i.png, /images/computer_networking_topdown/c2i.png 1.5x, /images/computer_networking_topdown/c2i.png 2x"
-        data-sizes="auto"
-        alt="/images/computer_networking_topdown/c2i.png"
-        title="c2i" /></li>
-</ul>
-<ol>
-<li>Before the link cost changes,Dy(x)=4, Dy(z)=1, Dz(y)=1, Dz(x)=5.At time t0, y detects the link cost change (the cost has changed from 4 to 60). y computes its new minimum-cost path to x to have a cost of $Dy(x)=min(c(y,x)+Dx(x), c(y,z)+Dz(x))=min(60+0,1+5)=6$ . Of course, with our global view of the network, we can see that this new cost via z is wrong. But the only information node y has is that its direct cost to x is 60 and that z has last told y that z could get to x with a cost of 5. So in order to get to x, y would now route through z, fully expecting that z will be able to get to x with a cost of 5. As of t  we have a routing loop—in order to get to x, y routes through z, and z routes through y. A routing loop is like a black hole—a packet destined for x arriving at y or z as of t  will bounce back and forth between these two nodes forever (or until the forwarding tables are changed).</li>
-<li>Since node y has computed a new minimum cost to x, it informs z of its new distance vector at time
-t .</li>
-<li>Sometime after t , z receives y’s new distance vector, which indicates that y’s minimum cost to x is 6.z knows it can get to y with a cost of 1 and hence computes a new least cost to x of Since z’s least cost to x has increased, it then informs y of its new distance vector at t .</li>
-<li>In a similar manner, after receiving z’s new distance vector, y determines  and sends z its distance vector. z then determines  and sends y its distance vector, and so on</li>
-</ol>
-<ul>
-<li>
-<p>Poisoned Reverse:if z <mark>routes through y</mark> to get to destination x, then z will advertise <mark>to y</mark> that its distance to x is <mark>infinity</mark>, that is, z will advertise to y that $D_z(x)=\inf$</p>
-</li>
 <li>
 <p>autonomous ­systems (ASs):Routers within the same AS all run the <mark>same routing algorithm and have information about each other</mark>. The routing algorithm ­running within an autonomous system is called an <mark>intra-autonomous system routing ­protocol</mark>.</p>
 </li>
@@ -1855,16 +1961,21 @@ t .</li>
 <p>With OSPF, a router <mark>broadcasts</mark> routing information to all other routers in the autonomous system, <mark>not just to its neighboring routers</mark>. A router broadcasts link-state information whenever there is a <mark>change in a link’s state</mark> (for example, a change in cost or a change in up/down status). It also broadcasts a link’s state periodically (at least once every 30 minutes), <mark>even if the link’s state has not changed</mark>.</p>
 </li>
 <li>
-<p>OSPF advertisements are contained in OSPF messages that are carried directly by IP, with an upper-layer protocol of 89 for OSPF. Thus, the OSPF protocol must itself implement functionality such as <mark>reliable message transfer</mark> and <mark>link-state broadcast</mark>.</p>
+<p>OSPF advertisements are contained in <mark>OSPF messages</mark> that are carried directly by IP, with an upper-layer protocol of 89 for OSPF. Thus, the OSPF protocol must itself implement functionality such as <mark>reliable message transfer</mark> and <mark>link-state broadcast</mark>.</p>
 </li>
 <li>
 <p>Some of the advances embodied in OSPF include the following:</p>
 <ol>
-<li>Security: Exchanges between OSPF routers (for example, link-state updates) can be authenticated. With authentication, only trusted routers can participate in the OSPF protocol within an AS.Two types of authentication can be configured— simple and MD5</li>
+<li>Security: Exchanges between OSPF routers (for example, link-state updates) can be authenticated. With authentication, only trusted routers can participate in the OSPF protocol within an AS.</li>
 <li>Multiple same-cost paths:When multiple paths to a destination have the same cost, OSPF allows multiple paths to be used</li>
 <li>Support for hierarchy within a single AS</li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h2 id="53-border-gateway-protocol">5.3 Border Gateway Protocol</h2>
+</blockquote>
+<ul>
 <li>
 <p>In the Internet, all ASs run <mark>the same inter-AS routing protocol</mark>, called the <mark>Border Gateway Protocol</mark>, more commonly known as BGP</p>
 </li>
@@ -1872,7 +1983,7 @@ t .</li>
 <p>In BGP, packets are not routed to a specific destination address, but instead to <mark>CIDRized prefixes</mark>, with each prefix representing a <mark>subnet or a collection of subnets</mark>.</p>
 </li>
 <li>
-<p>Thus, a router’s forwarding table will have entries of the form (x, I), where x is a <mark>prefix</mark> (such as 138.16.68/22) and I is an <mark>interface number</mark> for one of the router’s interfaces.</p>
+<p>Thus, a router’s forwarding table will have entries of the form (x, I), where x is a <mark>prefix</mark> and I is an <mark>interface number</mark> for one of the router’s interfaces.</p>
 </li>
 <li>
 <p>As an inter-AS routing protocol, BGP provides each router a means to:</p>
@@ -1947,6 +2058,11 @@ t .</li>
 <li>
 <p>How To Prevent multi-homed access ISP from acting as an intermidiate AS:It advertises  that <mark>it has no paths to any other destinations except itself</mark></p>
 </li>
+</ul>
+<blockquote>
+<h2 id="54-software-defined-network">5.4 Software Defined Network</h2>
+</blockquote>
+<ul>
 <li>
 <p>Four key characteristics of an SDN architecture can be identified:</p>
 <ol>
@@ -2017,6 +2133,9 @@ t .</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/sdn_shortest_path.png"
         title="sdn_state_change" /></p>
+<blockquote>
+<h2 id="55-internet-control-message-protocol">5.5 Internet Control Message Protocol</h2>
+</blockquote>
 <ul>
 <li>
 <p>The Internet Control Message Protocol (ICMP), specified in [RFC 792], is used by hosts and routers to communicate network-layer information to each other.</p>
@@ -2036,6 +2155,9 @@ t .</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/ICMP_types.png"
         title="ICMP_types" /></p>
+<blockquote>
+<h3 id="551-ping">5.5.1 Ping</h3>
+</blockquote>
 <ul>
 <li>
 <p>How Does Ping Program Work:</p>
@@ -2047,19 +2169,26 @@ t .</li>
 <li>
 <p>Most TCP/IP implementations support the ping server directly in the operating system; that is, the server is not a process.</p>
 </li>
-<li>
-<p>How Does Traceroute Program Work:</p>
+</ul>
+<blockquote>
+<h3 id="552-traceroute">5.5.2 Traceroute</h3>
+</blockquote>
+<ul>
+<li>How Does Traceroute Program Work:
 <ol>
 <li>Traceroute in the source sends aseries of ordinary IP datagrams to the destination. Each of these datagrams carries a <mark>UDP</mark> segment with an <mark>unlikely UDP port number</mark>. The first of these datagrams has a TTL of 1, the second of 2, the third of 3, and so on. The source also starts timers for each of the datagrams.</li>
-<li>When the nth datagram arrives at the nth router, the nth router observes that the TTL of the datagram has just <mark>expired</mark>. According to the rules of the IP protocol, the router <mark>discards</mark> the datagram and sends an ICMP warning message to the source (type 11 code 0). This warning message includes the name of the router and its IP address.</li>
+<li>When the nth datagram arrives at the nth router, the nth router observes that the TTL of the datagram has just <mark>expired</mark>. According to the rules of the IP protocol, the router <mark>discards</mark> the datagram and sends an <mark>ICMP warning message</mark> to the source (type 11 code 0). This warning message includes the name of the router and its IP address.</li>
 <li>When this ICMP message arrives back at the source, the source obtains the round-trip time from the timer and the name and IP address of the nth router from the ICMP message</li>
 <li>one of the datagrams will eventually make it all the way to the destination host. Because this datagram contains a UDP segment with an unlikely port number, the destination host sends a <mark>port unreachable ICMP message (type 3 code 3)</mark> back to the source.</li>
 <li>When the source host receives this particular ICMP message, it knows it does not need to send additional probe packets.</li>
 </ol>
 </li>
-<li>
-<p>the key components of network management:</p>
-</li>
+</ul>
+<blockquote>
+<h2 id="56-network-management">5.6 Network Management</h2>
+</blockquote>
+<ul>
+<li>the key components of network management:</li>
 </ul>
 <p><img
         class="lazyload"
@@ -2072,7 +2201,7 @@ t .</li>
 <ol>
 <li>The managing server is an application, controls the collection, processing, analysis, and/or display of network management information.</li>
 <li>A managed device is a piece of network equipment (including its software) that resides on a managed network.</li>
-<li>Each managed object within a managed device associated information that is collected into a Management Information Base (MIB)</li>
+<li>Each managed object within a managed device associated information that is collected into a <mark>Management Information Base (MIB)</mark></li>
 <li>Also resident in each managed device is a network management agent, a process running in the managed device that <mark>communicates with the managing server</mark></li>
 <li>network ­management protocol</li>
 </ol>
@@ -2198,15 +2327,30 @@ t .</li>
 </ol>
 </li>
 <li>
+<p>There are two types of network links: <mark>point-to-point links</mark> and <mark>broadcast links</mark>.</p>
+<ol>
+<li>A point-to-point link consists of a <mark>single sender</mark> at one end of the link and a <mark>single receiver</mark> at the other end of the link.</li>
+<li>A broadcast link, can have <mark>multiple sending and receiving nodes</mark> all connected to the <mark>same, single, shared broadcast channel</mark>.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<h2 id="61-error-detection-and-correction">6.1 Error-Detection and Correction</h2>
+</blockquote>
+<ul>
+<li>
 <p>At the sending node, data, D, to be protected against bit errors is augmented with <mark>error-detection and -correction bits (EDC)</mark>.Both D and EDC are sent to the receiving node in a <mark>link-level frame</mark>. At the receiving node, a sequence of bits, D′ and EDC′ is received.The receiver’s challenge is to determine whether or not D′ is the same as the original D, given that it has only received D′ and EDC′.</p>
 </li>
 <li>
-<p>Generally, more sophisticated error-detection and-correction techniques (that is, those that have a smaller probability of allowing undetected bit errors) incur a <mark>larger overhead</mark>—more computation is needed to compute and transmit a larger number of error-detection and -correction bits.</p>
-</li>
-<li>
-<p>Parity Checks:Suppose that the information to be sent, D , has d bits. In an <mark>even parity scheme</mark>, the sender simply includes one additional bit and chooses its value such that <mark>the total number of 1s in the  bits (the original information plus a parity bit) is even</mark>. For odd parity schemes, the parity bit value is chosen such that <mark>there is an odd number of 1s</mark>.</p>
+<p>The ability of the receiver to both <mark>detect and correct</mark> errors is known as <mark>forward error correction (FEC)</mark></p>
 </li>
 </ul>
+<blockquote>
+<h3 id="611-parity-check">6.1.1 Parity Check</h3>
+</blockquote>
+<ul>
+<li>
+<p>Suppose that the information to be sent, D , has d bits. In an <mark>even parity scheme</mark>, the sender simply includes one additional bit and chooses its value such that <mark>the total number of 1s in the  bits (the original information plus a parity bit) is even</mark>. For odd parity schemes, the parity bit value is chosen such that <mark>there is an odd number of 1s</mark>.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2215,55 +2359,59 @@ t .</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/parity_check.png"
         title="parity_check" /></p>
-<ul>
-<li>
-<p>The receiver need only count the number of 1s in the received  bits. If an odd number of 1-valued bits are found with an even parity scheme(or vice versa), the receiver knows that at least one bit error has occurred.</p>
 </li>
 <li>
-<p>The ability of the receiver to both <mark>detect and correct</mark> errors is known as <mark>forward error correction (FEC)</mark></p>
+<p>The receiver need only count the <mark>number of 1s</mark> in the received  bits. If an odd number of 1-valued bits are found with an even parity scheme(or vice versa), the receiver knows that at least one bit error has occurred.</p>
 </li>
-<li>
-<p>The Internet checksum:</p>
+</ul>
+<blockquote>
+<h3 id="612-checksum">6.1.2 Checksum</h3>
+</blockquote>
 <ol>
 <li>Bytes of data are treated as <mark>16-bit integers<mark> and summed. The <mark>1s complement</mark> of this sum then forms the Internet checksum that is carried in the segment header.</li>
 <li>the receiver checks the checksum by taking the  the sum of the received data (including the checksum) and checking whether the result is all 1 bits. If <mark>any of the bits are 0</mark>, an error is indicated.</li>
 </ol>
-</li>
-<li>
-<p>Cyclic Redundancy Check (CRC) codes operate as follows:</p>
+<blockquote>
+<h3 id="613-cyclic-redundancy-check-crc">6.1.3 Cyclic Redundancy Check (CRC)</h3>
+</blockquote>
 <ol>
 <li>Consider the d-bit piece of data, D, that the sending node wants to send to the receiving node.</li>
 <li>The sender and receiver must first agree on an  bit pattern, known as a <mark>generator</mark>, which we will denote as G.We will require that the leftmost bit of G be a 1.</li>
 <li>For a given piece of data, D, the sender will choose <mark>r additional bits, R</mark>, and append them to D such that the resulting  bit pattern  is exactly <mark>divisible by G</mark> (i.e., has no remainder) using modulo-2 arithmetic.The sender calculate R like this:$R=remainder(D/(2^r\times G))$</li>
 <li>The receiver divides the d+r  received bits by G. If the remainder is <mark>nonzero</mark>, the receiver knows that an error has occurred; otherwise the data is accepted as being correct</li>
 </ol>
-</li>
+<blockquote>
+<h2 id="62-multiple-access-links">6.2 Multiple Access Links</h2>
+</blockquote>
+<ul>
+<li>The multiple access problem:Because all nodes are capable of transmitting frames, more than two nodes can transmit frames at the same time. When this happens, all of the nodes receive multiple frames at the same time; that is, the transmitted frames <mark>collide</mark> at all of the receivers,which are useless.</li>
+<li>In order to ensure that the broadcast channel performs useful work when multiple nodes are active, it is necessary to somehow <mark>coordinate the transmissions of the active nodes</mark>. This coordination job is the responsibility of the <mark>multiple access protocol</mark>.</li>
+</ul>
+<blockquote>
+<h3 id="621-channel-partitioning-protocols">6.2.1 Channel Partitioning Protocols</h3>
+</blockquote>
+<blockquote>
+<h4 id="6211-tdm">6.2.1.1 TDM</h4>
+</blockquote>
+<p>TDM divides time into time frames and further divides each time frame into N time slots. Each time slot is then assigned to one of the N nodes. Whenever a node has a packet to send, it transmits the packet’s bits during its assigned time slot in the revolving TDM frame. Typically, slot sizes are chosen so that a single packet can be transmitted during a slot time.</p>
+<blockquote>
+<h4 id="6212-fdm">6.2.1.2 FDM</h4>
+</blockquote>
+<p>FDM divides the R bps channel into different frequencies (each with a bandwidth of R/N) and assigns each frequency to one of the N nodes. FDM thus creates N smaller channels of R/N bps out of the single, larger R bps channel.</p>
+<blockquote>
+<h4 id="6213-code-division-multiple-access">6.2.1.3 Code Division Multiple Access</h4>
+</blockquote>
+<p>CDMA assigns a different code to each node. Each node then uses its unique code to encode the data bits it sends.receivers correctly receive a sender’s encoded data bits (assuming the receiver knows the sender’s code)</p>
+<blockquote>
+<h3 id="622-random-access-protocols">6.2.2 Random Access Protocols</h3>
+</blockquote>
+<p>In a random access protocol, a transmitting node always transmits at the <mark>full rate</mark> of the channel, namely, R bps. When there is a collision, each node involved in the collision <mark>repeatedly retransmits</mark> its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn’t necessarily retransmit the frame right away. Instead it waits a <mark>random delay</mark> before retransmitting the frame.</p>
+<blockquote>
+<h4 id="6221-slotted-aloha-protocol">6.2.2.1 Slotted ALOHA Protocol</h4>
+</blockquote>
+<ul>
 <li>
-<p>There are two types of network links: <mark>point-to-point links</mark> and <mark>broadcast links</mark>.</p>
-<ol>
-<li>A point-to-point link consists of a <mark>single sender</mark> at one end of the link and a <mark>single receiver</mark> at the other end of the link.</li>
-<li>A broadcast link, can have <mark>multiple sending and receiving nodes</mark> all connected to the <mark>same, single, shared broadcast channel</mark>.</li>
-</ol>
-</li>
-<li>
-<p>The multiple access problem:Because all nodes are capable of transmitting frames, more than two nodes can transmit frames at the same time. When this happens, all of the nodes receive multiple frames at the same time; that is, the transmitted frames <mark>collide</mark> at all of the receivers,which are useless.</p>
-</li>
-<li>
-<p>In order to ensure that the broadcast channel performs useful work when multiple nodes are active, it is necessary to somehow <mark>coordinate the transmissions of the active nodes</mark>. This coordination job is the responsibility of the <mark>multiple access protocol</mark>.</p>
-</li>
-<li>
-<p>Channel Partitioning Protocols:</p>
-<ol>
-<li>TDM divides time into time frames and further divides each time frame into N time slots. Each time slot is then assigned to one of the N nodes. Whenever a node has a packet to send, it transmits the packet’s bits during its assigned time slot in the revolving TDM frame. Typically, slot sizes are chosen so that a single packet can be transmitted during a slot time.</li>
-<li>FDM divides the R bps channel into different frequencies (each with a bandwidth of R/N) and assigns each frequency to one of the N nodes. FDM thus creates N smaller channels of R/N bps out of the single, larger R bps channel</li>
-<li>CDMA assigns a different code to each node. Each node then uses its unique code to encode the data bits it sends.receivers correctly receive a sender’s encoded data bits (assuming thereceiver knows the sender’s code)</li>
-</ol>
-</li>
-<li>
-<p>Random Access Protocols:In a random access protocol, a transmitting node always transmits at the <mark>full rate</mark> of the channel, namely, R bps. When there is a collision, each node involved in the collision <mark>repeatedly retransmits</mark> its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn’t necessarily retransmit the frame right away. Instead it waits a <mark>random delay</mark> before retransmitting the frame.</p>
-</li>
-<li>
-<p>one of the simplest random access protocols, the slotted ALOHA protocol. In our description of slotted ALOHA, we assume the following:</p>
+<p>In our description of slotted ALOHA, we assume the following:</p>
 <ol>
 <li>All frames consist of exactly L bits.</li>
 <li>Time is divided into slots of size L/R seconds (that is, a slot equals the time to transmit one frame).</li>
@@ -2291,14 +2439,19 @@ t .</li>
 <li>another fraction of the slots will be empty because all active nodes <mark>refrain from transmitting</mark> as a result of the probabilistic transmission policy.</li>
 </ol>
 </li>
-<li>
-<p>ALOHA:</p>
+</ul>
+<blockquote>
+<h4 id="6222-aloha-protocol">6.2.2.2 ALOHA Protocol</h4>
+</blockquote>
 <ol>
 <li>In pure ALOHA, <mark>when a frame first arrives</mark> , the node immediately transmits the frame in its entirety into the broadcast channel.</li>
 <li>If a transmitted frame experiences a collision with one or more other transmissions, the node will then immediately (after completely transmitting its collided frame) <mark>retransmit the frame with probability p</mark>.</li>
 <li>Otherwise, the node <mark>waits for a frame transmission time</mark>. After this wait, it then <mark>transmits the frame with probability p</mark>, or <mark>waits</mark> (remaining idle) for another frame time <mark>with probability 1 – p</mark>.</li>
 </ol>
-</li>
+<blockquote>
+<h4 id="6223-carrier-sense-multiple-access-csma">6.2.2.3 Carrier Sense Multiple Access (CSMA)</h4>
+</blockquote>
+<ul>
 <li>
 <p>Carrier sensing—a node listens to the channel before transmitting. If a frame from another node is currently being transmitted into the channel, a node then <mark>waits until it detects no transmissions for a short amount of time</mark> and then begins transmission</p>
 </li>
@@ -2307,11 +2460,6 @@ t .</li>
 </li>
 <li>
 <p>channel propagation delay of a broadcast channel:the time it takes for a signal to propagate from one of the nodes to another.will play a crucial role in determining its performance. The longer this propagation delay, the larger the chance that a carrier-sensing node is not yet able to sense a transmission that has already begun at another node in the network</p>
-</li>
-<li>
-<p>Carrier Sense Multiple Access with Collision Dection (CSMA/CD):When a node performs collision detection, it ceases transmission as soon as it detects a collision</p>
-</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2320,7 +2468,7 @@ t .</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/csma_cd.png"
         title="csma/cd" /></p>
-<ul>
+</li>
 <li>
 <p>CSMA/CD from the perspective of an <mark>adapter</mark> (in a node) attached to a broadcast channel:</p>
 <ol>
@@ -2335,34 +2483,23 @@ the frame adapter buffer.</li>
 <li>
 <p>The binary exponential backoff algorithm:when transmitting a frame that has <mark>already experienced n collisions</mark>, a node chooses the value of K <mark>at random</mark> from ${ 0,1,2,&hellip;2^{n−1} }$,For <mark>Ethernet</mark>, the actual amount of time a node waits is $K\times the \ amount \ of \ time \ needed \ to \ send \ 512 \ bits \ into \ the \ Ethernet$, the maximum value that n can take is capped at 10</p>
 </li>
-<li>
-<p>Taking-Turns Protocols:</p>
-<ol>
-<li>polling protocol. The polling protocol requires one of the nodes to be designated as a master node. The master node polls each of the nodes in a round-robin fashion. In particular, the master node first sends a message to node 1, saying that it (node 1) can transmit up to some maximum number of frames. After node 1 transmits some frames, the master node tells node 2 it (node 2) can transmit up to the maximum number of frames. (The master node can determine when a node has finished sending its frames by observing the lack of a signal on the channel.) The procedure continues in this manner, with <mark>the master node polling each of the nodes in a cyclic manner</mark>.</li>
-<li>token-passing protocol. In this protocol there is <mark>no master node</mark>. A small, special-purpose frame known as a <mark>token</mark> is exchanged among the nodes in some fixed order. For example, node 1 might always send the token to node 2, node 2 might always send the token to node 3, and node N might always send the token to node 1. When a node receives a token, it holds onto the token <mark>only if it has some frames to transmit</mark>; otherwise, it immediately forwards the token to the next node. If a node does have frames to transmit when it receives the token, it sends up to a maximum number of frames and then forwards the token to the next node.</li>
-</ol>
-</li>
-<li>
-<p>DOCSIS: The Link-Layer Protocol for Cable Internet Access: DOCSIS uses FDM to divide the downstream (CMTS to modem) and upstream (modem to CMTS) network segments into multiple <mark>frequency channels</mark>(all broadcast chanels),each upstream channel is divided into intervals of time (TDM-like).</p>
-</li>
 </ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/computer_networking_topdown/DOCSIS.png"
-        data-srcset="/images/computer_networking_topdown/DOCSIS.png, /images/computer_networking_topdown/DOCSIS.png 1.5x, /images/computer_networking_topdown/DOCSIS.png 2x"
-        data-sizes="auto"
-        alt="/images/computer_networking_topdown/DOCSIS.png"
-        title="DOCSIS" /></p>
+<blockquote>
+<h3 id="623-taking-turns-protocols">6.2.3 Taking-Turns Protocols</h3>
+</blockquote>
+<ol>
+<li>polling protocol. The polling protocol requires one of the nodes to be designated as a <mark>master node</mark>. The master node polls each of the nodes in a round-robin fashion. In particular, the master node first sends a message to node 1, saying that it (node 1) can transmit up to some maximum number of frames. After node 1 transmits some frames, the master node tells node 2 it (node 2) can transmit up to the maximum number of frames. (The master node can determine when a node has finished sending its frames by observing the lack of a signal on the channel.) The procedure continues in this manner, with <mark>the master node polling each of the nodes in a cyclic manner</mark>.</li>
+<li>token-passing protocol. In this protocol there is <mark>no master node</mark>. A small, special-purpose frame known as a <mark>token</mark> is exchanged among the nodes in some fixed order. For example, node 1 might always send the token to node 2, node 2 might always send the token to node 3, and node N might always send the token to node 1. When a node receives a token, it holds onto the token <mark>only if it has some frames to transmit</mark>; otherwise, it immediately forwards the token to the next node. If a node does have frames to transmit when it receives the token, it sends up to a maximum number of frames and then <mark>forwards the token to the next node</mark>.</li>
+</ol>
+<blockquote>
+<h2 id="63-switched-local-area-networks">6.3 Switched Local Area Networks</h2>
+</blockquote>
 <ul>
-<li>
-<p>How does the CMTS know which cable modems have data to send in the first place? This is accomplished by having cable modems send <mark>mini-slot-request frames</mark> to the CMTS during a special set of interval mini-slots that are dedicated for this purpose,These mini-slot-request frames are transmitted in a <mark>random access manner</mark> and so may collide with each other.When a collision is inferred, a cable modem uses <mark>binary exponential backoff</mark> to defer the retransmission of its mini-slot-request frame to a future time slot.</p>
-</li>
 <li>
 <p>In truth, it is not hosts and routers that have link-layer addresses but rather their <mark>adapters</mark> (that is, network interfaces) that have link-layer addresses.</p>
 </li>
 <li>
-<p><mark>link-layer switches do not have link- layer addresses</mark> associated with their interfaces that connect to hosts and routers</p>
+<p><mark>link-layer switches do not have link-layer addresses</mark> associated with their interfaces that connect to hosts and routers</p>
 </li>
 <li>
 <p>A link-layer address is variously called a LAN address, a physical address, or a MAC address.</p>
@@ -2377,8 +2514,13 @@ the frame adapter buffer.</li>
 <p>An adapter’s MAC address has a <mark>flat structure</mark> (as opposed to a hierarchical structure) and <mark>doesn’t change</mark> no matter where the adapter goes.</p>
 </li>
 <li>
-<p>Sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending adapter inserts a special <mark>MAC broadcast address</mark> into the destination address field of the frame. For LANs that use 6-byte addresses (such as Ethernet and 802.11), the broadcast address is a string of 48 consecutive 1s (that is, FF-FF-FF-FF-FF- FF in hexadecimal notation)</p>
+<p>Sometimes a sending adapter does want all the other adapters on the LAN to receive and process the frame it is about to send. In this case, the sending adapter inserts a special <mark>MAC broadcast address</mark> into the destination address field of the frame. For LANs that use 6-byte addresses (such as Ethernet and 802.11), the broadcast address is a string of 48 consecutive 1s (that is, FF-FF-FF-FF-FF-FF in hexadecimal notation)</p>
 </li>
+</ul>
+<blockquote>
+<h3 id="631--address-resolution-protocol-arp">6.3.1  Address Resolution Protocol (ARP)</h3>
+</blockquote>
+<ul>
 <li>
 <p>Address Resolution Protocol (ARP):translate between network-layer addresses (for example, Internet IP addresses) and link-layer addresses (that is, MAC addresses)</p>
 </li>
@@ -2389,7 +2531,7 @@ the frame adapter buffer.</li>
 <p>Each host and router has an <mark>ARP table</mark> in its memory, which contains mappings of IP addresses to MAC addresses.</p>
 </li>
 <li>
-<p>The ARP table also contains a <mark>time- to-live (TTL)</mark> value, which indicates when each mapping will be deleted from the table.</p>
+<p>The ARP table also contains a <mark>time-to-live (TTL)</mark> value, which indicates when each mapping will be deleted from the table.</p>
 </li>
 <li>
 <p>A table does not necessarily contain an entry for every host and router on the subnet; some may have never been entered into the table, and others may have expired.</p>
@@ -2413,11 +2555,16 @@ the frame adapter buffer.</li>
 <li>This interface then passes the datagram to its adapter, which encapsulates the datagram in a new frame and sends the frame into another Subnet. The destination MAC address is again acquired by ARP .</li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h3 id="632-ethernet">6.3.2 Ethernet</h3>
+</blockquote>
+<ul>
 <li>
-<p>Today,Ethernet mainly uses a switch-based star topology.</p>
+<p>Today,Ethernet mainly uses a <mark>switch-based star topology</mark>.</p>
 </li>
 <li>
-<p>switch is not only “collision-less” but is also a bona-fide store-and-forward packet switch</p>
+<p>switch is not only “collision-less” but is also a  <mark>store-and-forward</mark> packet switch</p>
 </li>
 <li>
 <p>a switch operates only up through layer 2</p>
@@ -2432,17 +2579,15 @@ the frame adapter buffer.</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/ethernet_frame.png"
         title="ethernet_frame" /></p>
-</li>
-</ul>
 <ol>
 <li>Data field (46 to 1,500 bytes). This field carries the IP datagram.</li>
 <li>Destination address (6 bytes)</li>
 <li>Source address (6 bytes).</li>
 <li>Type field (2 bytes): The type field permits Ethernet to multiplex and demultiplex network-layer protocols</li>
 <li>Cyclic redundancy check (CRC) (4 bytes). the purpose of the CRC field is to allow the receiving adapter, adapter B, to detect bit errors in the frame</li>
-<li>Preamble (8 bytes). The Ethernet frame begins with an 8-byte preamble field. Each of the first 7 bytes of the preamble has a value of 10101010;(this allows the receiver to set its clock) the last byte is 10101011. The first 7 bytes of the preamble serve to “wake up” the receiving adapters and to synchronize their clocks to that of the sender’s clock.The last 2 bits of the eighth byte of the preamble (the first two consecutive 1s) alert adapter B that the “important stuff” is about to come</li>
+<li>Preamble (8 bytes). For “waking up” the receiving adapters and to synchronize their clocks to that of the sender’s clock.</li>
 </ol>
-<ul>
+</li>
 <li>
 <p>All of the Ethernet technologies provide connectionless service to the network layer. That is, there is <mark>no handshaking</mark>.</p>
 </li>
@@ -2457,6 +2602,11 @@ the frame adapter buffer.</li>
 <li>The final part of the acronym refers to <mark>the physical media itself</mark>;</li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h4 id="6321-filtering-and-forwarding">6.3.2.1 Filtering And Forwarding</h4>
+</blockquote>
+<ul>
 <li>
 <p>Filtering is the switch function that determines <mark>whether a frame should be forwarded to some interface or should just be dropped</mark></p>
 </li>
@@ -2478,7 +2628,7 @@ the frame adapter buffer.</li>
 <p>The switch indexes its table with <mark>the MAC address</mark>. There are three possible cases:</p>
 <ol>
 <li>There is <mark>no entry</mark> in the table for the address. In this case, the switch forwards copies of the frame to the output buffers preceding <mark>all interfaces except for interface it came in</mark>. In other words, if there is no entry for the destination address, the switch <mark>broadcasts</mark> the frame</li>
-<li>There is <mark>an entry</mark> in the table, associating the with <mark>interface it came in</mark>. In this case, the frame is coming from a LAN segment that <mark>contains adapter with the MAC address of the requested MAC address</mark>. There being no need to forward the frame to any of the other interfaces, the switch performs the filtering function by <mark>discarding the frame</mark>.</li>
+<li>There is <mark>an entry</mark> in the table, associating  with <mark>interface it came in</mark>. In this case, the frame is coming from a LAN segment that <mark>contains adapter with the MAC address of the requested MAC address</mark>. There being no need to forward the frame to any of the other interfaces, the switch performs the filtering function by <mark>discarding the frame</mark>.</li>
 <li>There is <mark>an entry</mark> in the table, associating the requested MAC address with <mark>interface different from the one it came in</mark>. In this case, the frame needs to be forwarded to the LAN segment <mark>attached to interface mentioned</mark>. The switch performs its forwarding function by putting the frame in an output buffer that precedes the interface.</li>
 </ol>
 </li>
@@ -2504,8 +2654,10 @@ the frame adapter buffer.</li>
 <li>Management:switch also <mark>eases network management</mark>.</li>
 </ol>
 </li>
-<li>
-<p>Switches Versus Routers</p>
+</ul>
+<blockquote>
+<h4 id="6322-switches-versus-routers">6.3.2.2 Switches Versus Routers</h4>
+</blockquote>
 <ol>
 <li>Switches:</li>
 </ol>
@@ -2541,7 +2693,10 @@ the frame adapter buffer.</li>
 </ul>
 </li>
 </ul>
-</li>
+<blockquote>
+<h3 id="633-virtual-local-area-networkvlan">6.3.3 Virtual Local Area Network(VLAN)</h3>
+</blockquote>
+<ul>
 <li>
 <p>VLAN:a switch that supports VLANs allows <mark>multiple virtual local area networks</mark> to be defined over a <mark>single physical local area network infrastructure</mark>. Hosts within a VLAN communicate with each other as if they (and no other hosts) were connected to the switch.
 <img
@@ -2583,7 +2738,7 @@ the frame adapter buffer.</li>
 <p>In <mark>ad hoc networks</mark>, wireless hosts have no such infrastructure with which to connect. In the absence of such infrastructure, <mark>the hosts themselves</mark> must provide for services such as routing, address assignment, DNS-like name translation, and more.</p>
 </li>
 <li>
-<p>When a mobile host moves beyond the range of one base station and into the range of another, it will change its <mark>point of attachment</mark> into the larger network,a process referred to as <mark>handoff</mark></p>
+<p>When a mobile host moves beyond the range of one base station and into the range of another, it will change its <mark>point of attachment</mark> into the larger network,a process referred to as <mark>handoff</mark>.</p>
 </li>
 <li>
 <p>At the highest level we can classify wireless networks according to two criteria:</p>
@@ -2612,11 +2767,16 @@ the frame adapter buffer.</li>
 <li>
 <p>Several physical-layer characteristics that are important in understanding higher-layer wireless communication protocols:</p>
 <ol>
-<li>For a given modulation scheme, the higher the SNR, the lower the BER.</li>
+<li>For a given modulation scheme, the higher the SNR, the lower the bit error rate (BER).</li>
 <li>For a given SNR, a modulation technique with a higher bit transmission rate (whether in error or not) will have a higher BER.</li>
 <li><mark>Dynamic selection of the physical-layer modulation</mark> technique can be used to adapt the modulation technique to channel conditions.</li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h2 id="71-code-division-multiple-access-cdma">7.1 Code division multiple access (CDMA)</h2>
+</blockquote>
+<ul>
 <li>
 <p><mark>Code division multiple access (CDMA)</mark> belongs to the family of <mark>channel partitioning protocols</mark>.</p>
 </li>
@@ -2629,19 +2789,27 @@ the frame adapter buffer.</li>
 <li>Let $d_i$  be the value of the data bit for the $i$th bit slot.</li>
 <li>We represent a data bit with a 0 value as <mark>-1</mark> .</li>
 <li>Each bit slot is further subdivided into <mark>M mini-slots</mark>;</li>
-<li>The CDMA code used by the sender consists of a sequence of M values,$c_m$,m=1,2,3,&hellip;M,each taking a +1 or -1 value.</li>
+<li>The CDMA code used by the sender consists of a sequence of M values, $c_m,m=1,2,3,&hellip;M$ ,each taking a +1 or -1 value.</li>
 <li>Focus on the ith data bit, $d_i$ .For the mth mini-slot of the bit- transmission time of $d_i$ , the output of the CDMA encoder,$Z_{i,m}$, is the value of <mark>$d_i$  multiplied by the mth bit in the assigned CDMA code, $c_m$;</mark>
 $$ Z_{i,m} = d_i\times c_m $$</li>
 </ul>
 <ol>
-<li>With no interfering senders, the receiver would receive the encoded bits, $Z$ , and <mark>recover the original data bit</mark>, d , by computing:
-$$ d_i= \frac{\sum^{M}<em>{m=1} Z</em>{i,m}\cdot c_m }{M} $$</li>
+<li>With no interfering senders, the receiver would receive the encoded bits, $Z$ , and <mark>recover the original data bit</mark>, $d$ , by computing:</li>
+</ol>
+  <!-- d_{i}=\frac{ \sum^{M}_{m=1} Z_{i,m} \cdot c_{m} }{M}  -->
+<p>$$ d_{i}=\frac{\sum_{m=1}^{M} Z_{i,m} \cdot c_{m} }{M} $$</p>
+<ol start="2">
 <li>In the presence of <mark>multiple senders</mark>, sender s computes its encoded transmissions,$Z_{i,m}$, in exactly the same manner.The value received at a receiver during the $m$th mini-slot of the ith bit slot, however, is now the <mark>sum of the transmitted bits from all N senders during that mini-slot</mark>:
 $$ Z_{i,m}^{*} =\sum_{j=1}^{N} Z_{i,m}^{j} =  \sum_{j=1}^{N} d_{i}^{j}\cdot c_{m}^{j} $$</li>
 <li>If the senders’ codes are chosen carefully(each two combination is <mark>orthogonal</mark>), each receiver can recover the data sent by a given sender out of the aggregate signal simply by using the sender’s code <mark>in exactly the same manner</mark> as in Equation :
 $$ d_{i}^{j} = \frac{\sum_{m=1}^{M} Z_{i,m}^{*} \cdot c_{m}^{j} }{M} $$</li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h2 id="72-wifi-80211-wireless-lans">7.2 WiFi: 802.11 Wireless LANs</h2>
+</blockquote>
+<ul>
 <li>
 <p>When a network administrator installs an AP, the administrator assigns a one- or two-word <mark>Service Set Identifier (SSID)</mark> to the access point.</p>
 </li>
@@ -2670,9 +2838,9 @@ $$ d_{i}^{j} = \frac{\sum_{m=1}^{M} Z_{i,m}^{*} \cdot c_{m}^{j} }{M} $$</li>
 </li>
 <li>
 <p>Authenticate</p>
-<ol>
+<ul>
 <li>The host provides AP with some information.The AP typically communicates with an <mark>authentication server</mark> to verify these information, relaying information between the wireless device and the authentication server using a protocol such as <mark>RADIUS</mark>  or <mark>DIAMETER</mark>.</li>
-</ol>
+</ul>
 </li>
 <li>
 <p>Assign IP
@@ -2680,15 +2848,17 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 </li>
 </ol>
 </li>
-<li>
-<p>How 802.11 CSMA/CA Protocol Works:</p>
+</ul>
+<blockquote>
+<h3 id="721-80211-csmaca-protocol">7.2.1 802.11 CSMA/CA Protocol</h3>
+</blockquote>
 <ol>
 <li>If initially the station senses the channel <mark>idle</mark>, it transmits its frame after a short period of time known as the <mark>Distributed Inter-frame Space (DIFS)</mark>;</li>
 <li>Otherwise, the station chooses a random backoff value using <mark>binary exponential backoff</mark>  and counts down this value after <mark>DIFS</mark> when the channel is sensed <mark>idle</mark>. While the channel is sensed busy, the counter value remains <mark>frozen</mark>.</li>
 <li>When the counter reaches zero (note that this can only occur while the channel is sensed <mark>idle</mark>), the station transmits the <mark>entire frame</mark> and then waits for an acknowledgment.</li>
 <li>If an <mark>acknowledgment</mark> is received, the transmitting station knows that its frame has been correctly received at the destination station. If the station has another frame to send, it begins the CSMA/CA protocol at step 2. If the acknowledgment isn’t received, the transmitting station reenters the backoff phase in step 2, with the random value chosen from a <mark>larger interval</mark>.</li>
 </ol>
-</li>
+<ul>
 <li>
 <p>Because 802.11wireless LANs do not use collision detection, once a station begins to transmit a frame, it transmits the frame <mark>in its entirety regardless of collision</mark>.</p>
 </li>
@@ -2696,7 +2866,14 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <p>When the destination station receives a frame that <mark>passes the CRC</mark>, it waits a short period of time known as the <mark>Short Inter-frame Spacing (SIFS)</mark> and then sends back an acknowledgment frame.</p>
 </li>
 <li>
-<p>Why Does CDMA/CA Take Different Approach With CDMA/CA:In 802.11, if the two stations sense the channel busy, they both immediately enter <mark>random backoff</mark>, hopefully choosing <mark>different backoff values</mark>. If these values are indeed different, once the channel becomes idle, one of the two stations will begin transmitting before the other, and  the <mark>“losing station”</mark> will hear the <mark>“winning station’s”</mark> signal, <mark>freeze</mark> its counter, and refrain from transmitting until the winning station has completed its transmission</p>
+<p>Why Does CSMA/CA Take Different Approach With CSMA/CD:</p>
+<ol>
+<li>The ability to detect collisions requires the ability to send (the station’s own ­signal) and receive (to determine whether another station is also transmitting) at the same time. Because the strength of the received signal is typically <mark>very small</mark> compared to the strength of the transmitted signal at the 802.11 adapter, it is costly to build hardware that can detect a collision.</li>
+<li>More importantly, even if the adapter could transmit and listen at the same time (and presumably abort transmission when it senses a busy channel), the adapter would still <mark>not be able to detect all collisions</mark>, due to the hidden terminal problem and fading.</li>
+</ol>
+</li>
+<li>
+<p>In 802.11, if the two stations sense the channel busy, they both immediately enter <mark>random backoff</mark>, hopefully choosing <mark>different backoff values</mark>. If these values are indeed different, once the channel becomes idle, one of the two stations will begin transmitting before the other, and  the <mark>“losing station”</mark> will hear the <mark>“winning station’s”</mark> signal, <mark>freeze</mark> its counter, and refrain from transmitting until the winning station has completed its transmission</p>
 </li>
 <li>
 <p>Dealing With <mark>Hidden Terminals</mark>: <mark>RTS</mark> and <mark>CTS</mark>: the IEEE 802.11 protocol allows a station to use a short <mark>Request to Send (RTS)</mark> control frame and a short <mark>Clear to Send (CTS)</mark> control frame to reserve access to the channel:</p>
@@ -2709,8 +2886,6 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 </ul>
 </li>
 </ol>
-</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2719,44 +2894,56 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/RTS_CTS_.png"
         title="RTS_CTS" /></p>
-<ul>
-<li>
-<p>Although the RTS/CTS exchange can help reduce collisions, it also introduces delay and consumes channel resources. For this reason, the RTS/CTS exchange is only used (if at all) to reserve the channel for the transmission of a <mark>long DATA frame</mark>. In practice, each wireless station can set an RTS threshold such that the RTS/CTS sequence is used only when the frame is longer than the threshold.</p>
 </li>
 <li>
-<p>802.11 frame has four address fields,each of which can hold a 6-byte MAC address, three address fields are needed for moving the network-layer datagram from a wireless station through an AP to a router interface. The fourth address field is used when APs ­forward frames to each other in ad hoc mode.  Since we are only considering infrastructure networks here, let’s focus our attention on the first three address fields. The 802.11 standard defines these fields as follows:</p>
+<p>Although the RTS/CTS exchange can help reduce collisions, it also introduces delay and consumes channel resources. For this reason, the RTS/CTS exchange is only used (if at all) to reserve the channel for the transmission of a <mark>long DATA frame</mark>. In practice, each wireless station can set an <mark>RTS threshold</mark> such that the RTS/CTS sequence is used only when the frame is longer than the threshold.</p>
+</li>
+<li>
+<p>802.11 frame has four address fields,each of which can hold a 6-byte MAC address, three address fields are needed for moving the network-layer datagram from <mark>a wireless station through an AP to a router interface</mark>. The fourth address field is used when APs ­forward frames to each other in ad hoc mode.  Since we are only considering infrastructure networks here, let’s focus our attention on the first three address fields. The 802.11 standard defines these fields as follows:</p>
 <ol>
 <li>Address 1 is the MAC address of the wireless station that is <mark>to receive the frame</mark>.</li>
 <li>Address 2 is the MAC address of the station that <mark>transmits the frame</mark></li>
 <li>Address 3  contains the MAC address of <mark>gateway router</mark> of the subnet.</li>
 </ol>
 </li>
+</ul>
+<div class="details admonition info">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Info<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The third address is to inform AP the router iinterface when the datagram reaches the AP.</div>
+        </div>
+    </div>
+<ul>
 <li>
 <p>Because acknowledgments can get lost, the sending station may send <mark>multiple copies of a given frame</mark>. The sequence number field in the 802.11 frame thus serves exactly the same purpose here at the link layer as it did in the transport layer.</p>
 </li>
 <li>
-<p>The duration value is included in the frame’s duration field to request for reserve the channel for a period of time.</p>
+<p>The duration value is included in the frame’s duration field to request for <mark>reserve the channel for a period of time</mark>.</p>
 </li>
 <li>
 <p>802.11 Rate Adaptation:some 802.11 implementations have a rate adaptation capability that adaptively selects the underlying <mark>physical-layer modulation technique</mark> to use based on <mark>current or recent channel characteristics</mark>.</p>
 </li>
-<li>
-<p>Power Management:A node is able to explicitly alternate between <mark>sleep and wake states</mark>.A node indicates to the access point that it will be going to sleep by setting the <mark>power-management bit</mark> in the header of an 802.11 frame to 1. A <mark>timer</mark> in the node is then set to <mark>wake up</mark> the node just before the AP is scheduled to send its beacon frame (recall that an AP typically sends a beacon frame every 100 msec).</p>
-</li>
+</ul>
+<blockquote>
+<h2 id="73-cellular-network">7.3 Cellular Network</h2>
+</blockquote>
+<ul>
 <li>
 <p>In Cellular Network,The term cellular refers to the fact that the region covered by a cellular network is <mark>partitioned into a number of geographic coverage areas</mark>, known as <mark>cells</mark>.</p>
 </li>
 <li>
 <p>Each cell contains a <mark>base transceiver station (BTS)</mark> that transmits signals to and receives signals from the mobile stations in its cell.</p>
 </li>
-<li>
-<p>The GSM standard for 2G cellular systems uses <mark>combined FDM/TDM (radio)</mark> for the air interface.In combined FDM/TDM systems, the channel is partitioned into a number of frequency sub-bands; within each sub-band, time is partitioned into frames and slots. Thus, for a combined FDM/TDM system, if the channel is partitioned into F sub-bands and time is partitioned into T slots, then the channel will be able to support $F\cdot T$ simultaneous calls.</p>
-</li>
-<li>
-<p>the <mark>mobile switching center (MSC)</mark> plays the central role in user authorization and accounting, call establishment and teardown, and handoff.</p>
-</li>
-<li>
-<p>The role of the <mark>base station controller (BSC)</mark> is to allocate <mark>BTS radio channels</mark> to mobile subscribers, perform paging (finding the cell in which a mobile user is resident), and perform handoff of mobile users.
+</ul>
+<blockquote>
+<h3 id="731-2g">7.3.1 2G</h3>
+</blockquote>
+<ul>
+<li>The GSM standard for 2G cellular systems uses <mark>combined FDM/TDM (radio)</mark> for the air interface.In combined FDM/TDM systems, the channel is partitioned into a number of frequency sub-bands; within each sub-band, time is partitioned into frames and slots. Thus, for a combined FDM/TDM system, if the channel is partitioned into F sub-bands and time is partitioned into T slots, then the channel will be able to support $F\cdot T$ simultaneous calls.</li>
+<li>the <mark>mobile switching center (MSC)</mark> plays the central role in user authorization and accounting, call establishment and teardown, and handoff.</li>
+<li>The role of the <mark>base station controller (BSC)</mark> is to allocate <mark>BTS radio channels</mark> to mobile subscribers, perform paging (finding the cell in which a mobile user is resident), and perform handoff of mobile users.
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2764,8 +2951,12 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-srcset="/images/computer_networking_topdown/cellular_2g.png, /images/computer_networking_topdown/cellular_2g.png 1.5x, /images/computer_networking_topdown/cellular_2g.png 2x"
         data-sizes="auto"
         alt="/images/computer_networking_topdown/cellular_2g.png"
-        title="cellular_2g" /></p>
-</li>
+        title="cellular_2g" /></li>
+</ul>
+<blockquote>
+<h3 id="732-3g">7.3.2 3G</h3>
+</blockquote>
+<ul>
 <li>
 <p>There are two types of nodes in the 3G core network: <mark>Serving GPRS Support Nodes (SGSNs)</mark> and <mark>Gateway GPRS Support Nodes (GGSNs)</mark>:</p>
 <ol>
@@ -2777,9 +2968,7 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <p>The <mark>Radio Network Controller (RNC)</mark> typically controls several cell base transceiver stations.The RNC connects to both the circuit-switched cellular voice network via an <mark>MSC</mark>, and to the packet-switched Internet via an <mark>SGSN</mark>.</p>
 </li>
 <li>
-<p>A significant change in 3G UMTS over 2G networks is that rather than using GSM’s FDMA/TDMA scheme, UMTS uses a CDMA technique known as Direct Sequence Wideband CDMA (DS-WCDMA) within TDMA slots:TDMA slots, in turn, are available on multiple frequencies</p>
-</li>
-</ul>
+<p>A significant change in 3G UMTS over 2G networks is that rather than using GSM’s FDMA/TDMA scheme, UMTS uses a CDMA technique known as <mark>Direct Sequence Wideband CDMA (DS-WCDMA) within TDMA slots</mark>:TDMA slots, in turn, are available on multiple frequencies</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2788,6 +2977,11 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/3g_network.png"
         title="3g_network" /></p>
+</li>
+</ul>
+<blockquote>
+<h3 id="733-4g">7.3.3 4G</h3>
+</blockquote>
 <ul>
 <li>
 <p>Changes in 4G over 3G network:</p>
@@ -2806,8 +3000,6 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <li>The Mobility Management Entity (MME) performs connection and mobility management on behalf of the UEs resident in the cell it controls. It receives UE subscription information from the HHS.</li>
 <li>The Home Subscriber Server (HSS) contains UE information including roaming access capabilities, quality of service profiles, and authentication information.</li>
 </ol>
-</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2816,9 +3008,9 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/4g_network.png"
         title="4g_network" /></p>
-<ul>
-<li>LTE Radio Access Network:LTE uses a combination of frequency division multiplexing and time division multiplexing on the downstream channel, known as orthogonal frequency division multiplexing (OFDM):In LTE, each active mobile node is allocated one or more 0.5 ms time slots in one or more of the channel frequencies.</li>
-</ul>
+</li>
+<li>
+<p>LTE Radio Access Network:LTE uses a combination of frequency division multiplexing and time division multiplexing on the downstream channel, known as orthogonal frequency division multiplexing (OFDM):In LTE, each active mobile node is allocated one or more 0.5 ms time slots in one or more of the channel frequencies.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2827,32 +3019,27 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/lte.png"
         title="lte" /></p>
+</li>
+</ul>
+<blockquote>
+<h2 id="74-mobility">7.4 Mobility</h2>
+</blockquote>
 <ul>
-<li>
-<p>The permanent home of a mobile node (such as a laptop or smartphone) is known as the <mark>home network</mark></p>
-</li>
-<li>
-<p>The entity within the home network that performs the mobility management functions  on behalf of the mobile node is known as the <mark>home agent</mark></p>
-</li>
-<li>
-<p>The network in which the mobile node is currently residing is known as the <mark>foreign (or visited) network</mark></p>
-</li>
-<li>
-<p>the entity within the foreign network that helps the mobile node with the mobility management functions discussed below is known as a <mark>foreign agent</mark>.</p>
-</li>
-<li>
-<p>A <mark>correspondent</mark> is the entity wishing to communicate with the mobile node</p>
-</li>
-<li>
-<p>How Indirect Routing Works:</p>
+<li>The permanent home of a mobile node (such as a laptop or smartphone) is known as the <mark>home network</mark></li>
+<li>The entity within the <mark>home network</mark> that performs the mobility management functions  on behalf of the mobile node is known as the <mark>home agent</mark></li>
+<li>The network in which the mobile node is currently residing is known as the <mark>foreign (or visited) network</mark></li>
+<li>the entity within the <mark>foreign network</mark> that helps the mobile node with the mobility management functions discussed below is known as a <mark>foreign agent</mark>.</li>
+<li>A <mark>correspondent</mark> is the entity wishing to communicate with the mobile node</li>
+</ul>
+<blockquote>
+<h3 id="741-indirect-routing">7.4.1 Indirect Routing</h3>
+</blockquote>
 <ol>
 <li>the correspondent simply addresses the datagram to the mobile node’s <mark>permanent address</mark> and sends the datagram into the network</li>
 <li>Such datagrams are first routed, as usual, to the mobile node’s <mark>home network</mark>.</li>
-<li>The datagram is  forwarded to the <mark>foreign agent</mark>, using the mobile node’s COA</li>
+<li>The datagram is  forwarded to the <mark>foreign agent</mark>, using the mobile node’s <mark>Care-Of-Address(COA)</mark></li>
 <li>The datagram is forwarded from the foreign agent to the <mark>mobile node</mark></li>
 </ol>
-</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2861,6 +3048,9 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/indirect_routing.png"
         title="indirect_routing" /></p>
+<blockquote>
+<h3 id="742-direct-routing">7.4.2 Direct Routing</h3>
+</blockquote>
 <ul>
 <li>We’ll identify the foreign agent in that foreign network where the mobile node was <mark>first found</mark> as the <mark>anchor ­foreign agent</mark>.</li>
 <li>How Direct Routing Works:
@@ -2875,11 +3065,14 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/computer_networking_topdown/direct_routing.png"
-        data-srcset="/images/computer_networking_topdown/direct_routing.png, /images/computer_networking_topdown/direct_routing.png 1.5x, /images/computer_networking_topdown/direct_routing.png 2x"
+        data-src="/images/computer_networking_topdown/direct_routing1.png"
+        data-srcset="/images/computer_networking_topdown/direct_routing1.png, /images/computer_networking_topdown/direct_routing1.png 1.5x, /images/computer_networking_topdown/direct_routing1.png 2x"
         data-sizes="auto"
-        alt="/images/computer_networking_topdown/direct_routing.png"
-        title="direct_routing" /></p>
+        alt="/images/computer_networking_topdown/direct_routing1.png"
+        title="direct_routing1" /></p>
+<blockquote>
+<h3 id="743-mobile-ip">7.4.3 Mobile-IP</h3>
+</blockquote>
 <ul>
 <li>
 <p>The <mark>mobile IP standard</mark> consists of three main pieces:</p>
@@ -2918,11 +3111,16 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         title="mobile_ip" /></li>
 </ol>
 </li>
+</ul>
+<blockquote>
+<h3 id="744-mobility-in-cellular-networks">7.4.4 Mobility in Cellular Networks</h3>
+</blockquote>
+<ul>
 <li>
 <p>How Routing Calls to a Mobile User Works In GSM:</p>
 <ol>
 <li>The correspondent dials the mobile user’s phone number.The call is routed from the correspondent through the PSTN to the <mark>home MSC</mark> in the mobile’s home network.</li>
-<li>The home MSC receives the call and interrogates the <mark>HLR</mark> to determine the location of the mobile user. In the simplest case, the HLR returns the <mark>mobile station roaming number (MSRN)</mark>,If HLR does not have the roaming number, it returns the address of the <mark>VLR</mark> in the visited network. In this case , the home MSC will need to query the VLR to obtain the roaming number of the mobile node.</li>
+<li>The home MSC receives the call and interrogates the <mark>home location register (HLR)</mark> to determine the location of the mobile user. In the simplest case, the HLR returns the <mark>mobile station roaming number (MSRN)</mark>,If HLR does not have the roaming number, it returns the address of the <mark>visitor location register (VLR)</mark> in the visited network. In this case , the home MSC will need to query the VLR to obtain the roaming number of the mobile node.</li>
 <li>Given the roaming number, the home MSC sets up the second leg of the call through the network to the MSC in the <mark>visited network</mark>. The call is completed, being routed from the correspondent to the home MSC, and from there to the visited MSC, and from there to the base station serving the mobile user.</li>
 </ol>
 </li>
@@ -2946,8 +3144,6 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <li>The mobile sends a <mark>handoff complete message</mark> to the new BS, which is forwarded up to the  visited MSC. The visited MSC then <mark>reroutes the ongoing call</mark> to the mobile via the new BS.</li>
 <li>The resources allocated along the path to the old BS are then <mark>released</mark></li>
 </ol>
-</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -2956,29 +3152,34 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/handoff.png"
         title="handoff" /></p>
-<ul>
-<li>What happens when the mobile moves to a BS that is associated with a <mark>different MSC</mark> :
+</li>
+<li>
+<p>What happens when the mobile moves to a BS that is associated with a <mark>different MSC</mark> :</p>
 <ol>
 <li>GSM defines the notion of an <mark>anchor MSC</mark>. The anchor MSC is the MSC visited by the mobile <mark>when a call first begins</mark>; the anchor MSC thus remains <mark>unchanged</mark> during the call.</li>
-<li>Throughout the call’s duration, the call is routed <mark>from the home MSC to the anchor MSC</mark>, and then <mark>from the anchor MSC to the visited MSC</mark> where the mobile is currently located.
-<img
+<li>Throughout the call’s duration, the call is routed <mark>from the home MSC to the anchor MSC</mark>, and then <mark>from the anchor MSC to the visited MSC</mark> where the mobile is currently located.</li>
+</ol>
+</li>
+</ul>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/images/computer_networking_topdown/handoff_multi_msc.png"
         data-srcset="/images/computer_networking_topdown/handoff_multi_msc.png, /images/computer_networking_topdown/handoff_multi_msc.png 1.5x, /images/computer_networking_topdown/handoff_multi_msc.png 2x"
         data-sizes="auto"
         alt="/images/computer_networking_topdown/handoff_multi_msc.png"
-        title="handoff_diff_msc" /></li>
-</ol>
-</li>
-</ul>
+        title="handoff_diff_msc" /></p>
 <blockquote>
 <h1 id="chapter-8-network-security">Chapter 8 Network Security</h1>
 </blockquote>
+<blockquote>
+<h2 id="81-encryption">8.1 Encryption</h2>
+</blockquote>
+<blockquote>
+<h3 id="811-symmetric-key-encryption">8.1.1 Symmetric Key Encryption</h3>
+</blockquote>
+<p>Encrypted communication required that the two communicating parties share a <mark>common secret</mark></p>
 <ul>
-<li>
-<p>Symmetric Key Encryption: encrypted communication required that the two communicating parties share a <mark>common secret</mark></p>
-</li>
 <li>
 <p>How Block Cipher Works:</p>
 <ol>
@@ -3007,17 +3208,19 @@ The host is assigned an IP address following <mark>DHCP protocol</mark></p>
 <p>In order to save overhead of sending random bits, block ciphers typically use a technique called <mark>Cipher Block Chaining (CBC)</mark>:</p>
 <ol>
 <li>Before encrypting the message (or the stream of data), the sender generates a <mark>random k-bit string</mark>, called the <mark>Initialization Vector (IV)</mark>. Denote this initialization vector by c(0). The sender sends the IV to the receiver in <mark>cleartext</mark>.</li>
-<li>For the first block, the sender calculates the exclusive-or of the first block of cleartext with the IV. It then runs the result through the block-cipher algorithm to get the corresponding ciphertext block; that is,$c(1)=K_S(m(1)\oplus c(0))$ . The sender sends the encrypted block c(1) to the receiver</li>
+<li>For the first block, the sender calculates the exclusive-or of the first block of cleartext with the IV. It then runs the result through the block-cipher algorithm to get the corresponding ciphertext block; that is,<mark>$c(1)=K_S(m(1)\oplus c(0))$</mark> . The sender sends the encrypted block c(1) to the receiver</li>
 <li>For the ith block, the sender generates the ith ciphertext block from <mark>$c(i)= K_S(m(i)\oplus c(i−1))$</mark></li>
 </ol>
 </li>
-<li>
-<p>Public Key Encryption:</p>
+</ul>
+<blockquote>
+<h3 id="812-public-key-encryption">8.1.2 Public Key Encryption</h3>
+</blockquote>
 <ol>
 <li>Suppose Alice wants to communicate with Bob.We will use the notation <mark>$K_B^+$</mark> and <mark>$K_B^-$</mark>  to refer to Bob’s <mark>public key</mark> and <mark>private keys</mark>,respectively. Alice first fetches Bob’s public key. Alice then encrypts her message, m, to Bob <mark>using Bob’s public key</mark> and a known (for example, standardized) encryption algorithm; that is, Alice computes <mark>$K_B^+(m)$</mark></li>
 <li>Bob receives Alice’s encrypted message and uses his <mark>private key</mark> and a known (for example, standardized) decryption algorithm to decrypt Alice’s encrypted message. That is, Bob computes <mark>$m=K_B^−(K_B^+(m))$</mark></li>
 </ol>
-</li>
+<ul>
 <li>
 <p>How Does RSA Work:</p>
 <ul>
@@ -3066,10 +3269,16 @@ $$ m=c^d \ mod \ n $$</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/session_key.png"
         title="session_key" /></p>
+<blockquote>
+<h2 id="82-integrity">8.2 Integrity</h2>
+</blockquote>
 <ul>
-<li>
-<p>A cryptographic hash function is required to have the following additional property: It is computationally infeasible to find any two <mark>different messages</mark> x and y such that $H(x)=H(y)$</p>
-</li>
+<li>A cryptographic hash function is required to have the following additional property: It is computationally infeasible to find any two <mark>different messages</mark> x and y such that $H(x)=H(y)$</li>
+</ul>
+<blockquote>
+<h3 id="821-message-authentication-code-mac">8.2.1 Message Authentication Code (MAC)</h3>
+</blockquote>
+<ul>
 <li>
 <p>Using the <mark>shared secret s</mark>, message integrity can be performed as follows:</p>
 <ol>
@@ -3088,9 +3297,12 @@ $$ m=c^d \ mod \ n $$</li>
         alt="/images/computer_networking_topdown/integrity.png"
         title="integrity" /></p>
 <ul>
-<li>
-<p>One nice feature of a MAC is that it <mark>does not require an encryption algorithm</mark>.</p>
-</li>
+<li>One nice feature of a MAC is that it <mark>does not require an encryption algorithm</mark>.</li>
+</ul>
+<blockquote>
+<h3 id="822-digital-signatures">8.2.2 Digital Signatures</h3>
+</blockquote>
+<ul>
 <li>
 <p>How Digital Signatures Work?</p>
 <ol>
@@ -3119,6 +3331,9 @@ $$ m=c^d \ mod \ n $$</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/digital_signature_verification.png"
         title="digital_signature_verification" /></p>
+<blockquote>
+<h3 id="823-certification">8.2.3 Certification</h3>
+</blockquote>
 <ul>
 <li>
 <p>Public key certification is certifying that a public key belongs to a specific entity.</p>
@@ -3126,6 +3341,11 @@ $$ m=c^d \ mod \ n $$</li>
 <li>
 <p>To verify that you have the actual public key of the entity (person, router, browser, and so on) with whom you want to communicate,Binding a public key to a <mark>Certification Authority (CA)</mark> and get a certificate.</p>
 </li>
+</ul>
+<blockquote>
+<h3 id="824-end-point-authentication">8.2.4 End-Point Authentication</h3>
+</blockquote>
+<ul>
 <li>
 <p>A <mark>nonce</mark> is a number that a protocol will use only <mark>once in a lifetime</mark></p>
 </li>
@@ -3138,8 +3358,12 @@ $$ m=c^d \ mod \ n $$</li>
 <li>Bob decrypts the received message. If the <mark>decrypted nonce equals the nonce he sent</mark>, then Alice is authenticated.</li>
 </ol>
 </li>
-<li>
-<p>How Does PGP Work?</p>
+</ul>
+<blockquote>
+<h2 id="83-pretty-good-privacy-pgp">8.3 Pretty Good Privacy (PGP)</h2>
+</blockquote>
+<ul>
+<li>How Does PGP Work?
 <ul>
 <li>
 <p>Sender(Alice)</p>
@@ -3190,6 +3414,9 @@ $$ m=c^d \ mod \ n $$</li>
         data-sizes="auto"
         alt="/images/computer_networking_topdown/PGP3.png"
         title="PGP3" /></p>
+<blockquote>
+<h2 id="84-ssl">8.4 SSL</h2>
+</blockquote>
 <ul>
 <li>
 <p>SSL can be employed by any application that <mark>runs over TCP</mark>.</p>
@@ -3197,8 +3424,10 @@ $$ m=c^d \ mod \ n $$</li>
 <li>
 <p>SSL has three phases: handshake, key derivation, and data transfer.</p>
 </li>
-<li>
-<p>During the handshake phase:</p>
+</ul>
+<blockquote>
+<h3 id="841-handshake">8.4.1 Handshake</h3>
+</blockquote>
 <ol>
 <li>Bob needs to  establish a <mark>TCP connection</mark> with Alice</li>
 <li>Bob sends Alice a <mark>list of cryptographic algorithms it supports</mark>, along with a <mark>­client nonce</mark>.</li>
@@ -3207,45 +3436,57 @@ $$ m=c^d \ mod \ n $$</li>
 <li>Alice <mark>decrypts</mark> the EMS with <mark>her private key</mark> to get the PMS.</li>
 <li>Using the <mark>same key derivation function</mark> (as specified by the SSL standard), Bob and Alice independently compute the <mark>Master Secret (MS)</mark> from the PMS and nonces. The MS is then sliced up to generate the two encryption and two MAC keys.</li>
 <li>The client sends a <mark>MAC of all the handshake messages</mark>.</li>
-<li>The server sends a <mark>MAC of all the handshake messages</mark>.
-<img
+<li>The server sends a <mark>MAC of all the handshake messages</mark>.</li>
+</ol>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/images/computer_networking_topdown/ssl_almost.png"
         data-srcset="/images/computer_networking_topdown/ssl_almost.png, /images/computer_networking_topdown/ssl_almost.png 1.5x, /images/computer_networking_topdown/ssl_almost.png 2x"
         data-sizes="auto"
         alt="/images/computer_networking_topdown/ssl_almost.png"
-        title="ssl_almost" /></li>
-</ol>
-</li>
-<li>
-<p>The <mark>nonce</mark> is used to prevent <mark>connection replay attack</mark>, which is replaying the sent records.(sequence numbers are used to defend against replaying individual packets during an ongoing session)</p>
-</li>
-<li>
-<p>Alice and Bob use the MS to generate four keys:</p>
+        title="ssl_almost" /></p>
+<div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Nonce<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The <mark>nonce</mark> is used to prevent <mark>connection replay attack</mark>, which is replaying the sent records.(sequence numbers are used to defend against replaying individual packets during an ongoing session)</div>
+        </div>
+    </div>
+<div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>MS<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Alice and Bob use the MS to generate four keys:</p>
 <ol>
 <li>EB = session encryption key for data sent from Bob to Alice</li>
 <li>MB =  session MAC key for data sent from Bob to Alice</li>
 <li>EA =  session encryption key for data sent from Alice to Bob</li>
 <li>MA =  session MAC key for data sent from Alice to Bob</li>
 </ol>
-</li>
-<li>
 <p>The two encryption keys will be used to encrypt data; the two MAC keys will be used to verify the integrity of the data.</p>
-</li>
-<li>
-<p>How Does SSL Data Transfer Work?</p>
+</div>
+        </div>
+    </div>
+<blockquote>
+<h3 id="842-data-transfer">8.4.2 Data Transfer</h3>
+</blockquote>
 <ol>
 <li>Suppose Bob is to send data. His data is represented by data streams in TCP . SSL breaks the data stream into <mark>records</mark>.</li>
 <li>Bob maintains a <mark>sequence number counter</mark>.To create the MAC, Bob inputs the <mark>record data along with the key $M_B$ and sequence number</mark>  into a hash function.The result MAC is appended  to each record.</li>
 <li>SSL <mark>encrypts</mark> the <mark>$record \ + \ MAC$</mark> using  his session encryption key <mark>$E_B$</mark></li>
 <li>This encrypted package is then <mark>passed to TCP</mark> for transport over the Internet</li>
 </ol>
-</li>
+<blockquote>
+<h4 id="8421-ssl-record">8.4.2.1 SSL Record</h4>
+</blockquote>
+<ul>
 <li>
 <p>The Fields In A SSL Record:</p>
 <ol>
-<li>Type Field:The type field indicates whether the record is a handshake message or a message that contains application data.It is also used to close the SSL connection.</li>
+<li>Type Field:The type field indicates whether the record is a <mark>handshake</mark> message or a message that contains <mark>application data</mark>.It is also used to <mark>close the SSL connection</mark>.</li>
 <li>Length Field:SSL at the receiving end uses the length field to extract the SSL records out of the incoming TCP byte stream</li>
 </ol>
 </li>
@@ -3258,6 +3499,11 @@ $$ m=c^d \ mod \ n $$</li>
 <li>
 <p>How To Prevent Truncation Attack:indicate in the <mark>type field</mark> whether the record serves to terminate the SSL session. (Although the SSL type is sent in the clear, it is <mark>authenticated at the receiver using the record’s MAC</mark>.)</p>
 </li>
+</ul>
+<blockquote>
+<h2 id="85-ip-securityipsec-protocol">8.5 IP security(IPsec) protocol</h2>
+</blockquote>
+<ul>
 <li>
 <p>The <mark>IP security protocol</mark>, more commonly known as <mark>IPsec</mark>, provides security at the <mark>network layer</mark></p>
 </li>
@@ -3288,7 +3534,7 @@ $$ m=c^d \ mod \ n $$</li>
 <p>An IPsec entity stores the state information for all of its SAs in its <mark>Security Association Database (SAD)</mark>.</p>
 </li>
 <li>
-<p>Along with a SAD, the IPsec entity also maintains another data structure called the <mark>Security Policy Database (SPD)</mark>. The SPD indicates what types of datagrams (as a function of source IP address, destination IP address, and protocol type) are to be IPsec processed;</p>
+<p>Along with a SAD, the IPsec entity also maintains another data structure called the <mark>Security Policy Database (SPD)</mark>. The SPD indicates which SA should be used for datagrams that are to be IPsec processed;</p>
 </li>
 <li>
 <p>IPsec Datagram Structure:</p>
@@ -3323,15 +3569,19 @@ $$ m=c^d \ mod \ n $$</li>
 <li>
 <p>the protocol number in this new IPv4 header field is 50, designating that this is an IPsec datagram using the <mark>ESP protocol</mark>.</p>
 </li>
-<li>
-<p>Wired Equivalent Privacy (WEP):The IEEE 802.11 WEP protocol uses a <mark>symmetric shared key</mark> approach.</p>
-</li>
-<li>
-<p>WEP does not specify a key management algorithm.</p>
-</li>
-<li>
-<p>Authentication is carried out as ­follows:</p>
-</li>
+</ul>
+<blockquote>
+<h2 id="86-wired-equivalent-privacy-wep">8.6 Wired Equivalent Privacy (WEP)</h2>
+</blockquote>
+<ul>
+<li>The IEEE 802.11 WEP protocol uses a <mark>symmetric shared key</mark> approach.</li>
+<li>WEP does not specify a key management algorithm.</li>
+</ul>
+<blockquote>
+<h3 id="861-wep-authentication">8.6.1 WEP Authentication</h3>
+</blockquote>
+<ul>
+<li>Authentication is carried out as ­follows:</li>
 </ul>
 <ol>
 <li>A wireless host requests authentication by an access point.</li>
@@ -3340,9 +3590,11 @@ $$ m=c^d \ mod \ n $$</li>
 <li>The access point <mark>decrypts</mark> the host-encrypted nonce.</li>
 <li>If the decrypted nonce matches the nonce value originally sent to the host, then the host is authenticated by the access point</li>
 </ol>
+<blockquote>
+<h3 id="862-wep-data-encryption">8.6.2 WEP Data Encryption</h3>
+</blockquote>
 <ul>
-<li>
-<p>The WEP data encryption algorithm:A secret 40-bit symmetric key, $K_S$, is assumed to be known by both a host and the access point. In addition, a 24-bit Initialization Vector (IV) is appended to the 40-bit key to create a 64-bit key that will be used to encrypt a single frame:</p>
+<li>The WEP data encryption algorithm:A secret 40-bit symmetric key, $K_S$, is assumed to be known by both a host and the access point. In addition, a 24-bit Initialization Vector (IV) is appended to the 40-bit key to create a 64-bit key that will be used to encrypt a single frame:
 <ol>
 <li>
 <p>First a 4-byte <mark>CRC value</mark> is computed for the data payload</p>
@@ -3365,19 +3617,34 @@ $$ di=ci \oplus k_i^{IV} $$
 </li>
 </ol>
 </li>
-<li>
-<p>Firewalls can be classified in three categories: <mark>traditional packet filters</mark>, <mark>stateful filters</mark>, and <mark>application gateways</mark>:</p>
-<ol>
-<li>Traditional Packet Filters:A traditional packet filter examines each datagram <mark>in isolation</mark>, determining whether the datagram should be allowed to pass or should be dropped based on package structure.</li>
-<li>Stateful filters actually track TCP connections, and use this knowledge to make ­filtering decisions:
+</ul>
+<blockquote>
+<h2 id="87-operational-security">8.7 Operational Security</h2>
+</blockquote>
+<blockquote>
+<h3 id="871-firewalls">8.7.1 Firewalls</h3>
+</blockquote>
+<ul>
+<li>Firewalls can be classified in three categories: <mark>traditional packet filters</mark>, <mark>stateful filters</mark>, and <mark>application gateways</mark>.</li>
+</ul>
+<blockquote>
+<h4 id="8711-traditional-packet-filters">8.7.1.1 Traditional Packet Filters</h4>
+</blockquote>
+<p>A traditional packet filter examines each datagram <mark>in isolation</mark>, determining whether the datagram should be allowed to pass or should be dropped based on package structure.</p>
+<blockquote>
+<h4 id="8712-stateful-filters">8.7.1.2 Stateful filters</h4>
+</blockquote>
+<p>Stateful filters actually track TCP connections, and use this knowledge to make ­filtering decisions:</p>
 <ul>
 <li>Create a <mark>connection table</mark> to track  <mark>all ongoing TCP connections</mark>.(This is possible because the firewall can observe the beginning of a new connection by observing a three-way handshake (SYN, SYNACK, and ACK); and it can observe the end of a connection when it sees a FIN packet for the connection. )</li>
 <li>the stateful filter includes a new column, <mark>“check connection”</mark> in its access control list to indicate that such connection should be <mark>checked by connection table</mark>.</li>
 <li>When a user  sends a TCP SYN segment, the user’s TCP connection gets recorded in the connection table</li>
 <li>On receiving a TCP packet, the firewall checks the connection table to see if this packet is part of an ongoing TCP connection, to decide whether to reject or accept the packet.</li>
 </ul>
-</li>
-<li>Application Gateway: An application gateway is an application-specific server through which specific application data  must pass.Such a policy can be accomplished by implementing a combination of a packet filter (in a router) and a application gateway server:
+<blockquote>
+<h4 id="8713-application-gateway">8.7.1.3 Application Gateway</h4>
+</blockquote>
+<p>An application gateway is an application-specific server through which specific application data  must pass.Such a policy can be accomplished by implementing a combination of a packet filter (in a router) and a application gateway server:</p>
 <ul>
 <li>A filter configuration forces all outbound connections concernd with specific application to pass through the application gateway.</li>
 <li>Consider an internal user wants to use the application to connect to the outside world. The user must first <mark>set up a  session with the application gateway</mark>.</li>
@@ -3389,9 +3656,10 @@ $$ di=ci \oplus k_i^{IV} $$
 </ul>
 </li>
 </ul>
-</li>
-</ol>
-</li>
+<blockquote>
+<h3 id="872-deep-packet-inspection">8.7.2 Deep packet inspection</h3>
+</blockquote>
+<ul>
 <li>
 <p>Deep packet inspection:look beyond the header fields and into the actual <mark>application data</mark> that the packets carry.</p>
 </li>
@@ -3410,7 +3678,7 @@ $$ di=ci \oplus k_i^{IV} $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-10-21</span>
+                <span>Updated on 2023-10-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
@@ -3435,7 +3703,7 @@ $$ di=ci \oplus k_i^{IV} $$
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

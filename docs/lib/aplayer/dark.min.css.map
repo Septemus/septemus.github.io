@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "dark.min.css",
-	"sourceRoot": "C:/Users/joedesktop/Documents/programming/frontend/septemus.github.io",
+	"sourceRoot": "C:/Users/muske/Documents/programming/Blog/septemus.github.io",
 	"sources": [
 		"themes/Loveit/assets/lib/aplayer/dark.scss"
 	],

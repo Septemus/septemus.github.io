@@ -1521,7 +1521,10 @@ The third address is to inform AP the router iinterface when the datagram reache
     3. When the mobile node moves to a new foreign network, the mobile node registers with the new foreign agent, and the new foreign agent provides the <mark>anchor foreign agent</mark> with the mobile node’s new COA. 
     4. When the anchor foreign agent receives an encapsulated datagram for a departed mobile node, it can then re-encapsulate the datagram and forward it to the mobile node (step 5) using the new COA. 
 
-![direct_routing](/images/computer_networking_topdown/direct_routing.png)
+![direct_routing1](/images/computer_networking_topdown/direct_routing1.png)
+
+
+> ### 7.4.3 Mobile-IP
 
 - The <mark>mobile IP standard</mark> consists of three main pieces:
     1. Agent discovery
@@ -1540,9 +1543,11 @@ The third address is to inform AP the router iinterface when the datagram reache
     4. The foreign agent receives the registration reply and then forwards it to the <mark>mobile node</mark>.Registration is complete.
 ![mobile_ip](/images/computer_networking_topdown/mobile_ip.png)
 
+> ### 7.4.4 Mobility in Cellular Networks
+
 - How Routing Calls to a Mobile User Works In GSM:
     1. The correspondent dials the mobile user’s phone number.The call is routed from the correspondent through the PSTN to the <mark>home MSC</mark> in the mobile’s home network.
-    2. The home MSC receives the call and interrogates the <mark>HLR</mark> to determine the location of the mobile user. In the simplest case, the HLR returns the <mark>mobile station roaming number (MSRN)</mark>,If HLR does not have the roaming number, it returns the address of the <mark>VLR</mark> in the visited network. In this case , the home MSC will need to query the VLR to obtain the roaming number of the mobile node. 
+    2. The home MSC receives the call and interrogates the <mark>home location register (HLR)</mark> to determine the location of the mobile user. In the simplest case, the HLR returns the <mark>mobile station roaming number (MSRN)</mark>,If HLR does not have the roaming number, it returns the address of the <mark>visitor location register (VLR)</mark> in the visited network. In this case , the home MSC will need to query the VLR to obtain the roaming number of the mobile node. 
     3. Given the roaming number, the home MSC sets up the second leg of the call through the network to the MSC in the <mark>visited network</mark>. The call is completed, being routed from the correspondent to the home MSC, and from there to the visited MSC, and from there to the base station serving the mobile user.
 
 - How the HLR obtains information about the location of the mobile user:
@@ -1560,19 +1565,24 @@ The third address is to inform AP the router iinterface when the datagram reache
     7.  The mobile sends a <mark>handoff complete message</mark> to the new BS, which is forwarded up to the  visited MSC. The visited MSC then <mark>reroutes the ongoing call</mark> to the mobile via the new BS. 
     8.  The resources allocated along the path to the old BS are then <mark>released</mark>
    
-![handoff](/images/computer_networking_topdown/handoff.png)
+  ![handoff](/images/computer_networking_topdown/handoff.png)
 
 -  What happens when the mobile moves to a BS that is associated with a <mark>different MSC</mark> :
     1. GSM defines the notion of an <mark>anchor MSC</mark>. The anchor MSC is the MSC visited by the mobile <mark>when a call first begins</mark>; the anchor MSC thus remains <mark>unchanged</mark> during the call. 
     2. Throughout the call’s duration, the call is routed <mark>from the home MSC to the anchor MSC</mark>, and then <mark>from the anchor MSC to the visited MSC</mark> where the mobile is currently located.
-![handoff_diff_msc](/images/computer_networking_topdown/handoff_multi_msc.png)
+
+  ![handoff_diff_msc](/images/computer_networking_topdown/handoff_multi_msc.png)
 
 
 
 
 > # Chapter 8 Network Security
 
-- Symmetric Key Encryption: encrypted communication required that the two communicating parties share a <mark>common secret</mark>
+> ## 8.1 Encryption
+
+> ### 8.1.1 Symmetric Key Encryption
+
+Encrypted communication required that the two communicating parties share a <mark>common secret</mark>
 
 - How Block Cipher Works:
   
@@ -1590,13 +1600,14 @@ The third address is to inform AP the router iinterface when the datagram reache
 
 - In order to save overhead of sending random bits, block ciphers typically use a technique called <mark>Cipher Block Chaining (CBC)</mark>: 
     1. Before encrypting the message (or the stream of data), the sender generates a <mark>random k-bit string</mark>, called the <mark>Initialization Vector (IV)</mark>. Denote this initialization vector by c(0). The sender sends the IV to the receiver in <mark>cleartext</mark>.
-    2.  For the first block, the sender calculates the exclusive-or of the first block of cleartext with the IV. It then runs the result through the block-cipher algorithm to get the corresponding ciphertext block; that is,$c(1)=K_S(m(1)\oplus c(0))$ . The sender sends the encrypted block c(1) to the receiver
+    2.  For the first block, the sender calculates the exclusive-or of the first block of cleartext with the IV. It then runs the result through the block-cipher algorithm to get the corresponding ciphertext block; that is,<mark>$c(1)=K_S(m(1)\oplus c(0))$</mark> . The sender sends the encrypted block c(1) to the receiver
     3.  For the ith block, the sender generates the ith ciphertext block from <mark>$c(i)= K_S(m(i)\oplus c(i−1))$</mark>
 
 
-- Public Key Encryption:
-    1. Suppose Alice wants to communicate with Bob.We will use the notation <mark>$K_B^+$</mark> and <mark>$K_B^-$</mark>  to refer to Bob’s <mark>public key</mark> and <mark>private keys</mark>,respectively. Alice first fetches Bob’s public key. Alice then encrypts her message, m, to Bob <mark>using Bob’s public key</mark> and a known (for example, standardized) encryption algorithm; that is, Alice computes <mark>$K_B^+(m)$</mark> 
-    2. Bob receives Alice’s encrypted message and uses his <mark>private key</mark> and a known (for example, standardized) decryption algorithm to decrypt Alice’s encrypted message. That is, Bob computes <mark>$m=K_B^−(K_B^+(m))$</mark>
+> ### 8.1.2 Public Key Encryption
+
+  1. Suppose Alice wants to communicate with Bob.We will use the notation <mark>$K_B^+$</mark> and <mark>$K_B^-$</mark>  to refer to Bob’s <mark>public key</mark> and <mark>private keys</mark>,respectively. Alice first fetches Bob’s public key. Alice then encrypts her message, m, to Bob <mark>using Bob’s public key</mark> and a known (for example, standardized) encryption algorithm; that is, Alice computes <mark>$K_B^+(m)$</mark> 
+  2. Bob receives Alice’s encrypted message and uses his <mark>private key</mark> and a known (for example, standardized) decryption algorithm to decrypt Alice’s encrypted message. That is, Bob computes <mark>$m=K_B^−(K_B^+(m))$</mark>
 
 
 - How Does RSA Work:
@@ -1630,9 +1641,12 @@ The third address is to inform AP the router iinterface when the datagram reache
 
 
 
+> ## 8.2 Integrity
 
 
 - A cryptographic hash function is required to have the following additional property: It is computationally infeasible to find any two <mark>different messages</mark> x and y such that $H(x)=H(y)$
+
+> ### 8.2.1 Message Authentication Code (MAC)
 
 - Using the <mark>shared secret s</mark>, message integrity can be performed as follows:
 
@@ -1643,6 +1657,9 @@ The third address is to inform AP the router iinterface when the datagram reache
 ![integrity](/images/computer_networking_topdown/integrity.png)
 
 - One nice feature of a MAC is that it <mark>does not require an encryption algorithm</mark>. 
+
+
+> ### 8.2.2 Digital Signatures
 
 - How Digital Signatures Work?
     1. Suppose that Bob wants to digitally sign a document, m.Bob simply uses his <mark>private key,$K_B^−$</mark>,to compute <mark>$K_B^−(H(m))$</mark>,where H is a <mark>cryptographic hash function</mark>.
@@ -1655,17 +1672,26 @@ The third address is to inform AP the router iinterface when the datagram reache
 ![digital_signature_verification](/images/computer_networking_topdown/digital_signature_verification.png)
 
 
+> ### 8.2.3 Certification
+
 - Public key certification is certifying that a public key belongs to a specific entity.
 
 - To verify that you have the actual public key of the entity (person, router, browser, and so on) with whom you want to communicate,Binding a public key to a <mark>Certification Authority (CA)</mark> and get a certificate.
 
+
+> ### 8.2.4 End-Point Authentication
+
 - A <mark>nonce</mark> is a number that a protocol will use only <mark>once in a lifetime</mark>
+
+
 -  Authentication Protocol
     1. Alice sends the message  to Bob.
     2. Bob chooses a nonce, R, and sends it to Alice.
     3. Alice encrypts the nonce using Alice and Bob’s <mark>symmetric secret key</mark>,$K_{A-B}$,  and sends the encrypted nonce,  $K_{A-B}^{-}(R)$, back to Bob. As in protocol ap3.1, it is the fact that Alice knows and uses it to encrypt a value that lets Bob know that the message he receives was generated by Alice. The nonce is used to ensure that <mark>Alice is live</mark>.
     4. Bob decrypts the received message. If the <mark>decrypted nonce equals the nonce he sent</mark>, then Alice is authenticated.
 
+
+> ## 8.3 Pretty Good Privacy (PGP) 
 
 - How Does PGP Work?
     - Sender(Alice)
@@ -1688,49 +1714,70 @@ The third address is to inform AP the router iinterface when the datagram reache
 ![PGP2](/images/computer_networking_topdown/PGP2.png)
 ![PGP3](/images/computer_networking_topdown/PGP3.png)
 
+> ## 8.4 SSL
 
 - SSL can be employed by any application that <mark>runs over TCP</mark>.
 
 - SSL has three phases: handshake, key derivation, and data transfer.
 
 
-- During the handshake phase:
-    1. Bob needs to  establish a <mark>TCP connection</mark> with Alice
-    2. Bob sends Alice a <mark>list of cryptographic algorithms it supports</mark>, along with a <mark>­client nonce</mark>.
-    3. Alice chooses a <mark>symmetric algorithm</mark> (for example, AES), a <mark>public key algorithm</mark> (for example, RSA with a specific key length), and a <mark>MAC algorithm</mark>. then responds with her  choices, as well as a <mark>certificate</mark> and a <mark>server nonce</mark>.
-    4. Bob then generates a <mark>Pre Master Secret (PMS)</mark> , encrypts the PMS with <mark>Alice’s public key</mark> to create the <mark>Encrypted Master Secret (EMS)</mark>, and sends the EMS to Alice.
-    5. Alice <mark>decrypts</mark> the EMS with <mark>her private key</mark> to get the PMS.
-    6. Using the <mark>same key derivation function</mark> (as specified by the SSL standard), Bob and Alice independently compute the <mark>Master Secret (MS)</mark> from the PMS and nonces. The MS is then sliced up to generate the two encryption and two MAC keys.
-    7. The client sends a <mark>MAC of all the handshake messages</mark>.
-    8. The server sends a <mark>MAC of all the handshake messages</mark>.
-![ssl_almost](/images/computer_networking_topdown/ssl_almost.png)
+> ### 8.4.1 Handshake
 
-- The <mark>nonce</mark> is used to prevent <mark>connection replay attack</mark>, which is replaying the sent records.(sequence numbers are used to defend against replaying individual packets during an ongoing session)
-
--  Alice and Bob use the MS to generate four keys:
-    1. EB = session encryption key for data sent from Bob to Alice
-    2. MB =  session MAC key for data sent from Bob to Alice
-    3. EA =  session encryption key for data sent from Alice to Bob
-    4. MA =  session MAC key for data sent from Alice to Bob
-
-- The two encryption keys will be used to encrypt data; the two MAC keys will be used to verify the integrity of the data.
+  1. Bob needs to  establish a <mark>TCP connection</mark> with Alice
+  2. Bob sends Alice a <mark>list of cryptographic algorithms it supports</mark>, along with a <mark>­client nonce</mark>.
+  3. Alice chooses a <mark>symmetric algorithm</mark> (for example, AES), a <mark>public key algorithm</mark> (for example, RSA with a specific key length), and a <mark>MAC algorithm</mark>. then responds with her  choices, as well as a <mark>certificate</mark> and a <mark>server nonce</mark>.
+  4. Bob then generates a <mark>Pre Master Secret (PMS)</mark> , encrypts the PMS with <mark>Alice’s public key</mark> to create the <mark>Encrypted Master Secret (EMS)</mark>, and sends the EMS to Alice.
+  5. Alice <mark>decrypts</mark> the EMS with <mark>her private key</mark> to get the PMS.
+  6. Using the <mark>same key derivation function</mark> (as specified by the SSL standard), Bob and Alice independently compute the <mark>Master Secret (MS)</mark> from the PMS and nonces. The MS is then sliced up to generate the two encryption and two MAC keys.
+  7. The client sends a <mark>MAC of all the handshake messages</mark>.
+  8. The server sends a <mark>MAC of all the handshake messages</mark>.
+  
+  ![ssl_almost](/images/computer_networking_topdown/ssl_almost.png)
 
 
-- How Does SSL Data Transfer Work?
-    1. Suppose Bob is to send data. His data is represented by data streams in TCP . SSL breaks the data stream into <mark>records</mark>.
-    2. Bob maintains a <mark>sequence number counter</mark>.To create the MAC, Bob inputs the <mark>record data along with the key $M_B$ and sequence number</mark>  into a hash function.The result MAC is appended  to each record.
-    3. SSL <mark>encrypts</mark> the <mark>$record \ + \ MAC$</mark> using  his session encryption key <mark>$E_B$</mark>
-    4. This encrypted package is then <mark>passed to TCP</mark> for transport over the Internet
+{{< admonition type=note title="Nonce" open=false >}}
+The <mark>nonce</mark> is used to prevent <mark>connection replay attack</mark>, which is replaying the sent records.(sequence numbers are used to defend against replaying individual packets during an ongoing session)
+{{< /admonition >}}
+
+{{< admonition type=note title="MS" open=false >}}
+Alice and Bob use the MS to generate four keys:
+ 1. EB = session encryption key for data sent from Bob to Alice
+ 2. MB =  session MAC key for data sent from Bob to Alice
+ 3. EA =  session encryption key for data sent from Alice to Bob
+ 4. MA =  session MAC key for data sent from Alice to Bob
+
+
+The two encryption keys will be used to encrypt data; the two MAC keys will be used to verify the integrity of the data.
+{{< /admonition >}}
+
+
+
+
+> ### 8.4.2 Data Transfer
+
+ 1. Suppose Bob is to send data. His data is represented by data streams in TCP . SSL breaks the data stream into <mark>records</mark>.
+ 2. Bob maintains a <mark>sequence number counter</mark>.To create the MAC, Bob inputs the <mark>record data along with the key $M_B$ and sequence number</mark>  into a hash function.The result MAC is appended  to each record.
+ 3. SSL <mark>encrypts</mark> the <mark>$record \ + \ MAC$</mark> using  his session encryption key <mark>$E_B$</mark>
+ 4. This encrypted package is then <mark>passed to TCP</mark> for transport over the Internet
+
+
+> #### 8.4.2.1 SSL Record
 
 - The Fields In A SSL Record:
-    1. Type Field:The type field indicates whether the record is a handshake message or a message that contains application data.It is also used to close the SSL connection.
+    1. Type Field:The type field indicates whether the record is a <mark>handshake</mark> message or a message that contains <mark>application data</mark>.It is also used to <mark>close the SSL connection</mark>.
     2. Length Field:SSL at the receiving end uses the length field to extract the SSL records out of the incoming TCP byte stream
 
 
 - SSL does not mandate that Alice and Bob use a specific symmetric key algorithm, a specific public-key algorithm, or a specific MAC.
 
+
+
 - Truncation Attack:The intruder ends the session early with a TCP FIN.
 - How To Prevent Truncation Attack:indicate in the <mark>type field</mark> whether the record serves to terminate the SSL session. (Although the SSL type is sent in the clear, it is <mark>authenticated at the receiver using the record’s MAC</mark>.)
+
+
+> ## 8.5 IP security(IPsec) protocol
+
 
 - The <mark>IP security protocol</mark>, more commonly known as <mark>IPsec</mark>, provides security at the <mark>network layer</mark>
 
@@ -1758,7 +1805,7 @@ The third address is to inform AP the router iinterface when the datagram reache
 
 
 
-- Along with a SAD, the IPsec entity also maintains another data structure called the <mark>Security Policy Database (SPD)</mark>. The SPD indicates what types of datagrams (as a function of source IP address, destination IP address, and protocol type) are to be IPsec processed;
+- Along with a SAD, the IPsec entity also maintains another data structure called the <mark>Security Policy Database (SPD)</mark>. The SPD indicates which SA should be used for datagrams that are to be IPsec processed;
 
 
 
@@ -1782,8 +1829,13 @@ The third address is to inform AP the router iinterface when the datagram reache
 
 - the protocol number in this new IPv4 header field is 50, designating that this is an IPsec datagram using the <mark>ESP protocol</mark>.
 
-- Wired Equivalent Privacy (WEP):The IEEE 802.11 WEP protocol uses a <mark>symmetric shared key</mark> approach.
+> ## 8.6 Wired Equivalent Privacy (WEP) 
+
+- The IEEE 802.11 WEP protocol uses a <mark>symmetric shared key</mark> approach.
 - WEP does not specify a key management algorithm.
+
+> ### 8.6.1 WEP Authentication
+
 - Authentication is carried out as ­follows:
 1.  A wireless host requests authentication by an access point.
 2.  The access point responds to the authentication request with a <mark>128-byte nonce value</mark>.
@@ -1791,6 +1843,7 @@ The third address is to inform AP the router iinterface when the datagram reache
 4.  The access point <mark>decrypts</mark> the host-encrypted nonce.
 5.  If the decrypted nonce matches the nonce value originally sent to the host, then the host is authenticated by the access point
 
+> ### 8.6.2 WEP Data Encryption 
 
 - The WEP data encryption algorithm:A secret 40-bit symmetric key, $K_S$, is assumed to be known by both a host and the access point. In addition, a 24-bit Initialization Vector (IV) is appended to the 40-bit key to create a 64-bit key that will be used to encrypt a single frame:
     1. First a 4-byte <mark>CRC value</mark> is computed for the data payload
@@ -1802,21 +1855,36 @@ The third address is to inform AP the router iinterface when the datagram reache
 ![wep_protocol](/images/computer_networking_topdown/wep_protocol.png)
 
 
+> ## 8.7 Operational Security
 
-- Firewalls can be classified in three categories: <mark>traditional packet filters</mark>, <mark>stateful filters</mark>, and <mark>application gateways</mark>:
-    1. Traditional Packet Filters:A traditional packet filter examines each datagram <mark>in isolation</mark>, determining whether the datagram should be allowed to pass or should be dropped based on package structure.
-    2. Stateful filters actually track TCP connections, and use this knowledge to make ­filtering decisions:
-        - Create a <mark>connection table</mark> to track  <mark>all ongoing TCP connections</mark>.(This is possible because the firewall can observe the beginning of a new connection by observing a three-way handshake (SYN, SYNACK, and ACK); and it can observe the end of a connection when it sees a FIN packet for the connection. )
-        - the stateful filter includes a new column, <mark>“check connection”</mark> in its access control list to indicate that such connection should be <mark>checked by connection table</mark>.
-        - When a user  sends a TCP SYN segment, the user’s TCP connection gets recorded in the connection table
-        - On receiving a TCP packet, the firewall checks the connection table to see if this packet is part of an ongoing TCP connection, to decide whether to reject or accept the packet.
-    3. Application Gateway: An application gateway is an application-specific server through which specific application data  must pass.Such a policy can be accomplished by implementing a combination of a packet filter (in a router) and a application gateway server:
-        -  A filter configuration forces all outbound connections concernd with specific application to pass through the application gateway.
-        - Consider an internal user wants to use the application to connect to the outside world. The user must first <mark>set up a  session with the application gateway</mark>.
-        - An application running in the gateway, which listens for incoming sessions, prompts the user for a <mark>user ID and password</mark>.
-        - When the user supplies this information, the application gateway checks to see if the user has permission . 
-            - If not, the  connection from the internal user to the gateway is <mark>terminated</mark> by the gateway.
-            - If the user has permission, then the gateway acts as a <mark>proxy server</mark> to relay messages between the user and the external host.
+> ### 8.7.1 Firewalls 
+
+- Firewalls can be classified in three categories: <mark>traditional packet filters</mark>, <mark>stateful filters</mark>, and <mark>application gateways</mark>.
+
+> #### 8.7.1.1 Traditional Packet Filters
+
+A traditional packet filter examines each datagram <mark>in isolation</mark>, determining whether the datagram should be allowed to pass or should be dropped based on package structure.
+
+
+> #### 8.7.1.2 Stateful filters
+Stateful filters actually track TCP connections, and use this knowledge to make ­filtering decisions:
+  - Create a <mark>connection table</mark> to track  <mark>all ongoing TCP connections</mark>.(This is possible because the firewall can observe the beginning of a new connection by observing a three-way handshake (SYN, SYNACK, and ACK); and it can observe the end of a connection when it sees a FIN packet for the connection. )
+  - the stateful filter includes a new column, <mark>“check connection”</mark> in its access control list to indicate that such connection should be <mark>checked by connection table</mark>.
+  - When a user  sends a TCP SYN segment, the user’s TCP connection gets recorded in the connection table
+  - On receiving a TCP packet, the firewall checks the connection table to see if this packet is part of an ongoing TCP connection, to decide whether to reject or accept the packet.
+
+
+> #### 8.7.1.3 Application Gateway 
+An application gateway is an application-specific server through which specific application data  must pass.Such a policy can be accomplished by implementing a combination of a packet filter (in a router) and a application gateway server:
+  -  A filter configuration forces all outbound connections concernd with specific application to pass through the application gateway.
+  - Consider an internal user wants to use the application to connect to the outside world. The user must first <mark>set up a  session with the application gateway</mark>.
+  - An application running in the gateway, which listens for incoming sessions, prompts the user for a <mark>user ID and password</mark>.
+  - When the user supplies this information, the application gateway checks to see if the user has permission . 
+      - If not, the  connection from the internal user to the gateway is <mark>terminated</mark> by the gateway.
+      - If the user has permission, then the gateway acts as a <mark>proxy server</mark> to relay messages between the user and the external host.
+
+
+> ### 8.7.2 Deep packet inspection 
 
 - Deep packet inspection:look beyond the header fields and into the actual <mark>application data</mark> that the packets carry.
 
