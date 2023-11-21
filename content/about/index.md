@@ -12,7 +12,6 @@ featuredImage: "/images/swjtu.png"
 <img src="/images/bladerunner.webp" >
 
 > ## Thanks for these friends :heart_eyes: !
-> 
 
 <div class="flink" id="article-container">
 <div class="friend-list-div" >
