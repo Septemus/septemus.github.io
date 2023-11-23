@@ -12,7 +12,7 @@
     <guid>https://Septemus.github.io/vue_xiaomi_store/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/xiaomi.png" referrerpolicy="no-referrer">
-            </div>基于Vue+NodeJs的小米商城 前言 这是我使用Vue和NodeJs进行实战的一个项目，我选择了小米商城进行仿制，我从2023年8月份开始制]]></description>
+            </div>基于Vue+NodeJs的小米商城 github仓库： &#8201;vue_xiaomi_store 前言 这是我使用Vue和NodeJs进行实战的一个项目，我选择了小米商城进行仿制，我从2]]></description>
 </item>
 <item>
     <title>Fixed:Vue-router 跳转到指定页面后强行返回主页解决</title>

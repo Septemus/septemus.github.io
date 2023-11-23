@@ -9,6 +9,11 @@ featuredImage: "/images/xiaomi.png"
 
 > # 基于Vue+NodeJs的小米商城
 
+
+github仓库：
+{{< person url="https://github.com/Septemus/vue_xiaomi_store" name="vue_xiaomi_store" text="vue_xiaomi_store" picture="/images/github.jpg" >}}
+
+
 > ## 前言
 
 这是我使用Vue和NodeJs进行实战的一个项目，我选择了小米商城进行仿制，我从2023年8月份开始制作，断断续续做了很久现在做的差不多了，分享出来希望带给大家启发！目前项目还有不少bug和待完善功能，欢迎大家批评指正。
@@ -17,7 +22,7 @@ featuredImage: "/images/xiaomi.png"
 ](https://github.com/hai-27/vue-store/tree/master)
 
 
-> 本项目前后端分离，前端基于Vue仿制[小米商城](www.mi.com) 实现，后端代码已上传至仓库[vue_xiaomi_store_backend](https://github.com/hai-27/store-server)
+> 本项目前后端分离，前端基于Vue仿制[小米商城](www.mi.com) 实现，后端代码已上传至仓库[vue_xiaomi_store_backend](https://github.com/Septemus/vue_xiaomi_store_backend)
 
 > 项目通过腾讯云部署到了 [http://123.207.79.116/](http://123.207.79.116/) （移动端和桌面端都已适配），欢迎大家访问！
 
