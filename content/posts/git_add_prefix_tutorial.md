@@ -1,5 +1,5 @@
 ---
-title: "Git_add_prefix_tutorial"
+title: "git commit时如何自动添加前缀"
 date: 2024-03-01T17:49:38+08:00
 draft: false
 categories: ["development"]

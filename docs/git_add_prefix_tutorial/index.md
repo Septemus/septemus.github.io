@@ -1,4 +1,4 @@
-# Git_add_prefix_tutorial
+# git commit时如何自动添加前缀
 
 
 > # 功能说明
