@@ -17,7 +17,6 @@ featuredImage: "/images/git.jpeg"
 
 控制台输入:
 ```shell
-
 npx husky add commit-msg
 ```
 
