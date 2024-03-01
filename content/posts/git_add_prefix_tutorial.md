@@ -20,7 +20,7 @@ featuredImage: "/images/git.jpeg"
 
 npx husky add commit-msg
 
-```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
+```
 
 > ## 2 在`.husky/`下创建`hooks/commit-msg.js`，并写入以下内容
 
