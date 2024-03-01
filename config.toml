@@ -327,8 +327,8 @@ publishDir = "docs"
         enable = true
         owner = "Septemus"
         repo = "comment_rep"
-        clientId = "27884c3fdf05fa87d8b5"
-        clientSecret = "48cca20f9dde1fb315eabd987387efc894db330a"
+        clientId = "c29d902df0d164442a32"
+        clientSecret = "b77699a4e7b47d1044459cbc3a8f81ea5b34fda7"
         createIssueManually = true
       # Valine comment config
       [params.page.comment.valine]

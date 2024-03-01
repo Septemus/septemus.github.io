@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>project - Category - Septemus&#39;s Blog</title>
+        <title>Project - Category - Septemus&#39;s Blog</title>
         <link>https://Septemus.github.io/categories/project/</link>
-        <description>project - Category - Septemus&#39;s Blog</description>
+        <description>Project - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
             <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/project/" rel="self" type="application/rss+xml" /><item>
     <title>基于vue&#43;nodejs&#43;bootstrap的购物商城（参考小米商城）</title>

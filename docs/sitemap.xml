@@ -2,14 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://Septemus.github.io/categories/</loc><lastmod>2023-11-20T23:32:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/posts/</loc><lastmod>2023-11-20T23:32:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/categories/project/</loc><lastmod>2023-11-20T23:32:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/</loc><lastmod>2023-11-20T23:32:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/vue_xiaomi_store/</loc><lastmod>2023-11-20T23:32:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/categories/college/</loc><lastmod>2023-11-20T22:26:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://Septemus.github.io/vue_router_debug1/</loc><lastmod>2023-10-28T07:30:29-07:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://Septemus.github.io/computer_networking_topdownapproach/</loc><lastmod>2023-11-20T22:26:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/categories/</loc><lastmod>2024-03-01T17:49:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/categories/development/</loc><lastmod>2024-03-01T17:49:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/git_add_prefix_tutorial/</loc><lastmod>2024-03-01T17:49:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/posts/</loc><lastmod>2024-03-01T17:49:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/</loc><lastmod>2024-03-01T17:49:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/categories/project/</loc><lastmod>2023-11-23T06:06:50-08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://Septemus.github.io/vue_xiaomi_store/</loc><lastmod>2023-11-23T06:06:50-08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://Septemus.github.io/categories/college/</loc><lastmod>2023-11-20T22:26:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://Septemus.github.io/vue_router_debug1/</loc><lastmod>2023-10-28T07:30:29-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://Septemus.github.io/computer_networking_topdownapproach/</loc><lastmod>2023-11-20T22:26:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/computer_organization_course_design/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/computer_organization_exp8/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/computer_organization_exp7/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -20,7 +22,7 @@
             <loc>https://Septemus.github.io/computer_organization_exp2/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/computer_organization_exp1/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/math_electronic/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://Septemus.github.io/about/</loc><lastmod>2023-11-21T13:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://Septemus.github.io/about/</loc><lastmod>2023-11-21T13:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/jikao/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/changemajor/</loc><lastmod>2023-07-26T17:17:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://Septemus.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

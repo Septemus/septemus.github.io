@@ -4,9 +4,19 @@
         <link>https://Septemus.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</lastBuildDate>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</lastBuildDate>
             <atom:link href="https://Septemus.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Git_add_prefix_tutorial</title>
+    <link>https://Septemus.github.io/git_add_prefix_tutorial/</link>
+    <pubDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/git_add_prefix_tutorial/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/git.jpeg" referrerpolicy="no-referrer">
+            </div>功能说明 该钩子可用于在git commit时自动给message添加前缀 使用说明 1 创建commit-msg钩子: 控制台输入: 1 npx husky add commit-msg 2 在.h]]></description>
+</item>
+<item>
     <title>基于vue&#43;nodejs&#43;bootstrap的购物商城（参考小米商城）</title>
     <link>https://Septemus.github.io/vue_xiaomi_store/</link>
     <pubDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</pubDate>
@@ -34,7 +44,7 @@
     <guid>https://Septemus.github.io/computer_networking_topdownapproach/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/computer_networking_topdown/CNTDA.png" referrerpolicy="no-referrer">
-            </div>NoteI made this note based on Computer Networking A Top-Down Approach Seventh Edition.WarningThe note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me.Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.]]></description>
+            </div>Note I made this note based on Computer Networking A Top-Down Approach Seventh Edition. Warning The note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me. Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.]]></description>
 </item>
 <item>
     <title>西南交通大学计组实验-课程设计</title>
@@ -95,16 +105,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验3-8位原码一位乘法器设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp3/</link>
-    <pubDate>Tue, 18 Apr 2023 11:02:13 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp3/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Apr22th bugfixed_1 感谢keaidebeibei和陶同学指出问题，仿真需要注释掉防抖]]></description>
 </item>
 </channel>
 </rss>
