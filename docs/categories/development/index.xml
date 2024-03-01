@@ -12,7 +12,7 @@
     <guid>https://Septemus.github.io/git_add_prefix_tutorial/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/git.jpeg" referrerpolicy="no-referrer">
-            </div>功能说明 该钩子可用于在git commit时自动给message添加前缀 使用说明 1 创建commit-msg钩子: 控制台输入: 1 npx husky add commit-msg 2 在.h]]></description>
+            </div>功能说明 该钩子可用于在git commit时自动给message添加前缀 使用说明 1 创建commit-msg钩子: 控制台输入: 1 2 npx husky add commit-msg 2 在.]]></description>
 </item>
 </channel>
 </rss>

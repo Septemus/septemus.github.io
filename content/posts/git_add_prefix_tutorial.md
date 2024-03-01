@@ -17,7 +17,9 @@ featuredImage: "/images/git.jpeg"
 
 控制台输入:
 ```shell
+
 npx husky add commit-msg
+
 ```
 
 > ## 2 在`.husky/`下创建`hooks/commit-msg.js`，并写入以下内容
