@@ -4,7 +4,17 @@
         <link>https://Septemus.github.io/posts/</link>
         <description>All Posts | Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Jest_debug1</title>
+    <link>https://Septemus.github.io/jest_debug1/</link>
+    <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/jest_debug1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/jest.jpeg" referrerpolicy="no-referrer">
+            </div>Fixed 这个bug已经被解决 问题简述 (One-line summary) 用jest进行测试时，当待测试的文件引入了node_modules里的第三方模块，且模块是ESM（使用im]]></description>
+</item>
+<item>
     <title>git commit时如何自动添加前缀</title>
     <link>https://Septemus.github.io/git_add_prefix_tutorial/</link>
     <pubDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</pubDate>
@@ -42,7 +52,7 @@
     <guid>https://Septemus.github.io/computer_networking_topdownapproach/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/computer_networking_topdown/CNTDA.png" referrerpolicy="no-referrer">
-            </div>Note I made this note based on Computer Networking A Top-Down Approach Seventh Edition. Warning The note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me. Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.]]></description>
+            </div>NoteI made this note based on Computer Networking A Top-Down Approach Seventh Edition.WarningThe note is made for the sole purpose of reviewing what i learned and understood from the book.Some statements and descryptions might be subjective and incorrect.If you have doubts please leave comments or contact me.Chapter 1 Computer Networks and the Internet End systems are connected together by a network of communication links and packet switches.]]></description>
 </item>
 <item>
     <title>西南交通大学计组实验-课程设计</title>
@@ -90,16 +100,6 @@
     <pubDate>Thu, 04 May 2023 10:44:58 &#43;0800</pubDate>
     <author>Septemus</author>
     <guid>https://Septemus.github.io/computer_organization_exp5/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验4-算术逻辑单元（ALU）设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp4/</link>
-    <pubDate>Thu, 27 Apr 2023 11:09:52 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>

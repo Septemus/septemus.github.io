@@ -4,7 +4,15 @@
         <link>https://Septemus.github.io/categories/</link>
         <description>Categories - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Develop</title>
+    <link>https://Septemus.github.io/categories/develop/</link>
+    <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/categories/develop/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Development</title>
     <link>https://Septemus.github.io/categories/development/</link>
     <pubDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</pubDate>
