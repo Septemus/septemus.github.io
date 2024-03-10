@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Development - Category - Septemus&#39;s Blog</title>
-        <link>http://localhost:1313/categories/development/</link>
+        <link>https://Septemus.github.io/categories/development/</link>
         <description>Development - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/development/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/development/" rel="self" type="application/rss+xml" /><item>
     <title>git commit时如何自动添加前缀</title>
-    <link>http://localhost:1313/git_add_prefix_tutorial/</link>
+    <link>https://Septemus.github.io/git_add_prefix_tutorial/</link>
     <pubDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</pubDate>
     <author>Septemus</author>
-    <guid>http://localhost:1313/git_add_prefix_tutorial/</guid>
+    <guid>https://Septemus.github.io/git_add_prefix_tutorial/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/git.jpeg" referrerpolicy="no-referrer">
             </div>功能说明 该钩子可用于在git commit时自动给message添加前缀 使用说明 1 创建commit-msg钩子: 控制台输入: 1 2 npx husky add commit-msg 2 在.]]></description>
