@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Develop - Category - Septemus&#39;s Blog</title>
-        <link>https://Septemus.github.io/categories/develop/</link>
+        <link>http://localhost:1313/categories/develop/</link>
         <description>Develop - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/develop/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/develop/" rel="self" type="application/rss+xml" /><item>
     <title>Jest_debug1</title>
-    <link>https://Septemus.github.io/jest_debug1/</link>
+    <link>http://localhost:1313/jest_debug1/</link>
     <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
     <author>Septemus</author>
-    <guid>https://Septemus.github.io/jest_debug1/</guid>
+    <guid>http://localhost:1313/jest_debug1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/jest.jpeg" referrerpolicy="no-referrer">
             </div>Fixed 这个bug已经被解决 问题简述 (One-line summary) 用jest进行测试时，当待测试的文件引入了node_modules里的第三方模块，且模块是ESM（使用im]]></description>

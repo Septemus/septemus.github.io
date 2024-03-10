@@ -1,4 +1,4 @@
-# Jest_debug1
+# Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module
 
 
 {{< admonition type=success title="Fixed" open=false >}}
@@ -118,7 +118,7 @@ module.exports = {
 
 将`.babelrc`重命名为`babel.config.js`，并将语法变成`js`语法
 
-![solution](/static/images/rename_babel.png)
+![solution](/images/rename_babel.png)
 
 ```javascript
 //babel.config.js

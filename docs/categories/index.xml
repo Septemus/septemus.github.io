@@ -1,39 +1,39 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Categories - Category - Septemus&#39;s Blog</title>
-        <link>https://Septemus.github.io/categories/</link>
+        <link>http://localhost:1313/categories/</link>
         <description>Categories - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /><item>
     <title>Develop</title>
-    <link>https://Septemus.github.io/categories/develop/</link>
+    <link>http://localhost:1313/categories/develop/</link>
     <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
     <author>Septemus</author>
-    <guid>https://Septemus.github.io/categories/develop/</guid>
+    <guid>http://localhost:1313/categories/develop/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Development</title>
-    <link>https://Septemus.github.io/categories/development/</link>
+    <link>http://localhost:1313/categories/development/</link>
     <pubDate>Fri, 01 Mar 2024 17:49:38 &#43;0800</pubDate>
     <author>Septemus</author>
-    <guid>https://Septemus.github.io/categories/development/</guid>
+    <guid>http://localhost:1313/categories/development/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Project</title>
-    <link>https://Septemus.github.io/categories/project/</link>
+    <link>http://localhost:1313/categories/project/</link>
     <pubDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</pubDate>
     <author>Septemus</author>
-    <guid>https://Septemus.github.io/categories/project/</guid>
+    <guid>http://localhost:1313/categories/project/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>College</title>
-    <link>https://Septemus.github.io/categories/college/</link>
+    <link>http://localhost:1313/categories/college/</link>
     <pubDate>Sat, 28 Oct 2023 06:57:45 -0700</pubDate>
     <author>Septemus</author>
-    <guid>https://Septemus.github.io/categories/college/</guid>
+    <guid>http://localhost:1313/categories/college/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
