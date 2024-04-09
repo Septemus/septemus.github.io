@@ -14,6 +14,7 @@
 {{< friend name="SuperSASS" url="https://blog.supersassw.com/" logo="/images/supersass.jpg" word="My mentor" >}}
 {{< friend name="风倾" url="https://blog.wangzixi.top/" logo="/images/ziqi.jpg" word="ACMer#1" >}}
 {{< friend name="Cymbospondylus" url="https://github.com/Cymbospondylus" logo="/images/weiyi.jpg" word="Master Wei" >}}
+{{< friend name="Wuzhou Sun" url="https://sunwuzhou03.github.io/" logo="/images/sunwuzhou.jpeg" word="OG Sun" >}}
 </div>
 </div>
 
