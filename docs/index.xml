@@ -4,9 +4,19 @@
         <link>https://Septemus.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 11 Oct 2024 10:13:25 &#43;0800</lastBuildDate>
             <atom:link href="https://Septemus.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>西南交通大学数据挖掘作业1-主成分分析</title>
+    <link>https://Septemus.github.io/data-mining1/</link>
+    <pubDate>Fri, 11 Oct 2024 10:13:25 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/data-mining1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/python.jpeg" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2024-2025学年上半学期开设的数据挖掘课程 1 作业内容 理解PCA的原理及数学推导 手动实现主成分分析PCA算法，参]]></description>
+</item>
+<item>
     <title>Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module</title>
     <link>https://Septemus.github.io/jest_debug1/</link>
     <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
@@ -95,16 +105,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k Apr22th]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验5-CPU寄存器组设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp5/</link>
-    <pubDate>Thu, 04 May 2023 10:44:58 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp5/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
 </item>
 </channel>
 </rss>

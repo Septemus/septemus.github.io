@@ -4,7 +4,15 @@
         <link>https://Septemus.github.io/categories/</link>
         <description>Categories - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Fri, 11 Oct 2024 10:13:25 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>College</title>
+    <link>https://Septemus.github.io/categories/college/</link>
+    <pubDate>Fri, 11 Oct 2024 10:13:25 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/categories/college/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Develop</title>
     <link>https://Septemus.github.io/categories/develop/</link>
     <pubDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</pubDate>
@@ -26,14 +34,6 @@
     <pubDate>Mon, 20 Nov 2023 22:34:14 &#43;0800</pubDate>
     <author>Septemus</author>
     <guid>https://Septemus.github.io/categories/project/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>College</title>
-    <link>https://Septemus.github.io/categories/college/</link>
-    <pubDate>Sat, 28 Oct 2023 06:57:45 -0700</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/categories/college/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

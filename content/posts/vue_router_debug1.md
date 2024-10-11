@@ -2,7 +2,7 @@
 title: "Fixed:Vue-router 跳转到指定页面后强行返回主页解决"
 date: 2023-10-28T06:57:45-07:00
 draft: false
-categories: ["college"]
+categories: ["develop"]
 featuredImagePreview: "/images/vue.png"
 featuredImage: "/images/vue.png"
 ---

@@ -14,5 +14,15 @@
                 <img src="/images/jest.jpeg" referrerpolicy="no-referrer">
             </div>Fixed 这个bug已经被解决 问题简述 (One-line summary) 用jest进行测试时，当待测试的文件引入了node_modules里的第三方模块，且模块是ESM（使用im]]></description>
 </item>
+<item>
+    <title>Fixed:Vue-router 跳转到指定页面后强行返回主页解决</title>
+    <link>https://Septemus.github.io/vue_router_debug1/</link>
+    <pubDate>Sat, 28 Oct 2023 06:57:45 -0700</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/vue_router_debug1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/vue.png" referrerpolicy="no-referrer">
+            </div>Fixed 这个bug已经被解决 问题简述 (One-line summary) vue-router编程式导航跳转到一个页面后强制返回主页 问题复现 (Steps-to-reproduce) 一开始用 &lt;router-link&gt; 方式实现没有问题 后来改成编程]]></description>
+</item>
 </channel>
 </rss>
