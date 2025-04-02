@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Develop - Category - Septemus&#39;s Blog</title>
+        <title>develop - Category - Septemus&#39;s Blog</title>
         <link>https://Septemus.github.io/categories/develop/</link>
-        <description>Develop - Category - Septemus&#39;s Blog</description>
+        <description>develop - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
             <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sun, 10 Mar 2024 15:33:03 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/develop/" rel="self" type="application/rss+xml" /><item>
     <title>Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module</title>

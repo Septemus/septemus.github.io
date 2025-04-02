@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>西南交通大学-计算机图形学实验1-2025年 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="西南交通大学-计算机图形学实验1-2025年" />
+<meta property="og:description" content="Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 西南交通大学-计算机图形学实验1-2025年 实验环境与实验程序框架搭建" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://Septemus.github.io/computer_graphics_exp1/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-04-02T19:45:00+08:00" />
+<meta property="article:modified_time" content="2025-04-02T19:45:00+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
+
+<meta name="twitter:title" content="西南交通大学-计算机图形学实验1-2025年"/>
+<meta name="twitter:description" content="Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 西南交通大学-计算机图形学实验1-2025年 实验环境与实验程序框架搭建"/>
+<meta name="application-name" content="Septemus">
+<meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Septemus.github.io/computer_graphics_exp1/" /><link rel="prev" href="https://Septemus.github.io/jest_debug1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "西南交通大学-计算机图形学实验1-2025年",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/Septemus.github.io\/computer_graphics_exp1\/"
+        },"genre": "posts","wordcount":  614 ,
+        "url": "https:\/\/Septemus.github.io\/computer_graphics_exp1\/","datePublished": "2025-04-02T19:45:00+08:00","dateModified": "2025-04-02T19:45:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Septemus"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/" title="About me"> About </a><a class="menu-item" href="/posts/" title="My blogs"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Septemus&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>Septemus</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="About me">About</a><a class="menu-item" href="/posts/" title="My blogs">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/Septemus/Septemus.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">西南交通大学-计算机图形学实验1-2025年</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-02">2025-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;614 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/cg/opengl.jpg"
+        data-srcset="/images/cg/opengl.jpg, /images/cg/opengl.jpg 1.5x, /images/cg/opengl.jpg 2x"
+        data-sizes="auto"
+        alt="/images/cg/opengl.jpg"
+        title="/images/cg/opengl.jpg" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#贡献者">贡献者:</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课</div>
+        </div>
+    </div>
+<!-- Improved compatibility of back to top link: See: https://github.com/Septemus/swjtu-computergraphics-exp/pull/73 -->
+<p><a id="readme-top"></a></p>
+<!--
+*** Thanks for checking out the swjtu-computergraphics-exp. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+<p><a href="https://github.com/Septemus/swjtu-computergraphics-exp/graphs/contributors" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/github/contributors/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        data-srcset="https://img.shields.io/github/contributors/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge, https://img.shields.io/github/contributors/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 1.5x, https://img.shields.io/github/contributors/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/github/contributors/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        title="Contributors" /></a>
+<a href="https://github.com/Septemus/swjtu-computergraphics-exp/network/members" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/github/forks/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        data-srcset="https://img.shields.io/github/forks/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge, https://img.shields.io/github/forks/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 1.5x, https://img.shields.io/github/forks/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/github/forks/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        title="Forks" /></a>
+<a href="https://github.com/Septemus/swjtu-computergraphics-exp/stargazers" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/github/stars/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        data-srcset="https://img.shields.io/github/stars/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge, https://img.shields.io/github/stars/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 1.5x, https://img.shields.io/github/stars/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/github/stars/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        title="Stargazers" /></a>
+<a href="https://github.com/Septemus/swjtu-computergraphics-exp/issues" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/github/issues/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        data-srcset="https://img.shields.io/github/issues/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge, https://img.shields.io/github/issues/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 1.5x, https://img.shields.io/github/issues/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/github/issues/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        title="Issues" /></a>
+<a href="https://github.com/Septemus/swjtu-computergraphics-exp/blob/master/LICENSE.txt" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/github/license/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        data-srcset="https://img.shields.io/github/license/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge, https://img.shields.io/github/license/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 1.5x, https://img.shields.io/github/license/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/github/license/septemus/swjtu-computergraphics-exp.svg?style=for-the-badge"
+        title="Unlicense License" /></a></p>
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Septemus/swjtu-computergraphics-exp">
+    <img src="/images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+  <h3 align="center">西南交通大学-计算机图形学实验1-2025年</h3>
+  <p align="center">
+    实验环境与实验程序框架搭建
+    <br />
+    <a href="https://github.com/Septemus/swjtu-computergraphics-exp"><strong>访问博客获得更多信息</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Septemus/swjtu-computergraphics-exp">View Demo</a>
+    &middot;
+    <a href="https://github.com/Septemus/swjtu-computergraphics-exp/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/Septemus/swjtu-computergraphics-exp/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+<!-- ABOUT THE PROJECT -->
+<blockquote>
+<h1 id="实验要求">实验要求</h1>
+</blockquote>
+<p>参考《计算机图形学实验参考 01.pdf》构建单文档框架程序</p>
+<ol>
+<li>自拟数据，绘制以下图形:
+<a href="https://example.com" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/demand1.png"
+        data-srcset="/images/demand1.png, /images/demand1.png 1.5x, /images/demand1.png 2x"
+        data-sizes="auto"
+        alt="/images/demand1.png"
+        title="要求1" /></a></li>
+<li>自拟数据绘制如下图形:
+<ul>
+<li><a href="https://example.com" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/demand2-1.png"
+        data-srcset="/images/demand2-1.png, /images/demand2-1.png 1.5x, /images/demand2-1.png 2x"
+        data-sizes="auto"
+        alt="/images/demand2-1.png"
+        title="要求2" /></a></li>
+<li><a href="https://example.com" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/demand2-2.png"
+        data-srcset="/images/demand2-2.png, /images/demand2-2.png 1.5x, /images/demand2-2.png 2x"
+        data-sizes="auto"
+        alt="/images/demand2-2.png"
+        title="要求2" /></a></li>
+</ul>
+</li>
+</ol>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<blockquote>
+<h1 id="实验工具">实验工具</h1>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/C&#43;&#43;" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/badge/c&#43;&#43;-000000?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white"
+        data-srcset="https://img.shields.io/badge/c&#43;&#43;-000000?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white, https://img.shields.io/badge/c&#43;&#43;-000000?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white 1.5x, https://img.shields.io/badge/c&#43;&#43;-000000?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/badge/c&#43;&#43;-000000?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white"
+        title="C&#43;&#43;" /></a></li>
+<li><a href="https://www.opengl.org/" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/badge/opengl-000000?style=for-the-badge&amp;logo=opengl&amp;logoColor=white"
+        data-srcset="https://img.shields.io/badge/opengl-000000?style=for-the-badge&amp;logo=opengl&amp;logoColor=white, https://img.shields.io/badge/opengl-000000?style=for-the-badge&amp;logo=opengl&amp;logoColor=white 1.5x, https://img.shields.io/badge/opengl-000000?style=for-the-badge&amp;logo=opengl&amp;logoColor=white 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/badge/opengl-000000?style=for-the-badge&amp;logo=opengl&amp;logoColor=white"
+        title="OpenGL" /></a></li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.shields.io/badge/Git-000000?style=for-the-badge&amp;logo=git&amp;logoColor=white"
+        data-srcset="https://img.shields.io/badge/Git-000000?style=for-the-badge&amp;logo=git&amp;logoColor=white, https://img.shields.io/badge/Git-000000?style=for-the-badge&amp;logo=git&amp;logoColor=white 1.5x, https://img.shields.io/badge/Git-000000?style=for-the-badge&amp;logo=git&amp;logoColor=white 2x"
+        data-sizes="auto"
+        alt="https://img.shields.io/badge/Git-000000?style=for-the-badge&amp;logo=git&amp;logoColor=white"
+        title="Git" /></a></li>
+</ul>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- GETTING STARTED -->
+<blockquote>
+<h1 id="实验效果">实验效果</h1>
+</blockquote>
+<p><a href="https://example.com" target="_blank" rel="noopener noreffer "><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/result.png"
+        data-srcset="/images/result.png, /images/result.png 1.5x, /images/result.png 2x"
+        data-sizes="auto"
+        alt="/images/result.png"
+        title="效果" /></a></p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<blockquote>
+<h1 id="使用教程">使用教程</h1>
+</blockquote>
+<p>打开<code>Visual Studio</code>:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step1.png"
+        data-srcset="/images/step1.png, /images/step1.png 1.5x, /images/step1.png 2x"
+        data-sizes="auto"
+        alt="/images/step1.png"
+        title="step1" /></p>
+<p>选择克隆存储库</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step2.png"
+        data-srcset="/images/step2.png, /images/step2.png 1.5x, /images/step2.png 2x"
+        data-sizes="auto"
+        alt="/images/step2.png"
+        title="step2" /></p>
+<p>粘贴<code>github</code>源代码仓库地址：<a href="https://github.com/Septemus/swjtu-computergraphics-exp.git" target="_blank" rel="noopener noreffer ">https://github.com/Septemus/swjtu-computergraphics-exp</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step3.png"
+        data-srcset="/images/step3.png, /images/step3.png 1.5x, /images/step3.png 2x"
+        data-sizes="auto"
+        alt="/images/step3.png"
+        title="step3" /></p>
+<p>设置好路径后点击克隆</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step4.png"
+        data-srcset="/images/step4.png, /images/step4.png 1.5x, /images/step4.png 2x"
+        data-sizes="auto"
+        alt="/images/step4.png"
+        title="step4" /></p>
+<p>点击启动按钮</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step5.png"
+        data-srcset="/images/step5.png, /images/step5.png 1.5x, /images/step5.png 2x"
+        data-sizes="auto"
+        alt="/images/step5.png"
+        title="step5" /></p>
+<p>启动成功</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/step6.png"
+        data-srcset="/images/step6.png, /images/step6.png 1.5x, /images/step6.png 2x"
+        data-sizes="auto"
+        alt="/images/step6.png"
+        title="step6" /></p>
+<!-- ROADMAP -->
+<blockquote>
+<h1 id="开发路线">开发路线</h1>
+</blockquote>
+<ul>
+<li><i class="far fa-check-square fa-fw" aria-hidden="true"></i> 在Windows 11,Visual Studio 2022上创建MFC APP实现</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 在MacOS,QT6上创建QT APP实现</li>
+</ul>
+<p>查看 <a href="https://github.com/Septemus/swjtu-computergraphics-exp/issues" target="_blank" rel="noopener noreffer ">open issues</a> 获取功能和问题列表</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- CONTRIBUTING -->
+<blockquote>
+<h1 id="开源贡献">开源贡献</h1>
+</blockquote>
+<p>正是贡献让开源社区成为了学习、启发和创造的绝佳场所。我们非常感谢您的任何贡献。</p>
+<p>如果您有改进建议，请分叉仓库并创建拉取请求。您也可以简单地打开一个带有标签“增强”的问题。</p>
+<p>别忘了给项目点个星！再次感谢！</p>
+<ol>
+<li>分叉项目</li>
+<li>创建您的功能分支（<code>git checkout -b feature/AmazingFeature</code>）</li>
+<li>提交您的更改（<code>git commit -m 'Add some AmazingFeature'</code>）</li>
+<li>推送到分支（<code>git push origin feature/AmazingFeature</code>）</li>
+<li>打开拉取请求</li>
+</ol>
+<blockquote>
+<h2 id="贡献者">贡献者:</h2>
+</blockquote>
+<a href="https://github.com/Septemus/swjtu-computergraphics-exp/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=septemus/swjtu-computergraphics-exp" alt="contrib.rocks image" />
+</a>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- LICENSE -->
+<blockquote>
+<h1 id="license">License</h1>
+</blockquote>
+<p>Distributed under the Unlicense License. See <code>LICENSE.txt</code> for more information.</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- CONTACT -->
+<blockquote>
+<h1 id="联系">联系</h1>
+</blockquote>
+<p>博客留言 - <a href="https://septemus.github.io/" target="_blank" rel="noopener noreffer ">西南交通大学-计算机图形学实验1-2025年</a> - <a href="musketeerdt@gmail.com" rel="">musketeerdt@gmail.com</a></p>
+<p>项目源代码仓库: <a href="https://github.com/Septemus/swjtu-computergraphics-exp" target="_blank" rel="noopener noreffer ">https://github.com/Septemus/swjtu-computergraphics-exp</a></p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-04-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computer_graphics_exp1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://Septemus.github.io/computer_graphics_exp1/" data-title="西南交通大学-计算机图形学实验1-2025年"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://Septemus.github.io/computer_graphics_exp1/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://Septemus.github.io/computer_graphics_exp1/" data-title="西南交通大学-计算机图形学实验1-2025年"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://Septemus.github.io/computer_graphics_exp1/" data-title="西南交通大学-计算机图形学实验1-2025年"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://Septemus.github.io/computer_graphics_exp1/" data-title="西南交通大学-计算机图形学实验1-2025年" data-image="/images/cg/opengl.jpg"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://Septemus.github.io/computer_graphics_exp1/" data-title="西南交通大学-计算机图形学实验1-2025年"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/jest_debug1/" class="prev" rel="prev" title="Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":5000},"comment":{"gitalk":{"admin":["Septemus"],"clientID":"c29d902df0d164442a32","clientSecret":"b77699a4e7b47d1044459cbc3a8f81ea5b34fda7","id":"2025-04-02T19:45:00+08:00","owner":"Septemus","repo":"comment_rep","title":"西南交通大学-计算机图形学实验1-2025年"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

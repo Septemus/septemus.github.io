@@ -7,17 +7,18 @@
         <title>Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module" />
 <meta property="og:description" content="Fixed 这个bug已经被解决 问题简述 (One-line summary) 用jest进行测试时，当待测试的文件引入了node_modules里的第三方模块，且模块是ESM（使用im" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://Septemus.github.io/jest_debug1/" /><meta property="og:image" content="https://Septemus.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://Septemus.github.io/jest_debug1/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-03-10T15:33:03+08:00" />
 <meta property="article:modified_time" content="2024-03-10T16:03:22+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://Septemus.github.io/logo.png" /><meta name="twitter:title" content="Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module"/>
+<meta name="twitter:title" content="Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module"/>
 <meta name="twitter:description" content="Fixed 这个bug已经被解决 问题简述 (One-line summary) 用jest进行测试时，当待测试的文件引入了node_modules里的第三方模块，且模块是ESM（使用im"/>
 <meta name="application-name" content="Septemus">
 <meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Septemus.github.io/jest_debug1/" /><link rel="prev" href="https://Septemus.github.io/git_add_prefix_tutorial/" /><link rel="next" href="https://Septemus.github.io/data-mining1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://Septemus.github.io/jest_debug1/" /><link rel="prev" href="https://Septemus.github.io/git_add_prefix_tutorial/" /><link rel="next" href="https://Septemus.github.io/computer_graphics_exp1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -101,7 +102,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Fixed:jest 测试文件引入node_modules中代码时报错SyntaxError: Cannot use import statement outside a module</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/develop/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Develop</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/develop/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>develop</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-10">2024-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;723 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
@@ -376,14 +377,14 @@
     </div>
 
     <div class="post-nav"><a href="/git_add_prefix_tutorial/" class="prev" rel="prev" title="git commit时如何自动添加前缀"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>git commit时如何自动添加前缀</a>
-            <a href="/data-mining1/" class="next" rel="next" title="西南交通大学数据挖掘作业1-主成分分析">西南交通大学数据挖掘作业1-主成分分析<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/computer_graphics_exp1/" class="next" rel="next" title="西南交通大学-计算机图形学实验1-2025年">西南交通大学-计算机图形学实验1-2025年<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.8">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

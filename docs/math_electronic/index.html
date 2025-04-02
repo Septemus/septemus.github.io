@@ -7,12 +7,13 @@
         <title>数字电子技术理论笔记 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="数字电子技术理论笔记" />
 <meta property="og:description" content="Warning 此笔记由我个人整理，因此相比教材可能有出入，如果您发现有错误，欢迎和我联系！ Note 此笔记针对西南交通大学2022-2023学年上半学期开设的数" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://Septemus.github.io/math_electronic/" /><meta property="og:image" content="https://Septemus.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://Septemus.github.io/math_electronic/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-01-14T10:57:02+08:00" />
 <meta property="article:modified_time" content="2023-07-26T17:17:49+08:00" /><meta property="og:site_name" content="Septemus" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://Septemus.github.io/logo.png" /><meta name="twitter:title" content="数字电子技术理论笔记"/>
+<meta name="twitter:title" content="数字电子技术理论笔记"/>
 <meta name="twitter:description" content="Warning 此笔记由我个人整理，因此相比教材可能有出入，如果您发现有错误，欢迎和我联系！ Note 此笔记针对西南交通大学2022-2023学年上半学期开设的数"/>
 <meta name="application-name" content="Septemus">
 <meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -101,7 +102,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数字电子技术理论笔记</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>College</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-14">2023-01-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11646 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;24 minutes&nbsp;</div>
         </div><div class="featured-image"><img
@@ -1489,11 +1490,11 @@ $$ L = AB + \bar{A}C + \bar{B}C = AB + ( \bar{A} + \bar{B} ) C = AB + \overline{
 <pre tabindex="0" class="chroma"><code class="language-Verilog" data-lang="Verilog"><span class="line"><span class="cl"><span class="k">module</span> <span class="err">模块名（端口名</span><span class="mh">1</span><span class="p">,</span> <span class="err">端口名</span><span class="mh">2</span><span class="p">,</span> <span class="err">端口名</span><span class="mh">3</span><span class="p">,</span><span class="err">…）；</span> 
 </span></span><span class="line"><span class="cl">    <span class="err">端口类型说明</span><span class="p">(</span><span class="k">input</span><span class="p">,</span> <span class="k">output</span><span class="p">,</span> <span class="k">inout</span><span class="p">)</span><span class="err">；</span> 
 </span></span><span class="line"><span class="cl">    <span class="err">参数定义</span><span class="p">(</span><span class="err">可选</span><span class="p">)</span><span class="err">；</span> 
-</span></span><span class="line"><span class="cl">    <span class="err">数据类型定义</span><span class="p">(</span><span class="kt">wire</span><span class="p">,</span> <span class="n">reg等</span><span class="p">)</span><span class="err">；</span> 
+</span></span><span class="line"><span class="cl">    <span class="err">数据类型定义</span><span class="p">(</span><span class="kt">wire</span><span class="p">,</span> <span class="n">reg</span><span class="err">等</span><span class="p">)</span><span class="err">；</span> 
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="err">实例化低层模块和基本门级元件；</span> 
 </span></span><span class="line"><span class="cl">    <span class="err">连续赋值语句（</span><span class="k">assign</span><span class="err">）；</span> 
-</span></span><span class="line"><span class="cl">    <span class="err">过程块结构（</span><span class="n">initial和always</span><span class="err">）</span> 
+</span></span><span class="line"><span class="cl">    <span class="err">过程块结构（</span><span class="n">initial</span><span class="err">和</span><span class="k">always</span><span class="err">）</span> 
 </span></span><span class="line"><span class="cl">    <span class="err">行为描述语句；</span> 
 </span></span><span class="line"><span class="cl"><span class="k">endmodule</span>
 </span></span></code></pre></td></tr></table>
@@ -2322,19 +2323,19 @@ $$</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module chooser_4(S,D,Y);
-</span></span><span class="line"><span class="cl">    input [1:0]S;
-</span></span><span class="line"><span class="cl">    input [3:0]D;
-</span></span><span class="line"><span class="cl">    output reg Y;
-</span></span><span class="line"><span class="cl">    always@(D,S)
-</span></span><span class="line"><span class="cl">        begin
-</span></span><span class="line"><span class="cl">            if(S==2&#39;b00) Y=D[0];
-</span></span><span class="line"><span class="cl">            else if(S==2&#39;b01) Y=D[1];
-</span></span><span class="line"><span class="cl">            else if(S==2&#39;b10) Y=D[2];
-</span></span><span class="line"><span class="cl">            else Y=D[3];
-</span></span><span class="line"><span class="cl">        end
-</span></span><span class="line"><span class="cl">endmodule
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">chooser_4</span><span class="p">(</span><span class="nc">S</span><span class="p">,</span><span class="nc">D</span><span class="p">,</span><span class="nc">Y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">1</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">D</span><span class="p">,</span><span class="nc">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="nc">S</span><span class="o">==</span><span class="mi">2</span><span class="s1">&#39;b00) Y=D[0];
+</span></span></span><span class="line"><span class="cl"><span class="s1">            else if(S==2&#39;</span><span class="nv">b01</span><span class="p">)</span> <span class="nc">Y</span><span class="o">=</span><span class="nc">D</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nc">S</span><span class="o">==</span><span class="mi">2</span><span class="s1">&#39;b10) Y=D[2];
+</span></span></span><span class="line"><span class="cl"><span class="s1">            else Y=D[3];
+</span></span></span><span class="line"><span class="cl"><span class="s1">        end
+</span></span></span><span class="line"><span class="cl"><span class="s1">endmodule
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning">
         <div class="details-summary admonition-title">
@@ -2390,25 +2391,25 @@ $$</p>
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module choose_4(S,D,Y,E);
-</span></span><span class="line"><span class="cl">    input [1:0] S;
-</span></span><span class="line"><span class="cl">    input [3:0] D;
-</span></span><span class="line"><span class="cl">    output reg Y;
-</span></span><span class="line"><span class="cl">    input E;
-</span></span><span class="line"><span class="cl">    always@(S,D,E)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        if(E==1&#39;b1)
-</span></span><span class="line"><span class="cl">        begin
-</span></span><span class="line"><span class="cl">            case(S)
-</span></span><span class="line"><span class="cl">                2&#39;b00:Y&lt;=D[0];
-</span></span><span class="line"><span class="cl">                2&#39;b01:Y&lt;=D[1];
-</span></span><span class="line"><span class="cl">                2&#39;b10:Y&lt;=D[2];
-</span></span><span class="line"><span class="cl">                2&#39;b11:Y&lt;=D[3];
-</span></span><span class="line"><span class="cl">            endcase
-</span></span><span class="line"><span class="cl">        end
-</span></span><span class="line"><span class="cl">        else Y&lt;=1&#39;b0
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">choose_4</span><span class="p">(</span><span class="nc">S</span><span class="p">,</span><span class="nc">D</span><span class="p">,</span><span class="nc">Y</span><span class="p">,</span><span class="nc">E</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">1</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nc">E</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">S</span><span class="p">,</span><span class="nc">D</span><span class="p">,</span><span class="nc">E</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nc">E</span><span class="o">==</span><span class="mi">1</span><span class="s1">&#39;b1)
+</span></span></span><span class="line"><span class="cl"><span class="s1">        begin
+</span></span></span><span class="line"><span class="cl"><span class="s1">            case(S)
+</span></span></span><span class="line"><span class="cl"><span class="s1">                2&#39;</span><span class="nv">b00</span><span class="p">:</span><span class="nc">Y</span><span class="o">&lt;=</span><span class="nc">D</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="mi">2</span><span class="s1">&#39;b01:Y&lt;=D[1];
+</span></span></span><span class="line"><span class="cl"><span class="s1">                2&#39;</span><span class="nv">b10</span><span class="p">:</span><span class="nc">Y</span><span class="o">&lt;=</span><span class="nc">D</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="mi">2</span><span class="s1">&#39;b11:Y&lt;=D[3];
+</span></span></span><span class="line"><span class="cl"><span class="s1">            endcase
+</span></span></span><span class="line"><span class="cl"><span class="s1">        end
+</span></span></span><span class="line"><span class="cl"><span class="s1">        else Y&lt;=1&#39;</span><span class="nv">b0</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">end</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -2433,21 +2434,21 @@ $$</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module coder_4_2(I,Y);
-</span></span><span class="line"><span class="cl">    input [3:0]I;
-</span></span><span class="line"><span class="cl">    output reg[1:0]Y;
-</span></span><span class="line"><span class="cl">    always@(I)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        casex(I)
-</span></span><span class="line"><span class="cl">            4&#39;b1xxx:Y&lt;=2&#39;b11;
-</span></span><span class="line"><span class="cl">            4&#39;b01xx:Y&lt;=2&#39;b10;
-</span></span><span class="line"><span class="cl">            4&#39;b001x:Y&lt;=2&#39;b01;
-</span></span><span class="line"><span class="cl">            4&#39;b0001:Y&lt;=2&#39;b00;
-</span></span><span class="line"><span class="cl">            default:Y&lt;=2&#39;bx;
-</span></span><span class="line"><span class="cl">        endcase
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">coder_4_2</span><span class="p">(</span><span class="nc">I</span><span class="p">,</span><span class="nc">Y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">I</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">I</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">casex</span><span class="p">(</span><span class="nc">I</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">4</span><span class="s1">&#39;b1xxx:Y&lt;=2&#39;</span><span class="nv">b11</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">4</span><span class="s1">&#39;b01xx:Y&lt;=2&#39;</span><span class="nv">b10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">4</span><span class="s1">&#39;b001x:Y&lt;=2&#39;</span><span class="nv">b01</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">4</span><span class="s1">&#39;b0001:Y&lt;=2&#39;</span><span class="nv">b00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">default</span><span class="p">:</span><span class="nc">Y</span><span class="o">&lt;=</span><span class="mi">2</span><span class="s1">&#39;bx;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        endcase
+</span></span></span><span class="line"><span class="cl"><span class="s1">    end
+</span></span></span><span class="line"><span class="cl"><span class="s1">endmodule
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <h3 id="463-for语句">4.6.3 for语句</h3>
@@ -2472,22 +2473,22 @@ $$</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module trans_3_8(I,Y,E);
-</span></span><span class="line"><span class="cl">    input [2:0]I;
-</span></span><span class="line"><span class="cl">    input E;
-</span></span><span class="line"><span class="cl">    output reg[7:0]Y;
-</span></span><span class="line"><span class="cl">    integar k;
-</span></span><span class="line"><span class="cl">    always@(I,E)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        Y=8&#39;b1111_1111;
-</span></span><span class="line"><span class="cl">        for(k=0;k&lt;8;k=k+1)
-</span></span><span class="line"><span class="cl">        begin
-</span></span><span class="line"><span class="cl">            if(k==I&amp;&amp;E) Y[k]=0;
-</span></span><span class="line"><span class="cl">            else Y[k]=1;
-</span></span><span class="line"><span class="cl">        end
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">trans_3_8</span><span class="p">(</span><span class="nc">I</span><span class="p">,</span><span class="nc">Y</span><span class="p">,</span><span class="nc">E</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">2</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">I</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nc">E</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">integar</span> <span class="nv">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">I</span><span class="p">,</span><span class="nc">E</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">Y</span><span class="o">=</span><span class="mi">8</span><span class="s1">&#39;b1111_1111;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        for(k=0;k&lt;8;k=k+1)
+</span></span></span><span class="line"><span class="cl"><span class="s1">        begin
+</span></span></span><span class="line"><span class="cl"><span class="s1">            if(k==I&amp;&amp;E) Y[k]=0;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            else Y[k]=1;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        end
+</span></span></span><span class="line"><span class="cl"><span class="s1">    end
+</span></span></span><span class="line"><span class="cl"><span class="s1">endmodule
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <h3 id="464-条件运算符">4.6.4 条件运算符</h3>
@@ -2507,16 +2508,16 @@ $$</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module chooser_2_1(
-</span></span><span class="line"><span class="cl">    input [1:0]D;
-</span></span><span class="line"><span class="cl">    input sel;
-</span></span><span class="line"><span class="cl">    output reg Y;
-</span></span><span class="line"><span class="cl">);
-</span></span><span class="line"><span class="cl">    always@(D,sel)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        Y&lt;=sel?D[1]:D[0];
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">chooser_2_1</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">1</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nv">sel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">D</span><span class="p">,</span><span class="nv">sel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">Y</span><span class="o">&lt;=</span><span class="nv">sel</span><span class="kd">?</span><span class="nc">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="nc">D</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">end</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -2530,13 +2531,13 @@ $$</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module choose_2_1(
-</span></span><span class="line"><span class="cl">    input [1:0]D;
-</span></span><span class="line"><span class="cl">    input sel;
-</span></span><span class="line"><span class="cl">    output Y;
-</span></span><span class="line"><span class="cl">);
-</span></span><span class="line"><span class="cl">    assign Y&lt;=sel?D[1]:D[0];
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">choose_2_1</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">1</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nv">sel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nc">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">assign</span> <span class="nc">Y</span><span class="o">&lt;=</span><span class="nv">sel</span><span class="kd">?</span><span class="nc">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="nc">D</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -2579,15 +2580,15 @@ $$</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module half_adder(A,B,S,C);
-</span></span><span class="line"><span class="cl">    input A,B;
-</span></span><span class="line"><span class="cl">    output reg S,C;
-</span></span><span class="line"><span class="cl">    always@(A,B)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        S&lt;=A^B;
-</span></span><span class="line"><span class="cl">        C&lt;=A&amp;B;
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">half_adder</span><span class="p">(</span><span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">,</span><span class="nc">S</span><span class="p">,</span><span class="nc">C</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="nc">S</span><span class="p">,</span><span class="nc">C</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">S</span><span class="o">&lt;=</span><span class="nc">A</span><span class="o">^</span><span class="nc">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">C</span><span class="o">&lt;=</span><span class="nc">A</span><span class="o">&amp;</span><span class="nc">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">end</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -2613,14 +2614,14 @@ $$</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module full_adder(A,B,Ci,S,C0);
-</span></span><span class="line"><span class="cl">    input A,B,Ci;
-</span></span><span class="line"><span class="cl">    output S,C0;
-</span></span><span class="line"><span class="cl">    wire S1,D1,D2;
-</span></span><span class="line"><span class="cl">    half_adder HA1(A,B,S1,D1);
-</span></span><span class="line"><span class="cl">    half_adder HA2(S1,Ci,S,D2);
-</span></span><span class="line"><span class="cl">    or(C0,D1,D2);
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">full_adder</span><span class="p">(</span><span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">,</span><span class="nc">Ci</span><span class="p">,</span><span class="nc">S</span><span class="p">,</span><span class="nc">C0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">,</span><span class="nc">Ci</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nc">S</span><span class="p">,</span><span class="nc">C0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">wire</span> <span class="nc">S1</span><span class="p">,</span><span class="nc">D1</span><span class="p">,</span><span class="nc">D2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">half_adder</span> <span class="nc">HA1</span><span class="p">(</span><span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">,</span><span class="nc">S1</span><span class="p">,</span><span class="nc">D1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">half_adder</span> <span class="nc">HA2</span><span class="p">(</span><span class="nc">S1</span><span class="p">,</span><span class="nc">Ci</span><span class="p">,</span><span class="nc">S</span><span class="p">,</span><span class="nc">D2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">or</span><span class="p">(</span><span class="nc">C0</span><span class="p">,</span><span class="nc">D1</span><span class="p">,</span><span class="nc">D2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -2650,18 +2651,18 @@ $$</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module adder_4_dig(
-</span></span><span class="line"><span class="cl">    input [3:0]A,B;
-</span></span><span class="line"><span class="cl">    input CI;
-</span></span><span class="line"><span class="cl">    output [3:0]S,
-</span></span><span class="line"><span class="cl">    output CO
-</span></span><span class="line"><span class="cl">)
-</span></span><span class="line"><span class="cl">    wire [2:0]C;
-</span></span><span class="line"><span class="cl">    full_adder fa0(A[0],B[0],CI,S[0],C[0]);
-</span></span><span class="line"><span class="cl">    full_adder fa1(A[1],B[1],C[0],S[1],C[1]);
-</span></span><span class="line"><span class="cl">    full_adder fa2(A[2],B[2],C[1],S[2],C[2]);
-</span></span><span class="line"><span class="cl">    full_adder fa3(A[3],B[3],C[2],S[3],CO);
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">adder_4_dig</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">A</span><span class="p">,</span><span class="nc">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nc">CI</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">S</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nc">CO</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">wire</span> <span class="p">[</span><span class="err">2</span><span class="p">:</span><span class="s">0</span><span class="p">]</span><span class="nc">C</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">full_adder</span> <span class="nf">fa0</span><span class="p">(</span><span class="nc">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="nc">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="nc">CI</span><span class="p">,</span><span class="nc">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">full_adder</span> <span class="nf">fa1</span><span class="p">(</span><span class="nc">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nc">B</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="nc">S</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">full_adder</span> <span class="nf">fa2</span><span class="p">(</span><span class="nc">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nc">B</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nc">S</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">full_adder</span> <span class="nf">fa3</span><span class="p">(</span><span class="nc">A</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nc">B</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nc">C</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nc">S</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nc">CO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -3728,27 +3729,27 @@ $Q_3$仅在$Q_0$=$Q_1$=$Q_2$=1后的下一个CP到来时翻转。$FF_3$可采用
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module reg4(clk,clr,S,data,left0,right0,en,Q);
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">reg4</span><span class="p">(</span><span class="nv">clk</span><span class="p">,</span><span class="nv">clr</span><span class="p">,</span><span class="nc">S</span><span class="p">,</span><span class="nv">data</span><span class="p">,</span><span class="nv">left0</span><span class="p">,</span><span class="nv">right0</span><span class="p">,</span><span class="nv">en</span><span class="p">,</span><span class="nc">Q</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    input clk,clr,left0,right0,en;
-</span></span><span class="line"><span class="cl">    input [1:0] S;
-</span></span><span class="line"><span class="cl">    input [3:0] data;
-</span></span><span class="line"><span class="cl">    output reg [3:0] Q;
-</span></span><span class="line"><span class="cl">    always@(posedge clk or posedge clr)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        if(clr) Q&lt;=4&#39;b0000;
-</span></span><span class="line"><span class="cl">        else if(en)
-</span></span><span class="line"><span class="cl">        begin
-</span></span><span class="line"><span class="cl">            case(S)
-</span></span><span class="line"><span class="cl">            2&#39;b00: Q&lt;=Q;
-</span></span><span class="line"><span class="cl">            2&#39;b01: Q&lt;={Q[2:0],right0};
-</span></span><span class="line"><span class="cl">            2&#39;b10: Q&lt;={left0,Q[3:1]};
-</span></span><span class="line"><span class="cl">            2&#39;b11: Q&lt;=data;     
-</span></span><span class="line"><span class="cl">            endcase
-</span></span><span class="line"><span class="cl">        end
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nv">clk</span><span class="p">,</span><span class="nv">clr</span><span class="p">,</span><span class="nv">left0</span><span class="p">,</span><span class="nv">right0</span><span class="p">,</span><span class="nv">en</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">1</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nv">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">Q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nv">posedge</span> <span class="nv">clk</span> <span class="k">or</span> <span class="nv">posedge</span> <span class="nv">clr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nv">clr</span><span class="p">)</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="mi">4</span><span class="s1">&#39;b0000;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        else if(en)
+</span></span></span><span class="line"><span class="cl"><span class="s1">        begin
+</span></span></span><span class="line"><span class="cl"><span class="s1">            case(S)
+</span></span></span><span class="line"><span class="cl"><span class="s1">            2&#39;</span><span class="nv">b00</span><span class="p">:</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="nc">Q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">2</span><span class="s1">&#39;b01: Q&lt;={Q[2:0],right0};
+</span></span></span><span class="line"><span class="cl"><span class="s1">            2&#39;</span><span class="nv">b10</span><span class="p">:</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="p">{</span><span class="nv">left0</span><span class="p">,</span><span class="nc">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">]};</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">2</span><span class="s1">&#39;b11: Q&lt;=data;     
+</span></span></span><span class="line"><span class="cl"><span class="s1">            endcase
+</span></span></span><span class="line"><span class="cl"><span class="s1">        end
+</span></span></span><span class="line"><span class="cl"><span class="s1">    end
+</span></span></span><span class="line"><span class="cl"><span class="s1">endmodule
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <h3 id="672-计数器">6.7.2 计数器</h3>
@@ -3770,18 +3771,18 @@ $Q_3$仅在$Q_0$=$Q_1$=$Q_2$=1后的下一个CP到来时翻转。$FF_3$可采用
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module counter(clk,en,set,data,Q,flag);
-</span></span><span class="line"><span class="cl">    input en,set,flag;
-</span></span><span class="line"><span class="cl">    input [3:0] data;
-</span></span><span class="line"><span class="cl">    output reg [3:0] Q;
-</span></span><span class="line"><span class="cl">    always@(posedge clk)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        if(!en) Q&lt;=Q;
-</span></span><span class="line"><span class="cl">        else if(set) Q&lt;=data;
-</span></span><span class="line"><span class="cl">        else if(flag==1) Q&lt;=Q+1;
-</span></span><span class="line"><span class="cl">        else Q&lt;=Q-1;
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">counter</span><span class="p">(</span><span class="nv">clk</span><span class="p">,</span><span class="nv">en</span><span class="p">,</span><span class="nv">set</span><span class="p">,</span><span class="nv">data</span><span class="p">,</span><span class="nc">Q</span><span class="p">,</span><span class="nv">flag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="nv">en</span><span class="p">,</span><span class="nv">set</span><span class="p">,</span><span class="nv">flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">input</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nv">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">output</span> <span class="nv">reg</span> <span class="p">[</span><span class="err">3</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">Q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="nv">posedge</span> <span class="nv">clk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">en</span><span class="p">)</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="nc">Q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nv">set</span><span class="p">)</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="nv">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nv">flag</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="nc">Q</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="nc">Q</span><span class="o">&lt;=</span><span class="nc">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">end</span>
+</span></span><span class="line"><span class="cl"><span class="nv">endmodule</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -3821,29 +3822,29 @@ $Q_3$仅在$Q_0$=$Q_1$=$Q_2$=1后的下一个CP到来时翻转。$FF_3$可采用
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module loop(A,Y,clk,clr);
-</span></span><span class="line"><span class="cl">    parameter S0=2&#39;b00,S1=2&#39;b01,S2=2&#39;b11;
-</span></span><span class="line"><span class="cl">    input A,clk;
-</span></span><span class="line"><span class="cl">    reg [1:0] cur,next;
-</span></span><span class="line"><span class="cl">    output reg Y;
-</span></span><span class="line"><span class="cl">    always@(posedge clk,negedge clr)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        if(clr) cur&lt;=S0;
-</span></span><span class="line"><span class="cl">        else if(clk) cur&lt;=next;
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">    always@(posedge clk)
-</span></span><span class="line"><span class="cl">    begin
-</span></span><span class="line"><span class="cl">        Y&lt;=0;
-</span></span><span class="line"><span class="cl">        case(cur)
-</span></span><span class="line"><span class="cl">            S0: next&lt;=A?S1:S2;
-</span></span><span class="line"><span class="cl">            S1: next&lt;=A?S0:S2;
-</span></span><span class="line"><span class="cl">            S2: if(A) next&lt;=S2;
-</span></span><span class="line"><span class="cl">                else begin next&lt;=S0;Y&lt;=1;
-</span></span><span class="line"><span class="cl">            default: next&lt;=S0;
-</span></span><span class="line"><span class="cl">        endcase
-</span></span><span class="line"><span class="cl">    end
-</span></span><span class="line"><span class="cl">endmodule
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="kn">module</span> <span class="nf">loop</span><span class="p">(</span><span class="nc">A</span><span class="p">,</span><span class="nc">Y</span><span class="p">,</span><span class="nv">clk</span><span class="p">,</span><span class="nv">clr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">parameter</span> <span class="nc">S0</span><span class="o">=</span><span class="mi">2</span><span class="s1">&#39;b00,S1=2&#39;</span><span class="nv">b01</span><span class="p">,</span><span class="nc">S2</span><span class="o">=</span><span class="mi">2</span><span class="s1">&#39;b11;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    input A,clk;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    reg [1:0] cur,next;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    output reg Y;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    always@(posedge clk,negedge clr)
+</span></span></span><span class="line"><span class="cl"><span class="s1">    begin
+</span></span></span><span class="line"><span class="cl"><span class="s1">        if(clr) cur&lt;=S0;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        else if(clk) cur&lt;=next;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    end
+</span></span></span><span class="line"><span class="cl"><span class="s1">    always@(posedge clk)
+</span></span></span><span class="line"><span class="cl"><span class="s1">    begin
+</span></span></span><span class="line"><span class="cl"><span class="s1">        Y&lt;=0;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        case(cur)
+</span></span></span><span class="line"><span class="cl"><span class="s1">            S0: next&lt;=A?S1:S2;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            S1: next&lt;=A?S0:S2;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            S2: if(A) next&lt;=S2;
+</span></span></span><span class="line"><span class="cl"><span class="s1">                else begin next&lt;=S0;Y&lt;=1;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            default: next&lt;=S0;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        endcase
+</span></span></span><span class="line"><span class="cl"><span class="s1">    end
+</span></span></span><span class="line"><span class="cl"><span class="s1">endmodule
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <h1 id="7-半导体存储器">7 半导体存储器</h1>
@@ -3962,8 +3963,8 @@ $Q_3$仅在$Q_0$=$Q_1$=$Q_2$=1后的下一个CP到来时翻转。$FF_3$可采用
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.8">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Septemus</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
@@ -3972,5 +3973,5 @@ $Q_3$仅在$Q_0$=$Q_1$=$Q_2$=1后的下一个CP到来时翻转。$FF_3$可采用
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":5000},"comment":{"gitalk":{"admin":["Septemus"],"clientID":"c29d902df0d164442a32","clientSecret":"b77699a4e7b47d1044459cbc3a8f81ea5b34fda7","id":"2023-01-14T10:57:02+08:00","owner":"Septemus","repo":"comment_rep","title":"数字电子技术理论笔记"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"\r\n    graph LR\r\n\t常量--\u003e A(整数型)\r\n\tA--\u003e十进制数的形式的表示方法:表示有符号常量例如:30,-2\r\n    A--\u003e带基数的形式的表示方法:表示常量格式为:+/-_二进制位宽'基数符号_数值,例如:3'b101,5'o37,8'he3,8'b1001_0011\r\n\t常量--\u003e 实数型\r\n\t实数型--\u003e十进制记数法如:0.1,2.0,5.67\r\n    实数型--\u003e科学记数法如:23_5.1e2,5E-4,23510.0,0.0005\r"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":5000},"comment":{"gitalk":{"admin":["Septemus"],"clientID":"c29d902df0d164442a32","clientSecret":"b77699a4e7b47d1044459cbc3a8f81ea5b34fda7","id":"2023-01-14T10:57:02+08:00","owner":"Septemus","repo":"comment_rep","title":"数字电子技术理论笔记"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"    graph LR\n\t常量--\u003e A(整数型)\n\tA--\u003e十进制数的形式的表示方法:表示有符号常量例如:30,-2\n    A--\u003e带基数的形式的表示方法:表示常量格式为:+/-_二进制位宽'基数符号_数值,例如:3'b101,5'o37,8'he3,8'b1001_0011\n\t常量--\u003e 实数型\n\t实数型--\u003e十进制记数法如:0.1,2.0,5.67\n    实数型--\u003e科学记数法如:23_5.1e2,5E-4,23510.0,0.0005"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
