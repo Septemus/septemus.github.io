@@ -57,7 +57,7 @@ featuredImage: "/images/cg/opengl.jpg"
   <p align="center">
     二维图形变换与裁剪实验
     <br />
-    <a href="https://septemus.github.io/computer_graphics_exp2/"><strong>访问博客获得更多信息</strong></a>
+    <a href="https://septemus.github.io/computer_graphics_exp3/"><strong>访问博客获得更多信息</strong></a>
     <br />
     <br />
     <a href="https://github.com/Septemus/swjtu-computergraphics-exp3">View Demo</a>
