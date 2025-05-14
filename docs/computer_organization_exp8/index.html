@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>西南交通大学计组实验8-指令分析与执行 - Septemus&#39;s Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="西南交通大学计组实验8-指令分析与执行" />
-<meta property="og:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Frequency 使用时必须将clk频率设置成100k Special" />
+<meta property="og:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Success 2023年录制的操作视频已失效，视频已" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://Septemus.github.io/computer_organization_exp8/" /><meta property="og:image" content="https://Septemus.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-05-29T10:28:20+08:00" />
@@ -14,7 +14,7 @@
 <meta name="twitter:image" content="https://Septemus.github.io/logo.png"/>
 
 <meta name="twitter:title" content="西南交通大学计组实验8-指令分析与执行"/>
-<meta name="twitter:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Frequency 使用时必须将clk频率设置成100k Special"/>
+<meta name="twitter:description" content="Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Success 2023年录制的操作视频已失效，视频已"/>
 <meta name="application-name" content="Septemus">
 <meta name="apple-mobile-web-app-title" content="Septemus"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/Septemus.github.io\/computer_organization_exp8\/"
-        },"genre": "posts","wordcount":  3364 ,
+        },"genre": "posts","wordcount":  3429 ,
         "url": "https:\/\/Septemus.github.io\/computer_organization_exp8\/","datePublished": "2023-05-29T10:28:20+08:00","dateModified": "2023-07-26T17:17:49+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -103,7 +103,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">西南交通大学计组实验8-指令分析与执行</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Septemus</a></span>&nbsp;<span class="post-category">included in <a href="/categories/college/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>college</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-29">2023-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3364 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-29">2023-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3429 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -150,12 +150,20 @@
             <div class="admonition-content">代码和输出已经过助教验收。</div>
         </div>
     </div>
+<div class="details admonition success">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>Success<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">2023年录制的操作视频已失效，视频已重新于2025年5月14日录制上传</div>
+        </div>
+    </div>
 <div class="details admonition warning">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Frequency<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">使用时必须将clk频率设置成100k</div>
+            <div class="admonition-content">使用时必须将clk频率设置成1M</div>
         </div>
     </div>
 <div class="details admonition tip">
@@ -164,6 +172,14 @@
         </div>
         <div class="details-content">
             <div class="admonition-content">感谢何同学提供的参考代码和实验要求！</div>
+        </div>
+    </div>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Special thanks👍🏿<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">感谢李同学和舍友为重新录制视频提供的帮助！</div>
         </div>
     </div>
 <blockquote>
@@ -1809,7 +1825,7 @@
 <blockquote>
 <h1 id="6-上机操作视频">6 上机操作视频</h1>
 </blockquote>
-<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Kh411F7dW&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
+<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1bhEBzHE2u&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
 
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

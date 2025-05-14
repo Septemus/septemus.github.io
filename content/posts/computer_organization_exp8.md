@@ -15,13 +15,21 @@ featuredImage: "/images/intel-fpga.png"
 代码和输出已经过助教验收。
 {{< /admonition >}}
 
+{{< admonition type=success title="" open=false >}}
+2023年录制的操作视频已失效，视频已重新于2025年5月14日录制上传
+{{< /admonition >}}
+
 {{< admonition type=warning title="Frequency" open=false >}}
-使用时必须将clk频率设置成100k
+使用时必须将clk频率设置成1M
 {{< /admonition >}}
 
 
 {{< admonition type=tip title="Special thanks👍🏿" open=false >}}
 感谢何同学提供的参考代码和实验要求！
+{{< /admonition >}}
+
+{{< admonition type=tip title="Special thanks👍🏿" open=false >}}
+感谢李同学和舍友为重新录制视频提供的帮助！
 {{< /admonition >}}
 
 > # 0 完结撒花🏵️
@@ -727,4 +735,4 @@ github仓库：
 > # 6 上机操作视频
 
 
-{{< bilibili BV1Kh411F7dW >}}
+{{< bilibili BV1bhEBzHE2u >}}
