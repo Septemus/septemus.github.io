@@ -11,7 +11,7 @@ featuredImage: "/images/cg/opengl.jpg"
 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课
 {{< /admonition >}}
 
-{{< admonition type=warning title="" open=false >}}
+{{< admonition type=success title="" open=false >}}
 暂未更新任务2内容
 {{< /admonition >}}
 
@@ -110,7 +110,7 @@ featuredImage: "/images/cg/opengl.jpg"
 1. 任务（1）
     [![效果][result]](https://example.com) 
 1. 任务（2）
-    
+    [![效果][result2]](https://example.com) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -153,6 +153,29 @@ featuredImage: "/images/cg/opengl.jpg"
     ![step9](/images/cg/exp3/step9.png)
 - 点击`闭合线（学号双号）`，然后在绘图区用鼠标左键任意点击多个位置，将会依次连接成折线，按鼠标右键点击的位置将成为折线最后一个点的位置，并且和第一个位置相连形成闭合线，按`ESC`退出
     ![step10](/images/cg/exp3/step10.png)
+
+> ## 任务（2）
+
+点击工具栏的转换类，可以看到按钮
+
+![step2-1](/images/cg/exp3/step2-1.png)
+
+首先在节点树上选择一个节点
+
+![step2-2](/images/cg/exp3/step2-2.png)
+
+点击`平移`，然后鼠标点击一下绘图区，然后按方向键`←`,`↑`,`→`,`↓`
+
+![step2-2-1-1](/images/cg/exp3/step2-2-1-1.gif)
+
+点击`缩放`，然后鼠标在绘图区按住移动
+
+![step2-2-2-1](/images/cg/exp3/step2-2-2-1.gif)
+
+点击`旋转`，然后鼠标在绘图区按住移动
+
+![step2-2-3-1](/images/cg/exp3/step2-2-3-1.gif)
+
 
 <!-- ROADMAP -->
 > # 开发路线
@@ -229,7 +252,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 [linkedin-url]: https://linkedin.com/in/septemus
 [product-screenshot]: images/screenshot.png
 [result]: /images/cg/exp3/result.png
-[result2]: images/res2.png
+[result2]: /images/cg/exp3/result2.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [C++]: https://img.shields.io/badge/c++-000000?style=for-the-badge&logo=cplusplus&logoColor=white
 [C++-url]: https://en.wikipedia.org/wiki/C++
