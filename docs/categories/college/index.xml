@@ -4,7 +4,17 @@
         <link>https://Septemus.github.io/categories/college/</link>
         <description>college - Category - Septemus&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sat, 26 Apr 2025 15:37:41 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/college/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 02 Jun 2025 04:52:00 &#43;0800</lastBuildDate><atom:link href="https://Septemus.github.io/categories/college/" rel="self" type="application/rss+xml" /><item>
+    <title>西南交通大学-计算机图形学实验4-2025年</title>
+    <link>https://Septemus.github.io/computer_graphics_exp4/</link>
+    <pubDate>Mon, 02 Jun 2025 04:52:00 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_graphics_exp4/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/cg/opengl.jpg" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 学号单号和双号任务均已完成 西南交通大学-计算机图形学实验4-2025]]></description>
+</item>
+<item>
     <title>西南交通大学-计算机图形学实验3-2025年</title>
     <link>https://Septemus.github.io/computer_graphics_exp3/</link>
     <pubDate>Sat, 26 Apr 2025 15:37:41 &#43;0800</pubDate>
@@ -12,7 +22,7 @@
     <guid>https://Septemus.github.io/computer_graphics_exp3/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/cg/opengl.jpg" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 暂未更新任务2内容 西南交通大学-计算机图形学实验3-2025年 二维图]]></description>
+            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 已更新任务2内容 西南交通大学-计算机图形学实验3-2025年 二维图形]]></description>
 </item>
 <item>
     <title>西南交通大学-计算机图形学实验2-2025年</title>
@@ -90,16 +100,6 @@
     <pubDate>Thu, 04 May 2023 10:44:58 &#43;0800</pubDate>
     <author>Septemus</author>
     <guid>https://Septemus.github.io/computer_organization_exp5/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验4-算术逻辑单元（ALU）设计</title>
-    <link>https://Septemus.github.io/computer_organization_exp4/</link>
-    <pubDate>Thu, 27 Apr 2023 11:09:52 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已通过助教验收。 Frequency 使用时必须将clk频率设置成100k 1]]></description>

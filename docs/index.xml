@@ -4,9 +4,19 @@
         <link>https://Septemus.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>musketeerdt@gmail.com (Septemus)</managingEditor>
-            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Sat, 26 Apr 2025 15:37:41 &#43;0800</lastBuildDate>
+            <webMaster>musketeerdt@gmail.com (Septemus)</webMaster><lastBuildDate>Mon, 02 Jun 2025 04:52:00 &#43;0800</lastBuildDate>
             <atom:link href="https://Septemus.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>西南交通大学-计算机图形学实验4-2025年</title>
+    <link>https://Septemus.github.io/computer_graphics_exp4/</link>
+    <pubDate>Mon, 02 Jun 2025 04:52:00 &#43;0800</pubDate>
+    <author>Septemus</author>
+    <guid>https://Septemus.github.io/computer_graphics_exp4/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/cg/opengl.jpg" referrerpolicy="no-referrer">
+            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 学号单号和双号任务均已完成 西南交通大学-计算机图形学实验4-2025]]></description>
+</item>
+<item>
     <title>西南交通大学-计算机图形学实验3-2025年</title>
     <link>https://Septemus.github.io/computer_graphics_exp3/</link>
     <pubDate>Sat, 26 Apr 2025 15:37:41 &#43;0800</pubDate>
@@ -14,7 +24,7 @@
     <guid>https://Septemus.github.io/computer_graphics_exp3/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/cg/opengl.jpg" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 暂未更新任务2内容 西南交通大学-计算机图形学实验3-2025年 二维图]]></description>
+            </div>Note 此笔记针对西南交通大学2025-2026学年上半学期开设的计图实验课 Success 已更新任务2内容 西南交通大学-计算机图形学实验3-2025年 二维图形]]></description>
 </item>
 <item>
     <title>西南交通大学-计算机图形学实验2-2025年</title>
@@ -95,16 +105,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
             </div>1 实验内容 底层用 Verilog HDL 语言实现简单的处理器模块设计。 调用存储器模块设计 64×8 的存储器模块。 顶层用原理图方式将简单的处理器模块和存储器模块连接]]></description>
-</item>
-<item>
-    <title>西南交通大学计组实验8-指令分析与执行</title>
-    <link>https://Septemus.github.io/computer_organization_exp8/</link>
-    <pubDate>Mon, 29 May 2023 10:28:20 &#43;0800</pubDate>
-    <author>Septemus</author>
-    <guid>https://Septemus.github.io/computer_organization_exp8/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/intel-fpga.png" referrerpolicy="no-referrer">
-            </div>Note 此笔记针对西南交通大学2023-2024学年上半学期开设的计组实验课。 Success 代码和输出已经过助教验收。 Success 2023年录制的操作视频已失效，视频已]]></description>
 </item>
 </channel>
 </rss>

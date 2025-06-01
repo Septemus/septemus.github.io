@@ -12,7 +12,7 @@ featuredImage: "/images/cg/opengl.jpg"
 {{< /admonition >}}
 
 {{< admonition type=success title="" open=false >}}
-暂未更新任务2内容
+已更新任务2内容
 {{< /admonition >}}
 
 
