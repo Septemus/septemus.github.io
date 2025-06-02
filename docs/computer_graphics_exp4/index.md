@@ -9,6 +9,10 @@
 学号单号和双号任务均已完成
 {{< /admonition >}}
 
+{{< admonition type=tip title="Special thanks👍🏿" open=false >}}
+感谢李同学为本次实验提供的帮助！
+{{< /admonition >}}
+
 <!-- Improved compatibility of back to top link: See: https://github.com/Septemus/swjtu-computergraphics-exp4/pull/73 -->
 <a id="readme-top"></a>
 <!--
